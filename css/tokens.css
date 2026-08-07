@@ -1,0 +1,210 @@
+/* ============================================================
+   «Магазин дверей» — дизайн-токены
+   Утилитарный каталог (ориентир: dveribravo.ru, но акцент не красный):
+   белый фон, чёрный текст, TildaSans, один акцент — глубокий зелёный.
+   Светлая тема (тёмная не предусмотрена). Mobile-first.
+   Подробный бриф: design/DESIGN.md
+   ============================================================ */
+
+/* ---- Шрифт: TildaSans (400 / 600 / 700), полная кириллица ----
+   Файлы: assets/fonts/TildaSans-{Regular,Semibold,Bold}.woff2 (38-40 КБ каждый)
+   Источник: официальный CSS Tilda Publishing
+   https://static.tildacdn.com/css/fonts-tildasans.css
+   Лицензия: свободный шрифт от Tilda Publishing.
+   Начертание 500 не грузим — его роль выполняет 600.
+   ВНИМАНИЕ: пути указаны относительно этого файла (design/tokens.css).
+   Если tokens.css переносится в /css/, поправить url. */
+@font-face {
+  font-family: "TildaSans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/TildaSans-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "TildaSans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/TildaSans-Semibold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "TildaSans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/TildaSans-Bold.woff2") format("woff2");
+}
+
+:root {
+  /* ============ ЦВЕТА ============ */
+
+  /* Поверхности */
+  --color-bg:          #FFFFFF; /* фон страницы и фон тумб в карточках */
+  --color-surface:     #FFFFFF; /* карточки, формы, шапка */
+  --color-bg-soft:     #F5F5F5; /* подложки секций (УТП-лента), футер */
+  --color-line:        #E3E3E3; /* границы карточек, разделители групп фильтров */
+  --color-line-hover:  #C9C9C9; /* граница карточки на hover */
+  --color-line-input:  #949494; /* границы полей форм: 3.03:1 на белом —
+                                   минимум для не-текстовых элементов
+                                   (WCAG 1.4.11); --color-line даёт лишь 1.28:1 */
+
+  /* Текст */
+  --color-ink:         #111111; /* основной текст; на --color-bg: 18.88:1 (AAA) */
+  --color-ink-soft:    #555555; /* вторичный текст; на --color-bg: 7.46:1 (AAA) */
+  --color-ink-inverse: #FFFFFF; /* текст на акцентных заливках (primary-кнопка) */
+
+  /* Акцент — глубокий зелёный. ЕДИНСТВЕННЫЙ хроматический акцент системы.
+     Только: цены «от N ₽», primary-кнопки, активные фильтры, focus-кольца.
+     НЕ красный (у ориентира Браво красный — сознательно уходим).
+     Контрасты (проверено расчётом):
+       #175A42 на белом (цена текстом)  — 8.15:1 (AAA)
+       белый текст на #175A42 (кнопка)  — 8.15:1 (AAA)
+       #175A42 на #F5F5F5               — 7.47:1 (AAA)
+       белый на hover #114635           — 10.76:1 (AAA) */
+  --color-accent:       #175A42;
+  --color-accent-hover: #114635;
+
+  /* Состояния */
+  --color-error:       #9E2B25; /* ошибки форм; на белом: 7.43:1 (AAA) */
+
+  /* Кнопки */
+  --color-btn-primary:       var(--color-accent);
+  --color-btn-primary-hover: var(--color-accent-hover);
+
+  /* ---- Отделки полотен (ЗАГЛУШКИ до реальных фото-миниатюр).
+     Это цвета ПРОДУКТА, правило «один акцент» на них не распространяется. ---- */
+  /* Эмаль */
+  --swatch-emal-white:    #F5F3EE; /* белый */
+  --swatch-emal-grey:     #B7B4AE; /* серый */
+  --swatch-emal-champagne:#E7DAC3; /* шампань */
+  --swatch-emal-almond:   #E3CDB0; /* миндаль */
+  /* Экошпон */
+  --swatch-eco-concrete:  #A9A59D; /* бетон */
+  --swatch-eco-smokedoak: #8E8275; /* дуб дымчатый */
+  --swatch-eco-cappuccino:#A8896B; /* капучино */
+  /* Обводка свотча, чтобы светлые отделки не сливались с белым фоном */
+  --swatch-ring: inset 0 0 0 1px rgba(17, 17, 17, 0.12);
+
+  /* ============ ТИПОГРАФИКА ============ */
+
+  /* Одна гарнитура: TildaSans. Заголовки — 700, UI/названия — 600, текст — 400.
+     Никаких SVG-логотипов: «Магазин дверей» в шапке — просто текст 18px/700. */
+  --font-display: "TildaSans", system-ui, -apple-system, "Segoe UI", Roboto,
+                  "Helvetica Neue", Arial, sans-serif;
+  --font-body: "TildaSans", system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+
+  /* Шкала под плотный каталог (mobile -> desktop через clamp).
+     Заголовки скромные, по левому краю. */
+  --fs-h1:      clamp(1.5rem, 1.21rem + 1.3vw, 2rem);       /* h1: 24 -> 32px */
+  --fs-h2:      clamp(1.25rem, 1.03rem + 1vw, 1.625rem);    /* h2: 20 -> 26px */
+  --fs-h3:      clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);    /* карточка: 15 -> 16px */
+  --fs-price:   clamp(1.0625rem, 1.03rem + 0.15vw, 1.125rem); /* цена: 17 -> 18px, 700, акцент */
+  --fs-body:    0.9375rem;  /* 15px — базовый текст */
+  --fs-input:   1rem;       /* 16px — поля форм (не меньше: iOS-зум) */
+  --fs-nav:     0.9375rem;  /* 15px — меню шапки, телефон */
+  --fs-small:   0.8125rem;  /* 13px — подписи, мета, фильтры, УТП-лента */
+  --fs-caption: 0.75rem;    /* 12px — бейджи ПГ/ПО, ошибки форм */
+
+  /* Межстрочные */
+  --lh-h1:      1.15;
+  --lh-heading: 1.2;
+  --lh-body:    1.55;
+  --lh-small:   1.45;
+
+  /* Начертания (500 не грузим — см. @font-face) */
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Разрядка */
+  --ls-caption: 0.02em;  /* бейджи */
+
+  /* ============ ОТСТУПЫ (база 4px) ============ */
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-6:  1.5rem;   /* 24px */
+  --space-8:  2rem;     /* 32px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+
+  /* Вертикальный ритм секций: 32px mobile / 48px desktop.
+     Сжатый утилитарный ритм — страница-каталог, не лендинг. */
+  --section-gap: var(--space-8);
+
+  /* ============ СЕТКА ============ */
+  --container-max: 80rem;            /* 1280px */
+  --container-pad: var(--space-4);   /* 16px; >=768: 24px; >=1024: 32px */
+  --grid-gap: var(--space-3);        /* гаттер каталога: 12px mobile / 16px desktop */
+  --sidebar-w: 15.625rem;            /* 250px — колонка фильтров на desktop (240-260px) */
+
+  /* Брейкпоинты — СПРАВОЧНО (custom properties в @media не работают,
+     в media-запросах писать числа):
+     480px  — крупные телефоны
+     768px  — планшет: 3 колонки карточек, контейнер-пад 24px, desktop-шапка
+     1024px — десктоп: фильтры-колонка слева 250px, 3 карточки в ряд
+     1280px — широкий десктоп: 4 карточки в ряд */
+
+  /* Пропорция тумбы в карточке (вертикальное полотно) */
+  --ratio-card: 3 / 4;
+
+  /* ============ РАДИУСЫ ============ */
+  --radius-s: 2px;    /* чипы, бейджи ПГ/ПО */
+  --radius-m: 4px;    /* кнопки, поля форм, карточки */
+  --radius-l: 8px;    /* модальные окна, bottom sheet фильтров */
+  --radius-pill: 999px; /* чипы активных фильтров */
+
+  /* ============ ТЕНИ ============ */
+  --shadow-sm: 0 1px 3px rgba(17, 17, 17, 0.08);      /* карточка на hover */
+  --shadow-md: 0 8px 24px rgba(17, 17, 17, 0.10);     /* модальные окна */
+  --shadow-sheet: 0 -8px 32px rgba(17, 17, 17, 0.14); /* bottom sheet фильтров */
+
+  /* ============ ДВИЖЕНИЕ ============ */
+  /* Минимум: каталог и фильтрация мгновенные, скролл-анимаций секций нет. */
+  --dur-fast: 150ms;   /* кнопки, ссылки, свотчи, hover карточки */
+  --dur-base: 300ms;   /* bottom sheet фильтров */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ============ РАЗМЕРЫ ЭЛЕМЕНТОВ ============ */
+  --btn-height: 2.75rem;       /* 44px — формы и standalone-кнопки */
+  --btn-height-header: 2.5rem; /* 40px — кнопка «Заявка» в шапке */
+  --btn-height-card: 2.25rem;  /* 36px — «Подробнее» / «Оставить заявку» в карточке */
+  --input-height: 2.75rem;     /* 44px */
+  --header-height: 4rem;       /* 64px — компактная шапка на всех брейкпоинтах */
+  --swatch-size: 1.25rem;      /* 20px в карточке; в фильтрах 24px */
+  --badge-height: 1.25rem;     /* 20px — чип ПГ/ПО */
+  --tap-target-min: 2.75rem;   /* 44px — минимальная зона касания */
+
+  /* Focus-кольцо — всегда видимое, на всех интерактивных элементах */
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent);
+
+  /* Слои */
+  --z-header: 100;
+  --z-sheet: 200;   /* bottom sheet фильтров */
+  --z-modal: 300;
+}
+
+/* Десктопные переопределения токенов (значения — по справочнику выше) */
+@media (min-width: 768px) {
+  :root {
+    --container-pad: var(--space-6); /* 24px */
+    --grid-gap: var(--space-4);      /* 16px */
+    --section-gap: var(--space-12);  /* 48px */
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --container-pad: var(--space-8); /* 32px */
+  }
+}
+
+/* Уважение к reduced motion: движение отключается глобально */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+  }
+}
