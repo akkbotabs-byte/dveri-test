@@ -42,21 +42,104 @@
      появляется пометка «фото уточняется». Любой свотч обновляет цену
      «от N ₽» (data-pricef) и подсвечивает свои строки в таблице
      «Варианты и цены» (data-variants — индексы строк tbody). */
-  var chipList = Array.prototype.slice.call(document.querySelectorAll('.swatch-chip'));
+  var chipList = Array.prototype.slice.call(
+    document.querySelectorAll('.swatch-chip:not(.glass-chip)'));
   var priceLabel = document.querySelector('.model-price .price-label');
   var nophotoNote = document.querySelector('.swatch-nophoto-note');
   var variantRows = Array.prototype.slice.call(
     document.querySelectorAll('#varianty .price-table tbody tr'));
+
+  /* Переключатель «Стекло» (модели, где прайс различает остекление):
+     пара цвет×стекло обновляет цену «от», строки таблицы, строки
+     «комплект…» / «под ключ…» и фото (#variants-data: варианты с
+     цветами/стеклом/ценой + комплекты; у фото галереи — c/g). */
+  var glassChips = Array.prototype.slice.call(document.querySelectorAll('.glass-chip'));
+  var comboEl = document.getElementById('variants-data');
+  var combo = null;
+  if (comboEl && glassChips.length) {
+    try { combo = JSON.parse(comboEl.textContent); } catch (err) { combo = null; }
+  }
+  var kitStrongs = Array.prototype.slice.call(
+    document.querySelectorAll('.model-price .price-kit strong'));
+  var activeColor = null;
+  var activeGlass = null;
+
+  function comboIdxs(color, glass) {
+    var out = [];
+    combo.variants.forEach(function (v, i) {
+      if (color && v.colors.indexOf(color) === -1) { return; }
+      if (glass && v.g !== glass) { return; }
+      out.push(i);
+    });
+    return out;
+  }
+
+  function photoFor(color, glass) {
+    var i;
+    if (glass) {
+      for (i = 0; i < photos.length; i++) {
+        if (photos[i].g === glass && (!color || photos[i].c === color)) { return i; }
+      }
+    }
+    return -1;
+  }
+
+  function applyIdxs(idxs) {
+    /* Цена «от» — минимум по выбранной паре цвет×стекло */
+    var best = null;
+    idxs.forEach(function (i) {
+      var v = combo.variants[i];
+      if (!best || v.price < best.price) { best = v; }
+    });
+    if (priceLabel && best) { priceLabel.textContent = 'от ' + best.pricef; }
+    variantRows.forEach(function (tr, i) {
+      tr.classList.toggle('is-active', idxs.indexOf(i) !== -1);
+    });
+    /* Строки «Комплект…» и «под ключ…» — минимум по комплектам пары */
+    var kit = null;
+    combo.kits.forEach(function (k) {
+      if (idxs.indexOf(k.v) === -1) { return; }
+      if (activeColor && k.colors.indexOf(activeColor) === -1) { return; }
+      if (!kit || k.total < kit.total) { kit = k; }
+    });
+    if (kit && kitStrongs[0]) { kitStrongs[0].textContent = kit.totalf; }
+    if (kit && kit.podf && kitStrongs[1]) { kitStrongs[1].textContent = kit.podf; }
+  }
+
+  function updateCombo(colorChip) {
+    /* Стекло, недоступное в выбранном цвете, гасим; выбранное — сбрасываем */
+    if (activeGlass && !comboIdxs(activeColor, activeGlass).length) {
+      activeGlass = null;
+    }
+    glassChips.forEach(function (g) {
+      var k = g.dataset.glass;
+      g.disabled = !comboIdxs(activeColor, k).length;
+      g.setAttribute('aria-pressed', String(k === activeGlass));
+    });
+    applyIdxs(comboIdxs(activeColor, activeGlass));
+    /* Фото: сперва пара цвет×стекло, затем первое фото цвета */
+    var pi = photoFor(activeColor, activeGlass);
+    if (pi === -1 && colorChip && colorChip.dataset.photo) {
+      pi = parseInt(colorChip.dataset.photo, 10) || 0;
+    }
+    if (pi !== -1) { show(pi); }
+  }
+
   chipList.forEach(function (chip) {
     chip.addEventListener('click', function () {
       chipList.forEach(function (c) {
         c.setAttribute('aria-pressed', String(c === chip));
       });
-      if (chip.dataset.photo) {
-        show(parseInt(chip.dataset.photo, 10) || 0);
-      }
       if (nophotoNote) {
         nophotoNote.hidden = !chip.hasAttribute('data-nophoto');
+      }
+      if (combo) {
+        activeColor = chip.dataset.color || null;
+        updateCombo(chip);
+        return;
+      }
+      if (chip.dataset.photo) {
+        show(parseInt(chip.dataset.photo, 10) || 0);
       }
       if (priceLabel && chip.dataset.pricef) {
         priceLabel.textContent = 'от ' + chip.dataset.pricef;
@@ -67,6 +150,20 @@
       });
     });
   });
+
+  if (combo) {
+    glassChips.forEach(function (g) {
+      g.addEventListener('click', function () {
+        if (g.disabled) { return; }
+        activeGlass = (activeGlass === g.dataset.glass) ? null : g.dataset.glass;
+        var colorChip = null;
+        chipList.forEach(function (c) {
+          if (c.getAttribute('aria-pressed') === 'true') { colorChip = c; }
+        });
+        updateCombo(colorChip);
+      });
+    });
+  }
 
   /* ---- Лайтбокс ---- */
   var box = document.getElementById('lightbox');
