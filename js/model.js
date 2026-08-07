@@ -37,13 +37,34 @@
     });
   });
 
-  /* Свотчи отделок: показать первое фото выбранной отделки */
-  document.querySelectorAll('.swatch-chip[data-photo]').forEach(function (chip) {
+  /* Свотчи отделок: у отделок с фото — показать первое фото цвета;
+     у прайсовых отделок без фото (data-nophoto) фото не меняется,
+     появляется пометка «фото уточняется». Любой свотч обновляет цену
+     «от N ₽» (data-pricef) и подсвечивает свои строки в таблице
+     «Варианты и цены» (data-variants — индексы строк tbody). */
+  var chipList = Array.prototype.slice.call(document.querySelectorAll('.swatch-chip'));
+  var priceLabel = document.querySelector('.model-price .price-label');
+  var nophotoNote = document.querySelector('.swatch-nophoto-note');
+  var variantRows = Array.prototype.slice.call(
+    document.querySelectorAll('#varianty .price-table tbody tr'));
+  chipList.forEach(function (chip) {
     chip.addEventListener('click', function () {
-      document.querySelectorAll('.swatch-chip[data-photo]').forEach(function (c) {
+      chipList.forEach(function (c) {
         c.setAttribute('aria-pressed', String(c === chip));
       });
-      show(parseInt(chip.dataset.photo, 10) || 0);
+      if (chip.dataset.photo) {
+        show(parseInt(chip.dataset.photo, 10) || 0);
+      }
+      if (nophotoNote) {
+        nophotoNote.hidden = !chip.hasAttribute('data-nophoto');
+      }
+      if (priceLabel && chip.dataset.pricef) {
+        priceLabel.textContent = 'от ' + chip.dataset.pricef;
+      }
+      var idxs = (chip.dataset.variants || '').split(' ');
+      variantRows.forEach(function (tr, i) {
+        tr.classList.toggle('is-active', idxs.indexOf(String(i)) !== -1);
+      });
     });
   });
 

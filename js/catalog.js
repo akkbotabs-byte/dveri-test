@@ -51,6 +51,25 @@
              alt: card.getAttribute('data-alt-default') };
   }
 
+  /* ---- Цена карточки: при активном фильтре цвета показываем «от N ₽»
+     по вариантам первого выбранного цвета, который есть у модели
+     (data-pricef-<slug>), без фильтра — данные по модели целиком. ---- */
+  function updateCardPrice(card) {
+    var priceEl = card.querySelector('.card-price');
+    var def = card.getAttribute('data-pricef-default');
+    if (!priceEl || !def) { return; }
+    var value = def;
+    var have = (card.dataset.colors || '').split(' ');
+    for (var i = 0; i < colorOrder.length; i += 1) {
+      if (have.indexOf(colorOrder[i]) !== -1) {
+        value = card.getAttribute('data-pricef-' + colorOrder[i]) || def;
+        break;
+      }
+    }
+    var text = 'от ' + value;
+    if (priceEl.textContent !== text) { priceEl.textContent = text; }
+  }
+
   function swapImage(card) {
     var img = card.querySelector('.card-media img');
     if (!img) { return; }
@@ -84,6 +103,7 @@
     var glazing = checked('glazing').map(function (i) { return i.value; });
     var facing = checked('facing').map(function (i) { return i.value; });
     var colors = checked('color').map(function (i) { return i.value; });
+    var stockOnly = checked('stock').length > 0;
     var shown = 0;
 
     cards.forEach(function (card) {
@@ -91,6 +111,7 @@
       var f = (card.dataset.facing || '').split(' ');
       var c = (card.dataset.colors || '').split(' ');
       var match =
+        (!stockOnly || card.dataset.stock === '1') &&
         (!glazing.length || glazing.some(function (v) { return g.indexOf(v) !== -1; })) &&
         (!facing.length || facing.some(function (v) { return f.indexOf(v) !== -1; })) &&
         (!colors.length || colors.some(function (v) { return c.indexOf(v) !== -1; }));
@@ -98,6 +119,7 @@
       if (match) {
         shown += 1;
         swapImage(card);
+        updateCardPrice(card);
       }
     });
 
@@ -107,8 +129,8 @@
     updateUrl();
   }
 
-  /* ---- Состояние в URL: ?glazing=…&facing=…&color=…&sort=… ---- */
-  var FILTER_NAMES = ['glazing', 'facing', 'color'];
+  /* ---- Состояние в URL: ?stock=…&glazing=…&facing=…&color=…&sort=… ---- */
+  var FILTER_NAMES = ['stock', 'glazing', 'facing', 'color'];
 
   function updateUrl() {
     if (!window.URLSearchParams || !window.history || !history.replaceState) { return; }
@@ -162,7 +184,7 @@
   function renderChips() {
     if (!chipsEl) { return; }
     chipsEl.textContent = '';
-    var active = checked('glazing').concat(checked('facing'), checked('color'));
+    var active = checked('stock').concat(checked('glazing'), checked('facing'), checked('color'));
     chipsEl.hidden = active.length === 0;
     active.forEach(function (input) {
       var label = input.closest('label');
