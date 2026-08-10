@@ -14,6 +14,19 @@
   var thumbs = Array.prototype.slice.call(document.querySelectorAll('.gallery-thumb'));
   var zoomBtn = document.querySelector('.gallery-zoom');
 
+  /* Галерея по цвету: выбранный свотч оставляет только кадры своей
+     отделки (у кадров — c из models.json); до выбора цвета и у отделок
+     без кадров показывается полный (дефолтный) набор. */
+  var filterColor = null;
+
+  function visibleIdxs() {
+    var out = [];
+    photos.forEach(function (p, i) {
+      if (!filterColor || p.c === filterColor) { out.push(i); }
+    });
+    return out.length ? out : photos.map(function (p, i) { return i; });
+  }
+
   function show(i) {
     current = (i + photos.length) % photos.length;
     var p = photos[current];
@@ -26,6 +39,25 @@
     thumbs.forEach(function (t, k) {
       t.setAttribute('aria-current', String(k === current));
     });
+  }
+
+  function applyFilter(color) {
+    filterColor = (color && photos.some(function (p) { return p.c === color; }))
+      ? color : null;
+    thumbs.forEach(function (t, k) {
+      t.hidden = Boolean(filterColor) && photos[k].c !== filterColor;
+    });
+    /* Текущий кадр выпал из фильтра — переключаемся на первый доступный */
+    var vis = visibleIdxs();
+    if (vis.indexOf(current) === -1) { show(vis[0]); }
+  }
+
+  /* Листание (стрелки лайтбокса) — только по видимым кадрам */
+  function step(d) {
+    var vis = visibleIdxs();
+    var pos = vis.indexOf(current);
+    if (pos === -1) { pos = 0; }
+    show(vis[(pos + d + vis.length) % vis.length]);
   }
 
   /* Миниатюры — ссылки на полноразмерные файлы (fallback без JS);
@@ -64,6 +96,16 @@
     document.querySelectorAll('.model-price .price-kit strong'));
   var activeColor = null;
   var activeGlass = null;
+
+  /* Исходные цены — для сброса при повторном клике по активному свотчу */
+  var initialPrice = priceLabel ? priceLabel.textContent : '';
+  var initialKits = kitStrongs.map(function (s) { return s.textContent; });
+
+  function resetPrice() {
+    if (priceLabel) { priceLabel.textContent = initialPrice; }
+    kitStrongs.forEach(function (s, i) { s.textContent = initialKits[i]; });
+    variantRows.forEach(function (tr) { tr.classList.remove('is-active'); });
+  }
 
   function comboIdxs(color, glass) {
     var out = [];
@@ -117,7 +159,11 @@
       g.disabled = !comboIdxs(activeColor, k).length;
       g.setAttribute('aria-pressed', String(k === activeGlass));
     });
-    applyIdxs(comboIdxs(activeColor, activeGlass));
+    if (!activeColor && !activeGlass) {
+      resetPrice();      /* ни цвет, ни стекло не выбраны — полный сброс */
+    } else {
+      applyIdxs(comboIdxs(activeColor, activeGlass));
+    }
     /* Фото: сперва пара цвет×стекло, затем первое фото цвета;
        нет фото выбранного остекления — пометка «фото уточняется» */
     var pi = photoFor(activeColor, activeGlass);
@@ -130,15 +176,26 @@
 
   chipList.forEach(function (chip) {
     chip.addEventListener('click', function () {
+      /* Повторный клик по активному свотчу — сброс: дефолтная галерея,
+         исходные цены, подсветка строк снята */
+      var wasActive = chip.getAttribute('aria-pressed') === 'true';
       chipList.forEach(function (c) {
-        c.setAttribute('aria-pressed', String(c === chip));
+        c.setAttribute('aria-pressed', String(!wasActive && c === chip));
       });
       if (nophotoNote) {
-        nophotoNote.hidden = !chip.hasAttribute('data-nophoto');
+        nophotoNote.hidden = wasActive || !chip.hasAttribute('data-nophoto');
       }
+      /* Галерея по цвету: у отделки с фото — только её кадры;
+         data-nophoto — дефолтный набор (пометка «фото уточняется») */
+      applyFilter((wasActive || chip.hasAttribute('data-nophoto'))
+        ? null : chip.dataset.color);
       if (combo) {
-        activeColor = chip.dataset.color || null;
-        updateCombo(chip);
+        activeColor = wasActive ? null : (chip.dataset.color || null);
+        updateCombo(wasActive ? null : chip);
+        return;
+      }
+      if (wasActive) {
+        resetPrice();
         return;
       }
       if (chip.dataset.photo) {
@@ -192,8 +249,8 @@
     document.body.style.overflow = '';
     if (lastFocus) { lastFocus.focus(); }
   }
-  function step(d) {
-    show(current + d);
+  function boxStep(d) {
+    step(d);
     renderBox();
   }
 
@@ -204,14 +261,14 @@
       openBox();
     });
     box.querySelector('.lightbox-close').addEventListener('click', closeBox);
-    box.querySelector('.lightbox-prev').addEventListener('click', function () { step(-1); });
-    box.querySelector('.lightbox-next').addEventListener('click', function () { step(1); });
+    box.querySelector('.lightbox-prev').addEventListener('click', function () { boxStep(-1); });
+    box.querySelector('.lightbox-next').addEventListener('click', function () { boxStep(1); });
     box.addEventListener('click', function (e) { if (e.target === box) { closeBox(); } });
     document.addEventListener('keydown', function (e) {
       if (box.hidden) { return; }
       if (e.key === 'Escape') { closeBox(); }
-      if (e.key === 'ArrowLeft') { step(-1); }
-      if (e.key === 'ArrowRight') { step(1); }
+      if (e.key === 'ArrowLeft') { boxStep(-1); }
+      if (e.key === 'ArrowRight') { boxStep(1); }
       /* Ловушка фокуса: Tab циклится по кнопкам диалога, фон не получает фокус */
       if (e.key === 'Tab') {
         var focusables = box.querySelectorAll('button');
