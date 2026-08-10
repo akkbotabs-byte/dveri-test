@@ -54,6 +54,7 @@
      «комплект…» / «под ключ…» и фото (#variants-data: варианты с
      цветами/стеклом/ценой + комплекты; у фото галереи — c/g). */
   var glassChips = Array.prototype.slice.call(document.querySelectorAll('.glass-chip'));
+  var glassNote = document.querySelector('.glass-nophoto-note');
   var comboEl = document.getElementById('variants-data');
   var combo = null;
   if (comboEl && glassChips.length) {
@@ -117,8 +118,10 @@
       g.setAttribute('aria-pressed', String(k === activeGlass));
     });
     applyIdxs(comboIdxs(activeColor, activeGlass));
-    /* Фото: сперва пара цвет×стекло, затем первое фото цвета */
+    /* Фото: сперва пара цвет×стекло, затем первое фото цвета;
+       нет фото выбранного остекления — пометка «фото уточняется» */
     var pi = photoFor(activeColor, activeGlass);
+    if (glassNote) { glassNote.hidden = !(activeGlass && pi === -1); }
     if (pi === -1 && colorChip && colorChip.dataset.photo) {
       pi = parseInt(colorChip.dataset.photo, 10) || 0;
     }
