@@ -567,7 +567,8 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 .need-list li { display: flex; gap: var(--space-3); justify-content: space-between; padding: var(--space-2) 0; border-top: 1px solid var(--color-line); }
 .need-num { white-space: nowrap; font-weight: var(--fw-semibold); margin-left: auto; }
 /* Погонаж дополнительно: термин + пояснение */
-.need-defs { font-size: var(--fs-small); }
+/* margin задаём явно: у dl браузерный дефолт 1em ломает ритм трёх карточек */
+.need-defs { margin: var(--space-3) 0 0; font-size: var(--fs-small); }
 .need-defs dt { font-weight: var(--fw-semibold); padding-top: var(--space-2); border-top: 1px solid var(--color-line); }
 .need-defs dd { color: var(--color-ink-soft); margin: 0 0 var(--space-3); line-height: var(--lh-small); }
 .need-defs dd:last-child { margin-bottom: 0; }
