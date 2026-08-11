@@ -70,7 +70,9 @@
           <button class="gallery-nav gallery-next" type="button" aria-label="Следующее фото" hidden>
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4 L17 12 L9 20"></path></svg>
           </button>
-          <p class="gallery-counter" hidden></p>
+          <!-- aria-live: смена кадра стрелкой/свайпом не двигает фокус,
+               счётчик озвучивает её скринридеру («3 / 12») -->
+          <p class="gallery-counter" aria-live="polite" hidden></p>
         </figure>
         <div class="gallery-thumbs" role="group" aria-label="Фотографии модели">
 <a class="gallery-thumb" href="../assets/img/saturn/01-saturnfront0.jpg" aria-current="true" data-color="белый" data-glazing="pg" aria-label="Фото 1: Межкомнатная дверь Сатурн в белом цвете, глухое полотно, вид спереди"><img src="../assets/thumb/saturn/01-saturnfront0.jpg" alt="Межкомнатная дверь Сатурн в белом цвете, глухое полотно, вид спереди" width="640" height="640" loading="lazy"></a>
@@ -117,6 +119,56 @@
       </div>
     </div>
 
+<!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
+     фурнитура (решение владельца 2026-08-11). Детальные таблицы —
+     ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
+<section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
+  <h2>Вам может понадобиться</h2>
+  <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Цены из нашего прайса, точный состав уточним по замеру.</p>
+  <div class="needs-grid">
+    <article class="need-card">
+      <h3>Комплект с погонажем</h3>
+      <p class="need-price"><span class="need-kit-delta">+2 505 ₽</span> <span class="need-price-note">к полотну</span></p>
+      <p class="need-note">Отделка «<span class="need-kit-fins">Белый, Капучино</span>» · комплект целиком <strong class="need-kit-total">6 124 ₽</strong></p>
+      <ul class="need-list">
+        <li><span>Полотно</span><span class="need-num need-kit-pol">от 3 619 ₽</span></li>
+        <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">475 ₽ за шт</span></li>
+        <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">216 ₽ за шт</span></li>
+      </ul>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="#komplekt">Цены по всем отделкам</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Погонаж дополнительно</h3>
+      <dl class="need-defs">
+        <dt>Доборы</dt><dd>Подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</dd>
+        <dt>Фигурный наличник</dt><dd>Вместо гладкого — для отделки Белый: доплата 260 ₽ за 5 шт (268 ₽ вместо 216 ₽ за шт).</dd>
+        <dt>Телескопический погонаж</dt><dd>Вместо простого — для отделки Капучино: комплект дороже на 527 ₽ (коробка 579 ₽, наличник 259 ₽ за шт).</dd>
+      </dl>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Фурнитура</h3>
+      <p class="need-price">~1 835 ₽ <span class="need-price-note">за дверь</span></p>
+      <p class="need-note">Ручка, защёлка и две петли — подобрали под отделки и стиль этой модели. Позиции можно поменять.</p>
+      <ul class="need-items">
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/ruchka-33063.jpg" alt="Ручка Punto BLADE, матовый никель/хром" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto BLADE, матовый никель/хром</span></span><span class="need-num">1 070 ₽</span></li>
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/zashchelka-33595.jpg" alt="Защёлка Fuaro PLAST P12, матовый никель" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, матовый никель</span></span><span class="need-num">365 ₽</span></li>
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/petlya-35491.jpg" alt="Петля универсальная Punto IN4200W, матовый никель" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#petli">Петли</a> × 2 <span class="muted">(200 ₽ за шт)</span><br><span class="muted">Петля универсальная Punto IN4200W, матовый никель</span></span><span class="need-num">400 ₽</span></li>
+      </ul>
+      <p class="need-note muted">Под другие отделки этой модели подойдут: Ручка Punto ARC MAIN, сатиновое золото — 965 ₽.</p>
+      <details class="need-details">
+        <summary>Опции: санузел, магнитная защёлка, замок под ключ</summary>
+        <ul class="need-opts">
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Для санузла</a><span class="need-num">+690 ₽</span></p><p class="need-opt-sub">Защёлка санузловая Punto PL96WC, матовый никель (410 ₽) вместо обычной защёлки, плюс Завёртка Punto BK6 QL, матовый никель/хром (645 ₽)</p></li>
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Тихая магнитная защёлка</a><span class="need-num">+115 ₽</span></p><p class="need-opt-sub">Защёлка магнитная Fuaro MAGNET M12, матовый никель (480 ₽) вместо обычной защёлки</p></li>
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Замок под ключ</a><span class="need-num">+1 449 ₽</span></p><p class="need-opt-sub">Корпус замка Punto PL85 под цилиндр, матовый никель (580 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром (650 ₽) и Накладка Punto ET QL под цилиндр, матовый никель/хром (584 ₽)</p></li>
+        </ul>
+      </details>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
+    </article>
+  </div>
+</section>
+
 <section class="model-variants" id="varianty" aria-label="Варианты и цены">
   <h2>Варианты и цены</h2>
   <p class="price-sizes muted">Наличие обновлено 11.08.2026.</p>
@@ -134,7 +186,7 @@
   <p class="price-sizes muted">Цена указана за дверное полотно. Коробка, наличники и доборы подбираются отдельно (раздел «Погонаж»).</p>
 </section>
 
-<section class="model-variants pogonazh-prices" aria-label="Стоимость комплекта">
+<section class="model-variants pogonazh-prices" id="komplekt" aria-label="Стоимость комплекта">
   <h2>Стоимость комплекта</h2>
   <p class="price-sizes">Комплект на один проём: полотно, элементы коробки (3 шт — продажа целыми планками) и наличники с обеих сторон (5 шт). Доборы — при необходимости, отдельно.</p>
   <div class="table-wrap">
@@ -147,38 +199,8 @@
   </table>
   </div>
   <p class="price-sizes">Комплект = полотно + элементы коробки × 3 (продажа целыми планками) + наличник × 5 (обе стороны проёма). Например, «Белый»: 3 619 ₽ + 475 ₽ × 3 + 216 ₽ × 5 = 6 124 ₽.</p>
-  <p class="price-sizes">Полный расчёт комплекта — по замеру.</p>
-  <h3 id="furnitura">Вам может понадобиться</h3>
-  <p class="price-sizes">Базовый набор фурнитуры на одну дверь: ручка, защёлка и две петли. Подобрали под отделки и стиль этой модели — позиции можно поменять.</p>
-  <div class="table-wrap">
-  <table class="price-table furn-table">
-    <thead><tr><th scope="col">Позиция</th><th scope="col">Цена</th></tr></thead>
-    <tbody>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/ruchka-33063.jpg" alt="Ручка Punto BLADE, матовый никель/хром" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto BLADE, матовый никель/хром</span></span></div></td><td class="price-cell">1 070 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-33595.jpg" alt="Защёлка Fuaro PLAST P12, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, матовый никель</span></span></div></td><td class="price-cell">365 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/petlya-35491.jpg" alt="Петля универсальная Punto IN4200W, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#petli">Петли</a> × 2 <span class="muted">(200 ₽ за шт)</span><br><span class="muted">Петля универсальная Punto IN4200W, матовый никель</span></span></div></td><td class="price-cell">400 ₽</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="price-sizes"><strong>Итого фурнитура: ~1 835 ₽</strong></p>
-  <p class="price-sizes muted">Под другие отделки этой модели подойдут: Ручка Punto ARC MAIN, сатиновое золото — 965 ₽.</p>
-  <div class="table-wrap">
-  <table class="price-table furn-table">
-    <thead><tr><th scope="col">Опция</th><th scope="col">Доплата</th></tr></thead>
-    <tbody>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-49245.jpg" alt="Защёлка санузловая Punto PL96WC, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Для санузла</a><br><span class="muted">Защёлка санузловая Punto PL96WC, матовый никель (410 ₽) вместо обычной защёлки, плюс Завёртка Punto BK6 QL, матовый никель/хром (645 ₽)</span></span></div></td><td class="price-cell">+690 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-33667.jpg" alt="Защёлка магнитная Fuaro MAGNET M12, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Тихая магнитная защёлка</a><br><span class="muted">Защёлка магнитная Fuaro MAGNET M12, матовый никель (480 ₽) вместо обычной защёлки</span></span></div></td><td class="price-cell">+115 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-49223.jpg" alt="Корпус замка Punto PL85 под цилиндр, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Замок под ключ</a><br><span class="muted">Корпус замка Punto PL85 под цилиндр, матовый никель (580 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром (650 ₽) и Накладка Punto ET QL под цилиндр, матовый никель/хром (584 ₽)</span></span></div></td><td class="price-cell">+1 449 ₽</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="price-sizes">Доборы подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</p>
-  <p class="price-sizes">Наличники фигурные вместо гладких — для отделки Белый: доплата 260 ₽ за 5 шт (268 ₽ вместо 216 ₽ за шт).</p>
-  <p class="price-sizes">Телескопический погонаж вместо простого — для отделки Капучино: комплект дороже на 527 ₽ (коробка 579 ₽, наличник 259 ₽ за шт).</p>
-  <p class="price-sizes"><a href="../furnitura.html">Вся фурнитура</a> · <a href="../pogonazh.html">Весь погонаж</a></p>
+  <p class="price-sizes">Полный расчёт комплекта — по замеру. <a href="#furnitura">Что ещё понадобится</a></p>
 </section>
-
-
 
     <div class="model-details">
       <section class="model-specs" aria-label="Характеристики">
@@ -325,6 +347,7 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/saturn/01-saturnfront0.jpg", "alt": "Межкомнатная дверь Сатурн в белом цвете, глухое полотно, вид спереди", "w": 1600, "h": 1600, "c": "белый", "g": "pg"}, {"src": "../assets/img/saturn/02-saturnside0.jpg", "alt": "Белая дверь Сатурн, глухое полотно, вид сбоку", "w": 1600, "h": 1600, "c": "белый", "g": "pg"}, {"src": "../assets/img/saturn/03-saturnfrontpo0.jpg", "alt": "Межкомнатная дверь Сатурн в белом цвете с остеклением, вид спереди", "w": 1600, "h": 1600, "c": "белый", "g": "po"}, {"src": "../assets/img/saturn/04-saturnsidepo0000.jpg", "alt": "Белая остеклённая дверь Сатурн, вид сбоку", "w": 1600, "h": 1600, "c": "белый", "g": "po"}, {"src": "../assets/img/saturn/05-saturnfront2.jpg", "alt": "Межкомнатная дверь Сатурн в цвете Капучино, глухое полотно, вид спереди", "w": 1600, "h": 1600, "c": "капучино", "g": "pg"}, {"src": "../assets/img/saturn/06-saturnside2.jpg", "alt": "Дверь Сатурн в цвете Капучино, глухое полотно, вид сбоку", "w": 1600, "h": 1600, "c": "капучино", "g": "pg"}, {"src": "../assets/img/saturn/07-saturnfrontpo2.jpg", "alt": "Межкомнатная дверь Сатурн в цвете Капучино с остеклением, вид спереди", "w": 1600, "h": 1600, "c": "капучино", "g": "po"}, {"src": "../assets/img/saturn/08-saturnsidepo0002.jpg", "alt": "Остеклённая дверь Сатурн в цвете Капучино, вид сбоку", "w": 1600, "h": 1600, "c": "капучино", "g": "po"}]</script>
 <script type="application/json" id="variants-data">{"variants": [{"colors": ["белый", "капучино"], "g": "pg", "price": 3619, "pricef": "3 619 ₽"}, {"colors": ["белый", "капучино"], "g": "po", "price": 3843, "pricef": "3 843 ₽"}], "kits": [{"v": 0, "colors": ["белый", "капучино"], "total": 6124, "totalf": "6 124 ₽", "pod": 7959, "podf": "7 959 ₽"}, {"v": 1, "colors": ["белый", "капучино"], "total": 6348, "totalf": "6 348 ₽", "pod": 8183, "podf": "8 183 ₽"}]}</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый", "капучино"], "g": "pg", "total": 6124, "fins": "Белый, Капучино", "delta": "+2 505 ₽", "totalf": "6 124 ₽", "pol": "от 3 619 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт"}, {"colors": ["белый", "капучино"], "g": "po", "total": 6348, "fins": "Белый, Капучино", "delta": "+2 505 ₽", "totalf": "6 348 ₽", "pol": "от 3 843 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт"}]</script>
 
 </main>
 <footer class="site-footer">

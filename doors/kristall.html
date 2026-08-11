@@ -70,7 +70,9 @@
           <button class="gallery-nav gallery-next" type="button" aria-label="Следующее фото" hidden>
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4 L17 12 L9 20"></path></svg>
           </button>
-          <p class="gallery-counter" hidden></p>
+          <!-- aria-live: смена кадра стрелкой/свайпом не двигает фокус,
+               счётчик озвучивает её скринридеру («3 / 12») -->
+          <p class="gallery-counter" aria-live="polite" hidden></p>
         </figure>
         <div class="gallery-thumbs" role="group" aria-label="Фотографии модели">
 <a class="gallery-thumb" href="../assets/img/kristall/01-kristall-pg-belyy.jpg" aria-current="true" data-color="белый" aria-label="Фото 1: Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Белый цвет"><img src="../assets/thumb/kristall/01-kristall-pg-belyy.jpg" alt="Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Белый цвет" width="304" height="640" loading="lazy"></a>
@@ -106,6 +108,54 @@
       </div>
     </div>
 
+<!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
+     фурнитура (решение владельца 2026-08-11). Детальные таблицы —
+     ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
+<section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
+  <h2>Вам может понадобиться</h2>
+  <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Цены из нашего прайса, точный состав уточним по замеру.</p>
+  <div class="needs-grid">
+    <article class="need-card">
+      <h3>Комплект с погонажем</h3>
+      <p class="need-price"><span class="need-kit-delta">+7 015 ₽</span> <span class="need-price-note">к полотну</span></p>
+      <p class="need-note">Отделка «<span class="need-kit-fins">Белый, Серый, Шампань</span>» · комплект целиком <strong class="need-kit-total">15 352 ₽</strong></p>
+      <ul class="need-list">
+        <li><span>Полотно</span><span class="need-num need-kit-pol">от 8 337 ₽</span></li>
+        <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">1 130 ₽ за шт</span></li>
+        <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">725 ₽ за шт</span></li>
+      </ul>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="#komplekt">Цены по всем отделкам</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Погонаж дополнительно</h3>
+      <dl class="need-defs">
+        <dt>Доборы</dt><dd>Подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</dd>
+      </dl>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Фурнитура</h3>
+      <p class="need-price">~1 515 ₽ <span class="need-price-note">за дверь</span></p>
+      <p class="need-note">Ручка, защёлка и две петли — подобрали под отделки и стиль этой модели. Позиции можно поменять.</p>
+      <ul class="need-items">
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/ruchka-43183.jpg" alt="Ручка Ajax SIGMA, матовый никель/хром" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Ajax SIGMA, матовый никель/хром</span></span><span class="need-num">750 ₽</span></li>
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/zashchelka-33595.jpg" alt="Защёлка Fuaro PLAST P12, матовый никель" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, матовый никель</span></span><span class="need-num">365 ₽</span></li>
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/petlya-35491.jpg" alt="Петля универсальная Punto IN4200W, матовый никель" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#petli">Петли</a> × 2 <span class="muted">(200 ₽ за шт)</span><br><span class="muted">Петля универсальная Punto IN4200W, матовый никель</span></span><span class="need-num">400 ₽</span></li>
+      </ul>
+      <p class="need-note muted">Под другие отделки этой модели подойдут: Ручка Ajax POLO JR, чёрный — 860 ₽.</p>
+      <details class="need-details">
+        <summary>Опции: санузел, магнитная защёлка, замок под ключ</summary>
+        <ul class="need-opts">
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Для санузла</a><span class="need-num">+515 ₽</span></p><p class="need-opt-sub">Защёлка санузловая Punto PL96WC, матовый никель (410 ₽) вместо обычной защёлки, плюс Завёртка Ajax BK6 JR, матовый никель/хром (470 ₽)</p></li>
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Тихая магнитная защёлка</a><span class="need-num">+115 ₽</span></p><p class="need-opt-sub">Защёлка магнитная Fuaro MAGNET M12, матовый никель (480 ₽) вместо обычной защёлки</p></li>
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Замок под ключ</a><span class="need-num">+1 330 ₽</span></p><p class="need-opt-sub">Корпус замка Punto PL85 под цилиндр, матовый никель (580 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром (650 ₽) и Накладка Ajax ET JK под цилиндр, матовый никель/хром (355 ₽); накладка и ручка идут одной серией, поэтому ручка в этом варианте — Ручка Ajax POLO JK, матовый никель/хром (860 ₽) вместо базовой</p></li>
+        </ul>
+      </details>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
+    </article>
+  </div>
+</section>
+
 <section class="model-variants" id="varianty" aria-label="Варианты и цены">
   <h2>Варианты и цены</h2>
   <p class="price-sizes muted">Наличие обновлено 11.08.2026.</p>
@@ -122,7 +172,7 @@
   <p class="price-sizes muted">Цена указана за дверное полотно. Коробка, наличники и доборы подбираются отдельно (раздел «Погонаж»).</p>
 </section>
 
-<section class="model-variants pogonazh-prices" aria-label="Стоимость комплекта">
+<section class="model-variants pogonazh-prices" id="komplekt" aria-label="Стоимость комплекта">
   <h2>Стоимость комплекта</h2>
   <p class="price-sizes">Комплект на один проём: полотно, элементы коробки (3 шт — продажа целыми планками) и наличники с обеих сторон (5 шт). Доборы — при необходимости, отдельно.</p>
   <div class="table-wrap">
@@ -134,36 +184,8 @@
   </table>
   </div>
   <p class="price-sizes">Комплект = полотно + элементы коробки × 3 (продажа целыми планками) + наличник × 5 (обе стороны проёма). Например, «Белый»: 8 337 ₽ + 1 130 ₽ × 3 + 725 ₽ × 5 = 15 352 ₽.</p>
-  <p class="price-sizes">Полный расчёт комплекта — по замеру.</p>
-  <h3 id="furnitura">Вам может понадобиться</h3>
-  <p class="price-sizes">Базовый набор фурнитуры на одну дверь: ручка, защёлка и две петли. Подобрали под отделки и стиль этой модели — позиции можно поменять.</p>
-  <div class="table-wrap">
-  <table class="price-table furn-table">
-    <thead><tr><th scope="col">Позиция</th><th scope="col">Цена</th></tr></thead>
-    <tbody>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/ruchka-43183.jpg" alt="Ручка Ajax SIGMA, матовый никель/хром" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Ajax SIGMA, матовый никель/хром</span></span></div></td><td class="price-cell">750 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-33595.jpg" alt="Защёлка Fuaro PLAST P12, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, матовый никель</span></span></div></td><td class="price-cell">365 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/petlya-35491.jpg" alt="Петля универсальная Punto IN4200W, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#petli">Петли</a> × 2 <span class="muted">(200 ₽ за шт)</span><br><span class="muted">Петля универсальная Punto IN4200W, матовый никель</span></span></div></td><td class="price-cell">400 ₽</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="price-sizes"><strong>Итого фурнитура: ~1 515 ₽</strong></p>
-  <p class="price-sizes muted">Под другие отделки этой модели подойдут: Ручка Ajax POLO JR, чёрный — 860 ₽.</p>
-  <div class="table-wrap">
-  <table class="price-table furn-table">
-    <thead><tr><th scope="col">Опция</th><th scope="col">Доплата</th></tr></thead>
-    <tbody>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-49245.jpg" alt="Защёлка санузловая Punto PL96WC, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Для санузла</a><br><span class="muted">Защёлка санузловая Punto PL96WC, матовый никель (410 ₽) вместо обычной защёлки, плюс Завёртка Ajax BK6 JR, матовый никель/хром (470 ₽)</span></span></div></td><td class="price-cell">+515 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-33667.jpg" alt="Защёлка магнитная Fuaro MAGNET M12, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Тихая магнитная защёлка</a><br><span class="muted">Защёлка магнитная Fuaro MAGNET M12, матовый никель (480 ₽) вместо обычной защёлки</span></span></div></td><td class="price-cell">+115 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-49223.jpg" alt="Корпус замка Punto PL85 под цилиндр, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Замок под ключ</a><br><span class="muted">Корпус замка Punto PL85 под цилиндр, матовый никель (580 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром (650 ₽) и Накладка Ajax ET JK под цилиндр, матовый никель/хром (355 ₽); накладка и ручка идут одной серией, поэтому ручка в этом варианте — Ручка Ajax POLO JK, матовый никель/хром (860 ₽) вместо базовой</span></span></div></td><td class="price-cell">+1 330 ₽</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="price-sizes">Доборы подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</p>
-  <p class="price-sizes"><a href="../furnitura.html">Вся фурнитура</a> · <a href="../pogonazh.html">Весь погонаж</a></p>
+  <p class="price-sizes">Полный расчёт комплекта — по замеру. <a href="#furnitura">Что ещё понадобится</a></p>
 </section>
-
-
 
     <div class="model-details">
       <section class="model-specs" aria-label="Характеристики">
@@ -310,6 +332,7 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/kristall/01-kristall-pg-belyy.jpg", "alt": "Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Белый цвет", "w": 760, "h": 1600, "c": "белый"}, {"src": "../assets/img/kristall/02-kristall-pg-seryy.jpg", "alt": "Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Серый цвет", "w": 760, "h": 1600, "c": "серый"}, {"src": "../assets/img/kristall/03-kristall-pg-shampan.jpg", "alt": "Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, цвет Шампань", "w": 760, "h": 1600, "c": "шампань"}]</script>
 
+<script type="application/json" id="kit-data">[{"colors": ["белый", "серый", "шампань"], "g": "pg", "total": 15352, "fins": "Белый, Серый, Шампань", "delta": "+7 015 ₽", "totalf": "15 352 ₽", "pol": "от 8 337 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}]</script>
 
 </main>
 <footer class="site-footer">

@@ -23,6 +23,9 @@
   var prevBtn = document.querySelector('.gallery-prev');
   var nextBtn = document.querySelector('.gallery-next');
   var counter = document.querySelector('.gallery-counter');
+  var boxPrev = document.querySelector('#lightbox .lightbox-prev');
+  var boxNext = document.querySelector('#lightbox .lightbox-next');
+  var boxClose = document.querySelector('#lightbox .lightbox-close');
   /* Свайп по главному фото гасит следующий за ним клик по ссылке-зуму */
   var swiped = false;
 
@@ -39,15 +42,28 @@
     return out.length ? out : photos.map(function (p, i) { return i; });
   }
 
+  /* Скрываем кнопку листания. Если она сейчас в фокусе, фокус уводим на
+     соседний контрол (иначе он падает на <body>): в галерее — на зум,
+     в лайтбоксе — на «закрыть», чтобы не разорвать ловушку фокуса. */
+  function hideNav(btn, hide, fallback) {
+    if (!btn) { return; }
+    if (hide && fallback && document.activeElement === btn) { fallback.focus(); }
+    btn.hidden = hide;
+  }
+
   /* Стрелки и счётчик показываем, только когда есть что листать —
      видимых кадров больше одного (после фильтра по отделке их может
-     остаться и один). Разметка приходит скрытой, так что без JS их нет. */
+     остаться и один). Стрелки лайтбокса листают те же видимые кадры,
+     поэтому прячутся по тому же условию — мёртвых контролов нет.
+     Разметка приходит скрытой, так что без JS их нет. */
   function updateNav() {
     var vis = visibleIdxs();
     var pos = vis.indexOf(current);
     var many = vis.length > 1;
-    if (prevBtn) { prevBtn.hidden = !many; }
-    if (nextBtn) { nextBtn.hidden = !many; }
+    hideNav(prevBtn, !many, zoomBtn);
+    hideNav(nextBtn, !many, zoomBtn);
+    hideNav(boxPrev, !many, boxClose);
+    hideNav(boxNext, !many, boxClose);
     if (counter) {
       counter.hidden = !many;
       counter.textContent = (pos === -1 ? 1 : pos + 1) + ' / ' + vis.length;
@@ -126,6 +142,41 @@
   var activeColor = null;
   var activeGlass = null;
 
+  /* Карточка «Комплект с погонажем» (#furnitura): цифры пересчитываются
+     под выбранную отделку и остекление. #kit-data — строки комплекта
+     (цвета, остекление и уже готовые строки), те же, что в таблице
+     «Стоимость комплекта». */
+  var kitEl = document.getElementById('kit-data');
+  var kitData = null;
+  if (kitEl) {
+    try { kitData = JSON.parse(kitEl.textContent); } catch (err2) { kitData = null; }
+  }
+  var KIT_FIELDS = {
+    delta: '.need-kit-delta', totalf: '.need-kit-total', fins: '.need-kit-fins',
+    pol: '.need-kit-pol', kor: '.need-kit-kor', nal: '.need-kit-nal'
+  };
+  var kitNodes = {};
+  Object.keys(KIT_FIELDS).forEach(function (k) {
+    kitNodes[k] = document.querySelector(KIT_FIELDS[k]);
+  });
+  var kitColor = null;
+
+  /* Минимальный комплект выбранной пары отделка×стекло. Пары без своего
+     комплекта (например, отделка вне прайса погонажа) цифры не трогают. */
+  function updateKitCard() {
+    if (!kitData) { return; }
+    var best = null;
+    kitData.forEach(function (k) {
+      if (kitColor && k.colors.indexOf(kitColor) === -1) { return; }
+      if (activeGlass && k.g !== activeGlass) { return; }
+      if (!best || k.total < best.total) { best = k; }
+    });
+    if (!best) { return; }
+    Object.keys(kitNodes).forEach(function (n) {
+      if (kitNodes[n]) { kitNodes[n].textContent = best[n]; }
+    });
+  }
+
   /* Исходные цены — для сброса при повторном клике по активному свотчу */
   var initialPrice = priceLabel ? priceLabel.textContent : '';
   var initialKits = kitStrongs.map(function (s) { return s.textContent; });
@@ -193,6 +244,7 @@
     } else {
       applyIdxs(comboIdxs(activeColor, activeGlass));
     }
+    updateKitCard();     /* стекло могло сброситься — считаем после него */
     /* Фото: сперва пара цвет×стекло, затем первое фото цвета;
        нет фото выбранного остекления — пометка «фото уточняется» */
     var pi = photoFor(activeColor, activeGlass);
@@ -218,11 +270,15 @@
          data-nophoto — дефолтный набор (пометка «фото уточняется») */
       applyFilter((wasActive || chip.hasAttribute('data-nophoto'))
         ? null : chip.dataset.color);
+      kitColor = wasActive ? null : (chip.dataset.color || null);
       if (combo) {
-        activeColor = wasActive ? null : (chip.dataset.color || null);
+        /* Карточку комплекта обновит updateCombo — там уже согласованы
+           выбранные отделка и остекление */
+        activeColor = kitColor;
         updateCombo(wasActive ? null : chip);
         return;
       }
+      updateKitCard();
       if (wasActive) {
         resetPrice();
         return;
@@ -270,7 +326,7 @@
     renderBox();
     box.hidden = false;
     document.body.style.overflow = 'hidden';
-    box.querySelector('.lightbox-close').focus();
+    boxClose.focus();
   }
   function closeBox() {
     if (!box) { return; }
@@ -291,18 +347,20 @@
       if (swiped) { swiped = false; return; }
       openBox();
     });
-    box.querySelector('.lightbox-close').addEventListener('click', closeBox);
-    box.querySelector('.lightbox-prev').addEventListener('click', function () { boxStep(-1); });
-    box.querySelector('.lightbox-next').addEventListener('click', function () { boxStep(1); });
+    boxClose.addEventListener('click', closeBox);
+    boxPrev.addEventListener('click', function () { boxStep(-1); });
+    boxNext.addEventListener('click', function () { boxStep(1); });
     box.addEventListener('click', function (e) { if (e.target === box) { closeBox(); } });
     document.addEventListener('keydown', function (e) {
       if (box.hidden) { return; }
       if (e.key === 'Escape') { closeBox(); }
       if (e.key === 'ArrowLeft') { boxStep(-1); }
       if (e.key === 'ArrowRight') { boxStep(1); }
-      /* Ловушка фокуса: Tab циклится по кнопкам диалога, фон не получает фокус */
+      /* Ловушка фокуса: Tab циклится по кнопкам диалога, фон не получает фокус.
+         Скрытые стрелки (единственный видимый кадр) в цикл не берём */
       if (e.key === 'Tab') {
-        var focusables = box.querySelectorAll('button');
+        var focusables = Array.prototype.filter.call(
+          box.querySelectorAll('button'), function (b) { return !b.hidden; });
         var first = focusables[0];
         var last = focusables[focusables.length - 1];
         if (e.shiftKey && document.activeElement === first) {
@@ -365,6 +423,10 @@
       var dy = e.changedTouches[0].clientY - ty;
       if (Math.abs(dx) < 40 || Math.abs(dy) > Math.abs(dx)) { return; }
       swiped = true;
+      /* Совместимый click приходит сразу за touchend. Если браузер его не
+         пришлёт, флаг не должен пережить жест: на гибридном устройстве он
+         съел бы следующий клик мышью по зуму. */
+      window.setTimeout(function () { swiped = false; }, 400);
       step(dx < 0 ? 1 : -1);
     }, { passive: true });
   }

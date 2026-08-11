@@ -70,7 +70,9 @@
           <button class="gallery-nav gallery-next" type="button" aria-label="Следующее фото" hidden>
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4 L17 12 L9 20"></path></svg>
           </button>
-          <p class="gallery-counter" hidden></p>
+          <!-- aria-live: смена кадра стрелкой/свайпом не двигает фокус,
+               счётчик озвучивает её скринридеру («3 / 12») -->
+          <p class="gallery-counter" aria-live="polite" hidden></p>
         </figure>
         <div class="gallery-thumbs" role="group" aria-label="Фотографии модели">
 <a class="gallery-thumb" href="../assets/img/kvadro-20/01-kvadro-20-po-beton.jpg" aria-current="true" data-color="бетон" data-glazing="satinato" aria-label="Фото 1: Межкомнатная дверь Квадро 20 в отделке Бетон, остеклённое полотно со стандартным стеклом"><img src="../assets/thumb/kvadro-20/01-kvadro-20-po-beton.jpg" alt="Межкомнатная дверь Квадро 20 в отделке Бетон, остеклённое полотно со стандартным стеклом" width="310" height="640" loading="lazy"></a>
@@ -122,6 +124,54 @@
       </div>
     </div>
 
+<!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
+     фурнитура (решение владельца 2026-08-11). Детальные таблицы —
+     ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
+<section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
+  <h2>Вам может понадобиться</h2>
+  <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Цены из нашего прайса, точный состав уточним по замеру.</p>
+  <div class="needs-grid">
+    <article class="need-card">
+      <h3>Комплект с погонажем</h3>
+      <p class="need-price"><span class="need-kit-delta">+3 032 ₽</span> <span class="need-price-note">к полотну</span></p>
+      <p class="need-note">Отделка «<span class="need-kit-fins">Капучино, Перламутр, Бетон</span>» · комплект целиком <strong class="need-kit-total">8 014 ₽</strong></p>
+      <ul class="need-list">
+        <li><span>Полотно</span><span class="need-num need-kit-pol">от 4 982 ₽</span></li>
+        <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">579 ₽ за шт</span></li>
+        <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">259 ₽ за шт</span></li>
+      </ul>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="#komplekt">Цены по всем отделкам</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Погонаж дополнительно</h3>
+      <dl class="need-defs">
+        <dt>Доборы</dt><dd>Подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</dd>
+      </dl>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Фурнитура</h3>
+      <p class="need-price">~1 735 ₽ <span class="need-price-note">за дверь</span></p>
+      <p class="need-note">Ручка, защёлка и две петли — подобрали под отделки и стиль этой модели. Позиции можно поменять.</p>
+      <ul class="need-items">
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/ruchka-47099.jpg" alt="Ручка Punto ARC MAIN, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto ARC MAIN, чёрный</span></span><span class="need-num">985 ₽</span></li>
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/zashchelka-42357.jpg" alt="Защёлка Fuaro PLAST P12, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, чёрный</span></span><span class="need-num">350 ₽</span></li>
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/petlya-43133.jpg" alt="Петля универсальная Punto IN4200W, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#petli">Петли</a> × 2 <span class="muted">(200 ₽ за шт)</span><br><span class="muted">Петля универсальная Punto IN4200W, чёрный</span></span><span class="need-num">400 ₽</span></li>
+      </ul>
+      <p class="need-note muted">Под другие отделки этой модели подойдут: Ручка Punto BLADE, матовый никель/хром — 1 070 ₽; Ручка Punto ARC MAIN, сатиновое золото — 965 ₽.</p>
+      <details class="need-details">
+        <summary>Опции: санузел, магнитная защёлка, замок под ключ</summary>
+        <ul class="need-opts">
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Для санузла</a><span class="need-num">+590 ₽</span></p><p class="need-opt-sub">Защёлка санузловая Punto PL96WC, чёрный (410 ₽) вместо обычной защёлки, плюс Завёртка Punto BK6 ARC, чёрный (530 ₽)</p></li>
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Тихая магнитная защёлка</a><span class="need-num">+130 ₽</span></p><p class="need-opt-sub">Защёлка магнитная Fuaro MAGNET M12, матовый никель (480 ₽) вместо обычной защёлки</p></li>
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Замок под ключ</a><span class="need-num">+1 160 ₽</span></p><p class="need-opt-sub">Корпус замка Punto PL85 под цилиндр, чёрный (510 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, чёрный (650 ₽) и Накладка Punto ET ARC под цилиндр, чёрный (350 ₽)</p></li>
+        </ul>
+      </details>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
+    </article>
+  </div>
+</section>
+
 <section class="model-variants" id="varianty" aria-label="Варианты и цены">
   <h2>Варианты и цены</h2>
   <p class="price-sizes muted">Наличие обновлено 11.08.2026.</p>
@@ -141,7 +191,7 @@
   <p class="price-sizes muted">Цена указана за дверное полотно. Коробка, наличники и доборы подбираются отдельно (раздел «Погонаж»).</p>
 </section>
 
-<section class="model-variants pogonazh-prices" aria-label="Стоимость комплекта">
+<section class="model-variants pogonazh-prices" id="komplekt" aria-label="Стоимость комплекта">
   <h2>Стоимость комплекта</h2>
   <p class="price-sizes">Комплект на один проём: полотно, элементы коробки (3 шт — продажа целыми планками) и наличники с обеих сторон (5 шт). Доборы — при необходимости, отдельно.</p>
   <div class="table-wrap">
@@ -156,36 +206,8 @@
   </table>
   </div>
   <p class="price-sizes">Комплект = полотно + элементы коробки × 3 (продажа целыми планками) + наличник × 5 (обе стороны проёма). Например, «Капучино»: 4 982 ₽ + 579 ₽ × 3 + 259 ₽ × 5 = 8 014 ₽.</p>
-  <p class="price-sizes">Полный расчёт комплекта — по замеру.</p>
-  <h3 id="furnitura">Вам может понадобиться</h3>
-  <p class="price-sizes">Базовый набор фурнитуры на одну дверь: ручка, защёлка и две петли. Подобрали под отделки и стиль этой модели — позиции можно поменять.</p>
-  <div class="table-wrap">
-  <table class="price-table furn-table">
-    <thead><tr><th scope="col">Позиция</th><th scope="col">Цена</th></tr></thead>
-    <tbody>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/ruchka-47099.jpg" alt="Ручка Punto ARC MAIN, чёрный" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto ARC MAIN, чёрный</span></span></div></td><td class="price-cell">985 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-42357.jpg" alt="Защёлка Fuaro PLAST P12, чёрный" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, чёрный</span></span></div></td><td class="price-cell">350 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/petlya-43133.jpg" alt="Петля универсальная Punto IN4200W, чёрный" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#petli">Петли</a> × 2 <span class="muted">(200 ₽ за шт)</span><br><span class="muted">Петля универсальная Punto IN4200W, чёрный</span></span></div></td><td class="price-cell">400 ₽</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="price-sizes"><strong>Итого фурнитура: ~1 735 ₽</strong></p>
-  <p class="price-sizes muted">Под другие отделки этой модели подойдут: Ручка Punto BLADE, матовый никель/хром — 1 070 ₽; Ручка Punto ARC MAIN, сатиновое золото — 965 ₽.</p>
-  <div class="table-wrap">
-  <table class="price-table furn-table">
-    <thead><tr><th scope="col">Опция</th><th scope="col">Доплата</th></tr></thead>
-    <tbody>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-49235.jpg" alt="Защёлка санузловая Punto PL96WC, чёрный" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Для санузла</a><br><span class="muted">Защёлка санузловая Punto PL96WC, чёрный (410 ₽) вместо обычной защёлки, плюс Завёртка Punto BK6 ARC, чёрный (530 ₽)</span></span></div></td><td class="price-cell">+590 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-33667.jpg" alt="Защёлка магнитная Fuaro MAGNET M12, матовый никель" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Тихая магнитная защёлка</a><br><span class="muted">Защёлка магнитная Fuaro MAGNET M12, матовый никель (480 ₽) вместо обычной защёлки</span></span></div></td><td class="price-cell">+130 ₽</td></tr>
-<tr><td><div class="furn-row"><img class="furn-thumb" src="../assets/img/furnitura-web/zashchelka-49219.jpg" alt="Корпус замка Punto PL85 под цилиндр, чёрный" width="600" height="600" loading="lazy"><span><a href="../furnitura.html#zashchelki">Замок под ключ</a><br><span class="muted">Корпус замка Punto PL85 под цилиндр, чёрный (510 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, чёрный (650 ₽) и Накладка Punto ET ARC под цилиндр, чёрный (350 ₽)</span></span></div></td><td class="price-cell">+1 160 ₽</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="price-sizes">Доборы подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</p>
-  <p class="price-sizes"><a href="../furnitura.html">Вся фурнитура</a> · <a href="../pogonazh.html">Весь погонаж</a></p>
+  <p class="price-sizes">Полный расчёт комплекта — по замеру. <a href="#furnitura">Что ещё понадобится</a></p>
 </section>
-
-
 
     <div class="model-details">
       <section class="model-specs" aria-label="Характеристики">
@@ -332,6 +354,7 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/kvadro-20/01-kvadro-20-po-beton.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Бетон, остеклённое полотно со стандартным стеклом", "w": 775, "h": 1600, "c": "бетон", "g": "satinato"}, {"src": "../assets/img/kvadro-20/02-kvadro-20-po-beton-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Бетон со стеклом лакобель чёрный", "w": 752, "h": 1600, "c": "бетон", "g": "lakobel"}, {"src": "../assets/img/kvadro-20/03-kvadro-20-po-dub-dymchatyy.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Дуб дымчатый, остеклённое полотно со стандартным стеклом", "w": 746, "h": 1600, "c": "дуб дымчатый", "g": "satinato"}, {"src": "../assets/img/kvadro-20/04-kvadro-20-po-dub-dymchatyy-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Дуб дымчатый со стеклом лакобель чёрный", "w": 738, "h": 1600, "c": "дуб дымчатый", "g": "lakobel"}, {"src": "../assets/img/kvadro-20/05-kvadro-20-po-kapuchino.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Капучино, остеклённое полотно со стандартным стеклом", "w": 743, "h": 1600, "c": "капучино", "g": "satinato"}, {"src": "../assets/img/kvadro-20/06-kvadro-20-po-kapuchino-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Капучино со стеклом лакобель чёрный", "w": 747, "h": 1600, "c": "капучино", "g": "lakobel"}, {"src": "../assets/img/kvadro-20/07-kvadro-20-po-perlamutr.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Перламутр, остеклённое полотно со стандартным стеклом", "w": 736, "h": 1600, "c": "перламутр", "g": "satinato"}, {"src": "../assets/img/kvadro-20/08-kvadro-20-po-perlamutr-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Перламутр со стеклом лакобель чёрный", "w": 743, "h": 1600, "c": "перламутр", "g": "lakobel"}, {"src": "../assets/img/kvadro-20/09-kvadro-20-po-yasen-arkticheskiy.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Ясень арктический, остеклённое полотно со стандартным стеклом", "w": 750, "h": 1600, "c": "ясень арктический", "g": "satinato"}, {"src": "../assets/img/kvadro-20/10-kvadro-20-po-yasen-arkticheskiy-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 20 в отделке Ясень арктический со стеклом лакобель чёрный", "w": 744, "h": 1600, "c": "ясень арктический", "g": "lakobel"}]</script>
 <script type="application/json" id="variants-data">{"variants": [{"colors": ["бетон", "капучино", "перламутр"], "g": "satinato", "price": 4982, "pricef": "4 982 ₽"}, {"colors": ["бетон", "капучино", "перламутр"], "g": "lakobel", "price": 5063, "pricef": "5 063 ₽"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "satinato", "price": 5287, "pricef": "5 287 ₽"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "lakobel", "price": 5470, "pricef": "5 470 ₽"}], "kits": [{"v": 0, "colors": ["бетон", "капучино", "перламутр"], "total": 8014, "totalf": "8 014 ₽", "pod": 9749, "podf": "9 749 ₽"}, {"v": 1, "colors": ["бетон", "капучино", "перламутр"], "total": 8095, "totalf": "8 095 ₽", "pod": 9830, "podf": "9 830 ₽"}, {"v": 2, "colors": ["дуб дымчатый", "ясень арктический"], "total": 8319, "totalf": "8 319 ₽", "pod": 10054, "podf": "10 054 ₽"}, {"v": 3, "colors": ["дуб дымчатый", "ясень арктический"], "total": 8502, "totalf": "8 502 ₽", "pod": 10237, "podf": "10 237 ₽"}]}</script>
+<script type="application/json" id="kit-data">[{"colors": ["бетон", "капучино", "перламутр"], "g": "satinato", "total": 8014, "fins": "Капучино, Перламутр, Бетон", "delta": "+3 032 ₽", "totalf": "8 014 ₽", "pol": "от 4 982 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["бетон", "капучино", "перламутр"], "g": "lakobel", "total": 8095, "fins": "Капучино, Перламутр, Бетон", "delta": "+3 032 ₽", "totalf": "8 095 ₽", "pol": "от 5 063 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "satinato", "total": 8319, "fins": "Дуб дымчатый, Ясень арктический", "delta": "+3 032 ₽", "totalf": "8 319 ₽", "pol": "от 5 287 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "lakobel", "total": 8502, "fins": "Дуб дымчатый, Ясень арктический", "delta": "+3 032 ₽", "totalf": "8 502 ₽", "pol": "от 5 470 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}]</script>
 
 </main>
 <footer class="site-footer">

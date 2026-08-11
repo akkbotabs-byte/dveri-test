@@ -544,13 +544,60 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 .furn-name { font-family: var(--font-body); font-size: var(--fs-small); font-weight: var(--fw-semibold); }
 .furn-sub, .furn-note { color: var(--color-ink-soft); font-size: var(--fs-caption); }
 .furn-card .card-price { margin-top: auto; padding-top: var(--space-2); }
-/* Миниатюры позиций в блоке «Вам может понадобиться» */
-.furn-row { display: flex; align-items: center; gap: var(--space-3); }
-.furn-thumb {
-  width: 64px; height: 64px; flex: none;
+
+/* ---------- «Вам может понадобиться»: три карточки допродажи ----------
+   Секция стоит сразу под галереей и блоком цены (#furnitura). Одна колонка
+   на телефоне, две на планшете, три на десктопе; карточки — тонкая рамка
+   --color-line, цена акцентным зелёным, кнопка-ссылка прижата к низу. */
+.needs-grid { display: grid; gap: var(--space-4); }
+@media (min-width: 600px) { .needs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .needs-grid { grid-template-columns: repeat(3, 1fr); } }
+.need-card {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--color-line); border-radius: var(--radius-m);
+  padding: var(--space-4);
+}
+.need-card h3 { margin-bottom: var(--space-2); }
+.need-price { color: var(--color-accent); font-size: var(--fs-price); font-weight: var(--fw-bold); line-height: var(--lh-heading); }
+.need-price-note { color: var(--color-ink-soft); font-size: var(--fs-small); font-weight: var(--fw-regular); }
+.need-note { color: var(--color-ink-soft); font-size: var(--fs-small); line-height: var(--lh-small); margin-top: var(--space-2); }
+.need-note strong { color: var(--color-ink); font-weight: var(--fw-semibold); }
+/* Состав комплекта: название слева, цифра справа */
+.need-list { list-style: none; display: grid; margin-top: var(--space-3); font-size: var(--fs-small); }
+.need-list li { display: flex; gap: var(--space-3); justify-content: space-between; padding: var(--space-2) 0; border-top: 1px solid var(--color-line); }
+.need-num { white-space: nowrap; font-weight: var(--fw-semibold); margin-left: auto; }
+/* Погонаж дополнительно: термин + пояснение */
+.need-defs { font-size: var(--fs-small); }
+.need-defs dt { font-weight: var(--fw-semibold); padding-top: var(--space-2); border-top: 1px solid var(--color-line); }
+.need-defs dd { color: var(--color-ink-soft); margin: 0 0 var(--space-3); line-height: var(--lh-small); }
+.need-defs dd:last-child { margin-bottom: 0; }
+/* Базовый набор фурнитуры: миниатюра 48×48 не ломает сетку на мобиле */
+.need-items { list-style: none; display: grid; margin-top: var(--space-3); font-size: var(--fs-small); }
+.need-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; border-top: 1px solid var(--color-line); }
+.need-thumb {
+  width: 48px; height: 48px; flex: none;
   background: var(--color-bg-soft); border: 1px solid var(--color-line);
   border-radius: var(--radius-s);
 }
+.need-item-body { min-width: 0; line-height: var(--lh-small); }
+/* Опции — нативный <details>, без JS: карточка не разрастается */
+.need-details { margin-top: var(--space-3); border-top: 1px solid var(--color-line); }
+.need-details > summary {
+  display: flex; align-items: center; gap: var(--space-2);
+  min-height: var(--tap-target-min); cursor: pointer; list-style: none;
+  font-size: var(--fs-small); font-weight: var(--fw-semibold);
+}
+.need-details > summary::-webkit-details-marker { display: none; }
+.need-details > summary::after {
+  content: "+"; margin-left: auto; color: var(--color-ink-soft);
+  font-weight: var(--fw-regular); font-size: var(--fs-body);
+}
+.need-details[open] > summary::after { content: "−"; }
+.need-opts { list-style: none; display: grid; gap: var(--space-3); padding-bottom: var(--space-2); font-size: var(--fs-small); }
+.need-opt-head { display: flex; gap: var(--space-3); align-items: baseline; }
+.need-opt-sub { color: var(--color-ink-soft); font-size: var(--fs-caption); line-height: var(--lh-small); margin-top: var(--space-1); }
+/* Ссылка-кнопка карточки: прижата к низу, ряд карточек выравнен */
+.need-foot { margin-top: auto; padding-top: var(--space-4); }
 
 .model-details { display: grid; gap: var(--space-8); margin-top: var(--section-gap); }
 @media (min-width: 768px) { .model-details { grid-template-columns: .9fr 1.1fr; gap: var(--space-16); } }
