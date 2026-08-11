@@ -463,6 +463,29 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 }
 .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .gallery-thumb[aria-current="true"] { border-color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); }
+/* Листание галереи (model.js): стрелки поверх главного фото и счётчик
+   кадров. В разметке они с hidden — без JS листают миниатюры-ссылки.
+   Монохром, полупрозрачная белая подложка; кнопки прижаты к краям,
+   чтобы не закрывать полотно на узких экранах. box-shadow не задаём —
+   его место занимает focus-кольцо из базовых стилей. */
+.gallery-main { position: relative; }
+.gallery-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: var(--tap-target-min); height: var(--tap-target-min);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-ink); background: rgba(255, 255, 255, .8);
+  border: 1px solid var(--color-line); border-radius: 50%;
+  transition: background var(--dur-fast) var(--ease);
+}
+.gallery-nav:hover { background: var(--color-surface); border-color: var(--color-line-hover); }
+.gallery-prev { left: var(--space-2); }
+.gallery-next { right: var(--space-2); }
+.gallery-counter {
+  position: absolute; right: var(--space-2); bottom: var(--space-2);
+  padding: var(--space-1) var(--space-2); border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, .8); color: var(--color-ink-soft);
+  font-size: var(--fs-caption); line-height: var(--lh-small);
+}
 
 .model-short { color: var(--color-ink-soft); margin-bottom: var(--space-6); }
 .model-colors { margin-bottom: var(--space-6); }

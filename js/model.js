@@ -10,9 +10,21 @@
   try { photos = JSON.parse(dataEl.textContent); } catch (err) { return; }
   if (!photos || !photos.length) { return; }
 
-  var current = 0;
   var thumbs = Array.prototype.slice.call(document.querySelectorAll('.gallery-thumb'));
+  /* Стартовый кадр — обложка (её миниатюра помечена aria-current="true"):
+     именно она стоит в главном фото, и листать надо от неё */
+  var current = 0;
+  thumbs.forEach(function (t, k) {
+    if (t.getAttribute('aria-current') === 'true') { current = k; }
+  });
   var zoomBtn = document.querySelector('.gallery-zoom');
+  var galleryEl = document.querySelector('.model-gallery');
+  var mainFig = document.querySelector('.gallery-main');
+  var prevBtn = document.querySelector('.gallery-prev');
+  var nextBtn = document.querySelector('.gallery-next');
+  var counter = document.querySelector('.gallery-counter');
+  /* Свайп по главному фото гасит следующий за ним клик по ссылке-зуму */
+  var swiped = false;
 
   /* Галерея по цвету: выбранный свотч оставляет только кадры своей
      отделки (у кадров — c из models.json); до выбора цвета и у отделок
@@ -27,6 +39,21 @@
     return out.length ? out : photos.map(function (p, i) { return i; });
   }
 
+  /* Стрелки и счётчик показываем, только когда есть что листать —
+     видимых кадров больше одного (после фильтра по отделке их может
+     остаться и один). Разметка приходит скрытой, так что без JS их нет. */
+  function updateNav() {
+    var vis = visibleIdxs();
+    var pos = vis.indexOf(current);
+    var many = vis.length > 1;
+    if (prevBtn) { prevBtn.hidden = !many; }
+    if (nextBtn) { nextBtn.hidden = !many; }
+    if (counter) {
+      counter.hidden = !many;
+      counter.textContent = (pos === -1 ? 1 : pos + 1) + ' / ' + vis.length;
+    }
+  }
+
   function show(i) {
     current = (i + photos.length) % photos.length;
     var p = photos[current];
@@ -39,6 +66,7 @@
     thumbs.forEach(function (t, k) {
       t.setAttribute('aria-current', String(k === current));
     });
+    updateNav();
   }
 
   function applyFilter(color) {
@@ -50,9 +78,10 @@
     /* Текущий кадр выпал из фильтра — переключаемся на первый доступный */
     var vis = visibleIdxs();
     if (vis.indexOf(current) === -1) { show(vis[0]); }
+    updateNav();
   }
 
-  /* Листание (стрелки лайтбокса) — только по видимым кадрам */
+  /* Листание (стрелки галереи и лайтбокса) — только по видимым кадрам */
   function step(d) {
     var vis = visibleIdxs();
     var pos = vis.indexOf(current);
@@ -258,6 +287,8 @@
     /* Зум — ссылка на полноразмерный файл; с JS открываем лайтбокс */
     zoomBtn.addEventListener('click', function (e) {
       e.preventDefault();
+      /* Клик-«хвост» состоявшегося свайпа — лайтбокс не открываем */
+      if (swiped) { swiped = false; return; }
       openBox();
     });
     box.querySelector('.lightbox-close').addEventListener('click', closeBox);
@@ -284,4 +315,59 @@
       }
     });
   }
+
+  /* ---- Листание основной галереи: стрелки, клавиатура, свайп ---- */
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function () { step(-1); });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () { step(1); });
+  }
+
+  /* Клавиатура: ← / → работают, пока фокус внутри блока галереи
+     (миниатюры, стрелки, ссылка-зум). У лайтбокса своя обработка стрелок
+     на document — при открытом лайтбоксе здесь не вмешиваемся. */
+  if (galleryEl) {
+    galleryEl.addEventListener('keydown', function (e) {
+      if (box && !box.hidden) { return; }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        step(-1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        step(1);
+      }
+    });
+  }
+
+  /* Свайп по главному фото: порог 40px по X; вертикальный жест отдаём
+     скроллу страницы (|dy| > |dx|). Слушатели passive — preventDefault
+     здесь не нужен, страница скроллится как обычно. */
+  if (mainFig) {
+    var tx = 0;
+    var ty = 0;
+    var tracking = false;
+    mainFig.addEventListener('touchstart', function (e) {
+      swiped = false;
+      tracking = e.touches.length === 1;
+      if (tracking) {
+        tx = e.touches[0].clientX;
+        ty = e.touches[0].clientY;
+      }
+    }, { passive: true });
+    mainFig.addEventListener('touchmove', function (e) {
+      if (e.touches.length > 1) { tracking = false; }
+    }, { passive: true });
+    mainFig.addEventListener('touchend', function (e) {
+      if (!tracking) { return; }
+      tracking = false;
+      var dx = e.changedTouches[0].clientX - tx;
+      var dy = e.changedTouches[0].clientY - ty;
+      if (Math.abs(dx) < 40 || Math.abs(dy) > Math.abs(dx)) { return; }
+      swiped = true;
+      step(dx < 0 ? 1 : -1);
+    }, { passive: true });
+  }
+
+  updateNav();
 })();

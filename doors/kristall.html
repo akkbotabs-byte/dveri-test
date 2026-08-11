@@ -61,6 +61,16 @@
           <a class="gallery-zoom" href="../assets/img/kristall/01-kristall-pg-belyy.jpg" aria-label="Открыть фото на весь экран">
             <img src="../assets/img/kristall/01-kristall-pg-belyy.jpg" alt="Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Белый цвет" width="760" height="1600">
           </a>
+          <!-- Листание: стрелки и счётчик кадров. В разметке скрыты (hidden) —
+               без JS листают миниатюры-ссылки; model.js снимает hidden, когда
+               видимых кадров больше одного (учитывает фильтр по отделке) -->
+          <button class="gallery-nav gallery-prev" type="button" aria-label="Предыдущее фото" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 4 L7 12 L15 20"></path></svg>
+          </button>
+          <button class="gallery-nav gallery-next" type="button" aria-label="Следующее фото" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4 L17 12 L9 20"></path></svg>
+          </button>
+          <p class="gallery-counter" hidden></p>
         </figure>
         <div class="gallery-thumbs" role="group" aria-label="Фотографии модели">
 <a class="gallery-thumb" href="../assets/img/kristall/01-kristall-pg-belyy.jpg" aria-current="true" data-color="белый" aria-label="Фото 1: Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Белый цвет"><img src="../assets/thumb/kristall/01-kristall-pg-belyy.jpg" alt="Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Белый цвет" width="304" height="640" loading="lazy"></a>
