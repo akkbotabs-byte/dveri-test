@@ -108,26 +108,23 @@
           <a class="btn btn--primary btn--wide" href="#zayavka">Оставить заявку</a>
           <p class="price-phone">Или по телефону: <a class="nowrap" href="tel:+79932689322">+7 993 268-93-22</a></p>
         </div>
-<div class="model-features">
-  <h2>Особенности</h2>
-  <ul><li>Отделки: эмаль (Белый, Серый, Шампань) или ламинированное покрытие Белый шёлк</li><li>Варианты полотна: глухое (ПГ) или со стеклом «английская решётка» (ПО, в эмали)</li><li>Эмалевые полотна выпускаются и в высоте 2300 мм</li><li>Нейтральный дизайн для светлых интерьеров</li><li>Размер уточняется при замере</li></ul>
-</div>
       </div>
     </div>
 
 <!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
-     фурнитура (решение владельца 2026-08-11). Детальные таблицы —
+     фурнитура (решение владельца 2026-08-11). Стоит ВЫШЕ «Особенностей»,
+     иначе допродажа уезжает от цены. Детальные таблицы —
      ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
 <section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
   <h2>Вам может понадобиться</h2>
   <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Цены из нашего прайса, точный состав уточним по замеру.</p>
   <div class="needs-grid">
-    <article class="need-card">
+    <article class="need-card need-card--kit">
       <h3>Комплект с погонажем</h3>
       <p class="need-price"><span class="need-kit-delta">+3 032 ₽</span> <span class="need-price-note">к полотну</span></p>
       <p class="need-note">Отделка «<span class="need-kit-fins">Белый шёлк</span>» · комплект целиком <strong class="need-kit-total">8 522 ₽</strong></p>
       <ul class="need-list">
-        <li><span>Полотно</span><span class="need-num need-kit-pol">от 5 490 ₽</span></li>
+        <li><span>Полотно</span><span class="need-num need-kit-pol">5 490 ₽</span></li>
         <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">579 ₽ за шт</span></li>
         <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">259 ₽ за шт</span></li>
       </ul>
@@ -135,8 +132,9 @@
     </article>
     <article class="need-card">
       <h3>Погонаж дополнительно</h3>
+      <p class="need-note">Что докупают сверх комплекта — считаем по замеру.</p>
       <dl class="need-defs">
-        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</dd>
+        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера. Ширины добора к комплекту — 100, 150, 200 мм.</dd>
       </dl>
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
     </article>
@@ -161,6 +159,11 @@
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
     </article>
   </div>
+</section>
+
+<section class="model-features" aria-label="Особенности">
+  <h2>Особенности</h2>
+  <ul><li>Отделки: эмаль (Белый, Серый, Шампань) или ламинированное покрытие Белый шёлк</li><li>Варианты полотна: глухое (ПГ) или со стеклом «английская решётка» (ПО, в эмали)</li><li>Эмалевые полотна выпускаются и в высоте 2300 мм</li><li>Нейтральный дизайн для светлых интерьеров</li><li>Размер уточняется при замере</li></ul>
 </section>
 
 <section class="model-variants" id="varianty" aria-label="Варианты и цены">
@@ -350,7 +353,7 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/alba/01-emal-2-alba-pg-emalit-belyy.jpg", "alt": "Межкомнатная дверь Альба, глухое полотно, цвет Белый — рендер модели", "w": 760, "h": 1600, "c": "белый", "g": "pg"}, {"src": "../assets/img/alba/02-alba-02-pg-emalit-belyy-1.jpg", "alt": "Белая глухая дверь Альба — фото в интерьере", "w": 1600, "h": 1600, "c": "белый", "g": "pg"}]</script>
 <script type="application/json" id="variants-data">{"variants": [{"colors": ["белый шёлк"], "g": "pg", "price": 5490, "pricef": "5 490 ₽"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "price": 8337, "pricef": "8 337 ₽"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "price": 9980, "pricef": "9 980 ₽"}, {"colors": ["белый", "серый", "шампань"], "g": "reshetka", "price": 11387, "pricef": "11 387 ₽"}], "kits": [{"v": 0, "colors": ["белый шёлк"], "total": 8522, "totalf": "8 522 ₽", "pod": 10037, "podf": "10 037 ₽"}, {"v": 1, "colors": ["белый", "серый", "шампань"], "total": 15352, "totalf": "15 352 ₽", "pod": 16867, "podf": "16 867 ₽"}, {"v": 2, "colors": ["белый", "серый", "шампань"], "total": 18415, "totalf": "18 415 ₽", "pod": 19930, "podf": "19 930 ₽"}, {"v": 3, "colors": ["белый", "серый", "шампань"], "total": 18402, "totalf": "18 402 ₽", "pod": 19917, "podf": "19 917 ₽"}]}</script>
-<script type="application/json" id="kit-data">[{"colors": ["белый шёлк"], "g": "pg", "total": 8522, "fins": "Белый шёлк", "delta": "+3 032 ₽", "totalf": "8 522 ₽", "pol": "от 5 490 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "total": 15352, "fins": "Белый, Серый, Шампань", "delta": "+7 015 ₽", "totalf": "15 352 ₽", "pol": "от 8 337 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "total": 18415, "fins": "Белый, Серый, Шампань", "delta": "+8 435 ₽", "totalf": "18 415 ₽", "pol": "от 9 980 ₽", "kor": "1 320 ₽ за шт", "nal": "895 ₽ за шт"}, {"colors": ["белый", "серый", "шампань"], "g": "reshetka", "total": 18402, "fins": "Белый, Серый, Шампань", "delta": "+7 015 ₽", "totalf": "18 402 ₽", "pol": "от 11 387 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}]</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый шёлк"], "g": "pg", "total": 8522, "fins": "Белый шёлк", "delta": "+3 032 ₽", "totalf": "8 522 ₽", "pol": "5 490 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "total": 15352, "fins": "Белый, Серый, Шампань", "delta": "+7 015 ₽", "totalf": "15 352 ₽", "pol": "8 337 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "total": 18415, "fins": "Белый, Серый, Шампань", "delta": "+8 435 ₽", "totalf": "18 415 ₽", "pol": "9 980 ₽", "kor": "1 320 ₽ за шт", "nal": "895 ₽ за шт"}, {"colors": ["белый", "серый", "шампань"], "g": "reshetka", "total": 18402, "fins": "Белый, Серый, Шампань", "delta": "+7 015 ₽", "totalf": "18 402 ₽", "pol": "11 387 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}]</script>
 
 </main>
 <footer class="site-footer">

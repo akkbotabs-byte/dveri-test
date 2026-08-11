@@ -505,8 +505,15 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 /* Телефон рядом с primary-кнопкой блока цены (DESIGN.md §2) */
 .price-phone { margin-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--fs-small); }
 .price-phone a { color: var(--color-ink); font-weight: var(--fw-semibold); }
-.model-features h2 { font-family: var(--font-body); font-size: var(--fs-small); font-weight: var(--fw-semibold); margin-bottom: var(--space-3); }
+/* «Особенности» — самостоятельный блок под секцией допродажи (#furnitura):
+   заголовок как у соседних секций, на широком экране список в две колонки,
+   чтобы короткие пункты не растягивались на всю ширину контейнера */
+.model-features { margin-top: var(--section-gap); }
+.model-features h2 { margin-bottom: var(--space-4); }
 .model-features ul { list-style: none; display: grid; gap: var(--space-2); }
+@media (min-width: 768px) {
+  .model-features ul { grid-template-columns: 1fr 1fr; gap: var(--space-2) var(--space-8); }
+}
 .model-features li { position: relative; padding-left: var(--space-6); color: var(--color-ink-soft); font-size: var(--fs-small); }
 .model-features li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-ink); }
 
@@ -549,14 +556,27 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
    Секция стоит сразу под галереей и блоком цены (#furnitura). Одна колонка
    на телефоне, две на планшете, три на десктопе; карточки — тонкая рамка
    --color-line, цена акцентным зелёным, кнопка-ссылка прижата к низу. */
-.needs-grid { display: grid; gap: var(--space-4); }
-@media (min-width: 600px) { .needs-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .needs-grid { grid-template-columns: repeat(3, 1fr); } }
+/* align-items: start — карточки не тянутся до высоты самой длинной:
+   у «Погонажа» содержимого меньше, при растяжении внутри оставалась пустота */
+.needs-grid { display: grid; gap: var(--space-4); align-items: start; }
+@media (min-width: 600px) {
+  .needs-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Нечётная последняя карточка занимает всю строку — иначе рядом с ней
+     стоит пустая колонка (две колонки на 600–1023px, карточек три) */
+  .needs-grid > .need-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (min-width: 1024px) {
+  .needs-grid { grid-template-columns: repeat(3, 1fr); }
+  .needs-grid > .need-card:last-child:nth-child(odd) { grid-column: auto; }
+}
 .need-card {
   display: flex; flex-direction: column;
   border: 1px solid var(--color-line); border-radius: var(--radius-m);
   padding: var(--space-4);
 }
+/* display: flex перебивает hidden — возвращаем (model.js прячет карточку
+   комплекта, когда для выбранной пары отделка×стекло комплекта нет) */
+.need-card[hidden] { display: none; }
 .need-card h3 { margin-bottom: var(--space-2); }
 .need-price { color: var(--color-accent); font-size: var(--fs-price); font-weight: var(--fw-bold); line-height: var(--lh-heading); }
 .need-price-note { color: var(--color-ink-soft); font-size: var(--fs-small); font-weight: var(--fw-regular); }
@@ -574,7 +594,7 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 .need-defs dd:last-child { margin-bottom: 0; }
 /* Базовый набор фурнитуры: миниатюра 48×48 не ломает сетку на мобиле */
 .need-items { list-style: none; display: grid; margin-top: var(--space-3); font-size: var(--fs-small); }
-.need-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; border-top: 1px solid var(--color-line); }
+.need-item { position: relative; display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; border-top: 1px solid var(--color-line); }
 .need-thumb {
   width: 48px; height: 48px; flex: none;
   background: var(--color-bg-soft); border: 1px solid var(--color-line);
@@ -595,8 +615,14 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 }
 .need-details[open] > summary::after { content: "−"; }
 .need-opts { list-style: none; display: grid; gap: var(--space-3); padding-bottom: var(--space-2); font-size: var(--fs-small); }
+.need-opt { position: relative; min-height: var(--tap-target-min); }
 .need-opt-head { display: flex; gap: var(--space-3); align-items: baseline; }
 .need-opt-sub { color: var(--color-ink-soft); font-size: var(--fs-caption); line-height: var(--lh-small); margin-top: var(--space-1); }
+/* Ссылки внутри карточек: подчёркиваем (иначе неотличимы от текста —
+   цвет тот же) и растягиваем на всю строку псевдоэлементом: сам текст
+   узкий (32–34px), а зона касания должна быть 44px — DESIGN.md §10 */
+.need-item-body a, .need-opt-head a { text-decoration: underline; text-underline-offset: 2px; }
+.need-item-body a::after, .need-opt-head a::after { content: ""; position: absolute; inset: 0; }
 /* Ссылка-кнопка карточки: прижата к низу, ряд карточек выравнен */
 .need-foot { margin-top: auto; padding-top: var(--space-4); }
 

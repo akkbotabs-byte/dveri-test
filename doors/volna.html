@@ -98,26 +98,23 @@
           <a class="btn btn--primary btn--wide" href="#zayavka">Оставить заявку</a>
           <p class="price-phone">Или по телефону: <a class="nowrap" href="tel:+79932689322">+7 993 268-93-22</a></p>
         </div>
-<div class="model-features">
-  <h2>Особенности</h2>
-  <ul><li>Остеклённое полотно (ПО) — пропускает дневной свет между комнатами</li><li>Плавный «волновой» рисунок полотна — узнаваемый, но не броский</li><li>Светлая палитра легко сочетается с разной отделкой стен и пола</li><li>Типовые размеры 600–900 × 2000 мм, точный размер определяется при замере</li><li>Подбор комплекта и расчёт — по заявке, выезд замерщика по СПб и Ленобласти</li></ul>
-</div>
       </div>
     </div>
 
 <!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
-     фурнитура (решение владельца 2026-08-11). Детальные таблицы —
+     фурнитура (решение владельца 2026-08-11). Стоит ВЫШЕ «Особенностей»,
+     иначе допродажа уезжает от цены. Детальные таблицы —
      ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
 <section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
   <h2>Вам может понадобиться</h2>
   <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Цены из нашего прайса, точный состав уточним по замеру.</p>
   <div class="needs-grid">
-    <article class="need-card">
+    <article class="need-card need-card--kit">
       <h3>Комплект с погонажем</h3>
       <p class="need-price"><span class="need-kit-delta">+2 505 ₽</span> <span class="need-price-note">к полотну</span></p>
       <p class="need-note">Отделка «<span class="need-kit-fins">Белый</span>» · комплект целиком <strong class="need-kit-total">6 470 ₽</strong></p>
       <ul class="need-list">
-        <li><span>Полотно</span><span class="need-num need-kit-pol">от 3 965 ₽</span></li>
+        <li><span>Полотно</span><span class="need-num need-kit-pol">3 965 ₽</span></li>
         <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">475 ₽ за шт</span></li>
         <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">216 ₽ за шт</span></li>
       </ul>
@@ -125,8 +122,9 @@
     </article>
     <article class="need-card">
       <h3>Погонаж дополнительно</h3>
+      <p class="need-note">Что докупают сверх комплекта — считаем по замеру.</p>
       <dl class="need-defs">
-        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</dd>
+        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера. Ширины добора к комплекту — 120, 200 мм.</dd>
         <dt>Фигурный наличник</dt><dd>Вместо гладкого — для отделки Белый: доплата 260 ₽ за 5 шт (268 ₽ вместо 216 ₽ за шт).</dd>
       </dl>
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
@@ -151,6 +149,11 @@
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
     </article>
   </div>
+</section>
+
+<section class="model-features" aria-label="Особенности">
+  <h2>Особенности</h2>
+  <ul><li>Остеклённое полотно (ПО) — пропускает дневной свет между комнатами</li><li>Плавный «волновой» рисунок полотна — узнаваемый, но не броский</li><li>Светлая палитра легко сочетается с разной отделкой стен и пола</li><li>Типовые размеры 600–900 × 2000 мм, точный размер определяется при замере</li><li>Подбор комплекта и расчёт — по заявке, выезд замерщика по СПб и Ленобласти</li></ul>
 </section>
 
 <section class="model-variants" id="varianty" aria-label="Варианты и цены">
@@ -329,7 +332,7 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/volna/01-volna-zhasmin-belyy-po-1.jpg", "alt": "Межкомнатная дверь Волна в цвете Белый, остеклённое полотно (ПО)", "w": 757, "h": 1600, "c": "белый"}, {"src": "../assets/img/volna/02-volna-zhasmin-belyy-po-2.jpg", "alt": "Дверь Волна, отделка Белый, вариант со стеклом — второй ракурс", "w": 629, "h": 1600, "c": "белый"}]</script>
 
-<script type="application/json" id="kit-data">[{"colors": ["белый"], "g": "po", "total": 6470, "fins": "Белый", "delta": "+2 505 ₽", "totalf": "6 470 ₽", "pol": "от 3 965 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт"}]</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый"], "g": "po", "total": 6470, "fins": "Белый", "delta": "+2 505 ₽", "totalf": "6 470 ₽", "pol": "3 965 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт"}]</script>
 
 </main>
 <footer class="site-footer">

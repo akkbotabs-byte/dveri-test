@@ -105,26 +105,23 @@
           <a class="btn btn--primary btn--wide" href="#zayavka">Оставить заявку</a>
           <p class="price-phone">Или по телефону: <a class="nowrap" href="tel:+79932689322">+7 993 268-93-22</a></p>
         </div>
-<div class="model-features">
-  <h2>Особенности</h2>
-  <ul><li>Глухое полотно (ПГ) — без остекления</li><li>Лаконичный дизайн без лишнего декора</li><li>5 вариантов отделки: от светлых до тёмных</li><li>Светлые тона: Ясень арктический, Перламутр, Капучино</li><li>Тёмные и фактурные: Бетон, Дуб дымчатый</li><li>Подбор цвета и замер — по заявке</li></ul>
-</div>
       </div>
     </div>
 
 <!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
-     фурнитура (решение владельца 2026-08-11). Детальные таблицы —
+     фурнитура (решение владельца 2026-08-11). Стоит ВЫШЕ «Особенностей»,
+     иначе допродажа уезжает от цены. Детальные таблицы —
      ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
 <section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
   <h2>Вам может понадобиться</h2>
   <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Цены из нашего прайса, точный состав уточним по замеру.</p>
   <div class="needs-grid">
-    <article class="need-card">
+    <article class="need-card need-card--kit">
       <h3>Комплект с погонажем</h3>
       <p class="need-price"><span class="need-kit-delta">+3 032 ₽</span> <span class="need-price-note">к полотну</span></p>
       <p class="need-note">Отделка «<span class="need-kit-fins">Капучино, Перламутр, Бетон</span>» · комплект целиком <strong class="need-kit-total">7 465 ₽</strong></p>
       <ul class="need-list">
-        <li><span>Полотно</span><span class="need-num need-kit-pol">от 4 433 ₽</span></li>
+        <li><span>Полотно</span><span class="need-num need-kit-pol">4 433 ₽</span></li>
         <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">579 ₽ за шт</span></li>
         <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">259 ₽ за шт</span></li>
       </ul>
@@ -132,8 +129,9 @@
     </article>
     <article class="need-card">
       <h3>Погонаж дополнительно</h3>
+      <p class="need-note">Что докупают сверх комплекта — считаем по замеру.</p>
       <dl class="need-defs">
-        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</dd>
+        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера. Ширины добора к комплекту — 100, 150, 200 мм.</dd>
       </dl>
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
     </article>
@@ -158,6 +156,11 @@
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
     </article>
   </div>
+</section>
+
+<section class="model-features" aria-label="Особенности">
+  <h2>Особенности</h2>
+  <ul><li>Глухое полотно (ПГ) — без остекления</li><li>Лаконичный дизайн без лишнего декора</li><li>5 вариантов отделки: от светлых до тёмных</li><li>Светлые тона: Ясень арктический, Перламутр, Капучино</li><li>Тёмные и фактурные: Бетон, Дуб дымчатый</li><li>Подбор цвета и замер — по заявке</li></ul>
 </section>
 
 <section class="model-variants" id="varianty" aria-label="Варианты и цены">
@@ -338,7 +341,7 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/kvadro-00/01-kvadro-0-arktik.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Ясень арктический, глухое полотно", "w": 762, "h": 1600, "c": "ясень арктический"}, {"src": "../assets/img/kvadro-00/02-kvadro-0-beton.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Бетон, глухое полотно", "w": 762, "h": 1600, "c": "бетон"}, {"src": "../assets/img/kvadro-00/03-kvadro-0-dub-dymchatyy.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Дуб дымчатый, глухое полотно", "w": 762, "h": 1600, "c": "дуб дымчатый"}, {"src": "../assets/img/kvadro-00/04-kvadro-0-kapuchino.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Капучино, глухое полотно", "w": 762, "h": 1600, "c": "капучино"}, {"src": "../assets/img/kvadro-00/05-kvadro-0-perlamutr.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Перламутр, глухое полотно", "w": 762, "h": 1600, "c": "перламутр"}]</script>
 
-<script type="application/json" id="kit-data">[{"colors": ["бетон", "капучино", "перламутр"], "g": "pg", "total": 7465, "fins": "Капучино, Перламутр, Бетон", "delta": "+3 032 ₽", "totalf": "7 465 ₽", "pol": "от 4 433 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "pg", "total": 7749, "fins": "Дуб дымчатый, Ясень арктический", "delta": "+3 032 ₽", "totalf": "7 749 ₽", "pol": "от 4 717 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}]</script>
+<script type="application/json" id="kit-data">[{"colors": ["бетон", "капучино", "перламутр"], "g": "pg", "total": 7465, "fins": "Капучино, Перламутр, Бетон", "delta": "+3 032 ₽", "totalf": "7 465 ₽", "pol": "4 433 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "pg", "total": 7749, "fins": "Дуб дымчатый, Ясень арктический", "delta": "+3 032 ₽", "totalf": "7 749 ₽", "pol": "4 717 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}]</script>
 
 </main>
 <footer class="site-footer">

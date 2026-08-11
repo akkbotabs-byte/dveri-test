@@ -115,26 +115,23 @@
           <a class="btn btn--primary btn--wide" href="#zayavka">Оставить заявку</a>
           <p class="price-phone">Или по телефону: <a class="nowrap" href="tel:+79932689322">+7 993 268-93-22</a></p>
         </div>
-<div class="model-features">
-  <h2>Особенности</h2>
-  <ul><li>Отделка «Белый шёлк» — мягкий белый без глянца</li><li>Два варианта полотна: глухое (ПГ) и остеклённое (ПО)</li><li>Остеклённый вариант пропускает свет в тёмные помещения</li><li>Вариант с профильным наличником</li><li>Нейтральный дизайн — подходит для всей квартиры</li><li>Размер уточняется при замере</li></ul>
-</div>
       </div>
     </div>
 
 <!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
-     фурнитура (решение владельца 2026-08-11). Детальные таблицы —
+     фурнитура (решение владельца 2026-08-11). Стоит ВЫШЕ «Особенностей»,
+     иначе допродажа уезжает от цены. Детальные таблицы —
      ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
 <section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
   <h2>Вам может понадобиться</h2>
   <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Цены из нашего прайса, точный состав уточним по замеру.</p>
   <div class="needs-grid">
-    <article class="need-card">
+    <article class="need-card need-card--kit">
       <h3>Комплект с погонажем</h3>
       <p class="need-price"><span class="need-kit-delta">+3 032 ₽</span> <span class="need-price-note">к полотну</span></p>
       <p class="need-note">Отделка «<span class="need-kit-fins">Белый шёлк</span>» · комплект целиком <strong class="need-kit-total">8 522 ₽</strong></p>
       <ul class="need-list">
-        <li><span>Полотно</span><span class="need-num need-kit-pol">от 5 490 ₽</span></li>
+        <li><span>Полотно</span><span class="need-num need-kit-pol">5 490 ₽</span></li>
         <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">579 ₽ за шт</span></li>
         <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">259 ₽ за шт</span></li>
       </ul>
@@ -142,8 +139,9 @@
     </article>
     <article class="need-card">
       <h3>Погонаж дополнительно</h3>
+      <p class="need-note">Что докупают сверх комплекта — считаем по замеру.</p>
       <dl class="need-defs">
-        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</dd>
+        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера. Ширины добора к комплекту — 100, 150, 200 мм.</dd>
       </dl>
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
     </article>
@@ -167,6 +165,11 @@
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
     </article>
   </div>
+</section>
+
+<section class="model-features" aria-label="Особенности">
+  <h2>Особенности</h2>
+  <ul><li>Отделка «Белый шёлк» — мягкий белый без глянца</li><li>Два варианта полотна: глухое (ПГ) и остеклённое (ПО)</li><li>Остеклённый вариант пропускает свет в тёмные помещения</li><li>Вариант с профильным наличником</li><li>Нейтральный дизайн — подходит для всей квартиры</li><li>Размер уточняется при замере</li></ul>
 </section>
 
 <section class="model-variants" id="varianty" aria-label="Варианты и цены">
@@ -356,7 +359,7 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/nord/01-nord-belyy-shelk-pg-upd.jpg", "alt": "Межкомнатная дверь Норд, глухое полотно (ПГ), отделка Белый шёлк — рендер", "w": 757, "h": 1600, "c": "белый шёлк", "g": "pg"}, {"src": "../assets/img/nord/02-nord-belyy-shelk-po-upd.jpg", "alt": "Межкомнатная дверь Норд, остеклённое полотно (ПО), отделка Белый шёлк — рендер", "w": 757, "h": 1600, "c": "белый шёлк", "g": "reshetka"}, {"src": "../assets/img/nord/03-nord-pg-belyy-shelk-profilnyy-nalichnik.jpg", "alt": "Дверь Норд ПГ в отделке Белый шёлк с профильным наличником — рендер", "w": 760, "h": 1600, "c": "белый шёлк", "g": "pg"}, {"src": "../assets/img/nord/04-nord-belyy-shelk-1.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 1", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/05-nord-belyy-shelk-2.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 2", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/06-nord-belyy-shelk-3.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 3", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/07-nord-belyy-shelk-4.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 4", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/08-nord-belyy-shelk-5.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 5", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/09-nord-belyy-shelk-6.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 6", "w": 1600, "h": 1600, "c": "белый шёлк"}]</script>
 <script type="application/json" id="variants-data">{"variants": [{"colors": ["белый шёлк"], "g": "pg", "price": 5490, "pricef": "5 490 ₽"}, {"colors": ["белый шёлк"], "g": "reshetka", "price": 7707, "pricef": "7 707 ₽"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "price": 8337, "pricef": "8 337 ₽"}, {"colors": ["белый"], "g": "reshetka", "price": 11387, "pricef": "11 387 ₽"}], "kits": [{"v": 0, "colors": ["белый шёлк"], "total": 8522, "totalf": "8 522 ₽", "pod": 10037, "podf": "10 037 ₽"}, {"v": 1, "colors": ["белый шёлк"], "total": 10739, "totalf": "10 739 ₽", "pod": 12254, "podf": "12 254 ₽"}, {"v": 2, "colors": ["белый", "серый", "шампань"], "total": 15352, "totalf": "15 352 ₽", "pod": 16867, "podf": "16 867 ₽"}, {"v": 3, "colors": ["белый"], "total": 18402, "totalf": "18 402 ₽", "pod": 19917, "podf": "19 917 ₽"}]}</script>
-<script type="application/json" id="kit-data">[{"colors": ["белый шёлк"], "g": "pg", "total": 8522, "fins": "Белый шёлк", "delta": "+3 032 ₽", "totalf": "8 522 ₽", "pol": "от 5 490 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["белый шёлк"], "g": "reshetka", "total": 10739, "fins": "Белый шёлк", "delta": "+3 032 ₽", "totalf": "10 739 ₽", "pol": "от 7 707 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "total": 15352, "fins": "Белый, Серый, Шампань", "delta": "+7 015 ₽", "totalf": "15 352 ₽", "pol": "от 8 337 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}, {"colors": ["белый"], "g": "reshetka", "total": 18402, "fins": "Белый", "delta": "+7 015 ₽", "totalf": "18 402 ₽", "pol": "от 11 387 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}]</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый шёлк"], "g": "pg", "total": 8522, "fins": "Белый шёлк", "delta": "+3 032 ₽", "totalf": "8 522 ₽", "pol": "5 490 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["белый шёлк"], "g": "reshetka", "total": 10739, "fins": "Белый шёлк", "delta": "+3 032 ₽", "totalf": "10 739 ₽", "pol": "7 707 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "total": 15352, "fins": "Белый, Серый, Шампань", "delta": "+7 015 ₽", "totalf": "15 352 ₽", "pol": "8 337 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}, {"colors": ["белый"], "g": "reshetka", "total": 18402, "fins": "Белый", "delta": "+7 015 ₽", "totalf": "18 402 ₽", "pol": "11 387 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}]</script>
 
 </main>
 <footer class="site-footer">

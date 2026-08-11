@@ -159,10 +159,12 @@
   Object.keys(KIT_FIELDS).forEach(function (k) {
     kitNodes[k] = document.querySelector(KIT_FIELDS[k]);
   });
+  var kitCard = document.querySelector('.need-card--kit');
   var kitColor = null;
 
-  /* Минимальный комплект выбранной пары отделка×стекло. Пары без своего
-     комплекта (например, отделка вне прайса погонажа) цифры не трогают. */
+  /* Минимальный комплект выбранной пары отделка×стекло. Если комплекта
+     для пары нет (отделка вне прайса погонажа), карточку прячем: оставить
+     её значило бы показать цену предыдущей отделки, а не выбранной. */
   function updateKitCard() {
     if (!kitData) { return; }
     var best = null;
@@ -171,6 +173,7 @@
       if (activeGlass && k.g !== activeGlass) { return; }
       if (!best || k.total < best.total) { best = k; }
     });
+    if (kitCard) { kitCard.hidden = !best; }
     if (!best) { return; }
     Object.keys(kitNodes).forEach(function (n) {
       if (kitNodes[n]) { kitNodes[n].textContent = best[n]; }

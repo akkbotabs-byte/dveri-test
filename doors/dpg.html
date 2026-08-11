@@ -99,26 +99,23 @@
           <a class="btn btn--primary btn--wide" href="#zayavka">Оставить заявку</a>
           <p class="price-phone">Или по телефону: <a class="nowrap" href="tel:+79932689322">+7 993 268-93-22</a></p>
         </div>
-<div class="model-features">
-  <h2>Особенности</h2>
-  <ul><li>Гладкое полотно без филёнок и фрезеровки</li><li>Только глухой вариант (ПГ) — полностью закрывает проём от света</li><li>Белая отделка — нейтральная база для любого интерьера</li><li>Уместна в спальне, санузле, гардеробной, кабинете</li><li>Ровная поверхность, за которой просто ухаживать</li><li>Типовые размеры под стандартные проёмы</li></ul>
-</div>
       </div>
     </div>
 
 <!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
-     фурнитура (решение владельца 2026-08-11). Детальные таблицы —
+     фурнитура (решение владельца 2026-08-11). Стоит ВЫШЕ «Особенностей»,
+     иначе допродажа уезжает от цены. Детальные таблицы —
      ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
 <section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
   <h2>Вам может понадобиться</h2>
   <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Цены из нашего прайса, точный состав уточним по замеру.</p>
   <div class="needs-grid">
-    <article class="need-card">
+    <article class="need-card need-card--kit">
       <h3>Комплект с погонажем</h3>
       <p class="need-price"><span class="need-kit-delta">+2 505 ₽</span> <span class="need-price-note">к полотну</span></p>
       <p class="need-note">Отделка «<span class="need-kit-fins">Белый</span>» · комплект целиком <strong class="need-kit-total">5 657 ₽</strong></p>
       <ul class="need-list">
-        <li><span>Полотно</span><span class="need-num need-kit-pol">от 3 152 ₽</span></li>
+        <li><span>Полотно</span><span class="need-num need-kit-pol">3 152 ₽</span></li>
         <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">475 ₽ за шт</span></li>
         <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">216 ₽ за шт</span></li>
       </ul>
@@ -126,8 +123,9 @@
     </article>
     <article class="need-card">
       <h3>Погонаж дополнительно</h3>
+      <p class="need-note">Что докупают сверх комплекта — считаем по замеру.</p>
       <dl class="need-defs">
-        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</dd>
+        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера. Ширины добора к комплекту — 120, 200 мм.</dd>
         <dt>Фигурный наличник</dt><dd>Вместо гладкого — для отделки Белый: доплата 260 ₽ за 5 шт (268 ₽ вместо 216 ₽ за шт).</dd>
       </dl>
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
@@ -152,6 +150,11 @@
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
     </article>
   </div>
+</section>
+
+<section class="model-features" aria-label="Особенности">
+  <h2>Особенности</h2>
+  <ul><li>Гладкое полотно без филёнок и фрезеровки</li><li>Только глухой вариант (ПГ) — полностью закрывает проём от света</li><li>Белая отделка — нейтральная база для любого интерьера</li><li>Уместна в спальне, санузле, гардеробной, кабинете</li><li>Ровная поверхность, за которой просто ухаживать</li><li>Типовые размеры под стандартные проёмы</li></ul>
 </section>
 
 <section class="model-variants" id="varianty" aria-label="Варианты и цены">
@@ -330,7 +333,7 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/dpg/01-dpg-beloe.jpg", "alt": "Межкомнатная дверь ДПГ — белое гладкое глухое полотно, рендер модели", "w": 755, "h": 1600, "c": "белый"}, {"src": "../assets/img/dpg/02-dpg-beloe-1.jpg", "alt": "Белая глухая дверь ДПГ в светлом интерьере", "w": 1600, "h": 1600, "c": "белый"}, {"src": "../assets/img/dpg/03-dpg-beloe-2.jpg", "alt": "Межкомнатная дверь ДПГ в белом цвете — пример в жилой комнате", "w": 1600, "h": 1600, "c": "белый"}]</script>
 
-<script type="application/json" id="kit-data">[{"colors": ["белый"], "g": "pg", "total": 5657, "fins": "Белый", "delta": "+2 505 ₽", "totalf": "5 657 ₽", "pol": "от 3 152 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт"}]</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый"], "g": "pg", "total": 5657, "fins": "Белый", "delta": "+2 505 ₽", "totalf": "5 657 ₽", "pol": "3 152 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт"}]</script>
 
 </main>
 <footer class="site-footer">

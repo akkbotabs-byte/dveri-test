@@ -101,26 +101,23 @@
           <a class="btn btn--primary btn--wide" href="#zayavka">Оставить заявку</a>
           <p class="price-phone">Или по телефону: <a class="nowrap" href="tel:+79932689322">+7 993 268-93-22</a></p>
         </div>
-<div class="model-features">
-  <h2>Особенности</h2>
-  <ul><li>Классический двухфилёнчатый рисунок полотна</li><li>Покрытие — эмаль, три оттенка: Белый, Серый, Шампань</li><li>Только глухое полотно (ПГ) — без остекления</li><li>Телескопический погонаж в эмали того же цвета</li><li>Типовая ширина полотна — от 600 до 900 мм</li><li>Точный размер и комплектация подбираются при замере</li></ul>
-</div>
       </div>
     </div>
 
 <!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
-     фурнитура (решение владельца 2026-08-11). Детальные таблицы —
+     фурнитура (решение владельца 2026-08-11). Стоит ВЫШЕ «Особенностей»,
+     иначе допродажа уезжает от цены. Детальные таблицы —
      ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
 <section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
   <h2>Вам может понадобиться</h2>
   <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Цены из нашего прайса, точный состав уточним по замеру.</p>
   <div class="needs-grid">
-    <article class="need-card">
+    <article class="need-card need-card--kit">
       <h3>Комплект с погонажем</h3>
       <p class="need-price"><span class="need-kit-delta">+7 015 ₽</span> <span class="need-price-note">к полотну</span></p>
       <p class="need-note">Отделка «<span class="need-kit-fins">Белый, Серый, Шампань</span>» · комплект целиком <strong class="need-kit-total">15 352 ₽</strong></p>
       <ul class="need-list">
-        <li><span>Полотно</span><span class="need-num need-kit-pol">от 8 337 ₽</span></li>
+        <li><span>Полотно</span><span class="need-num need-kit-pol">8 337 ₽</span></li>
         <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">1 130 ₽ за шт</span></li>
         <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">725 ₽ за шт</span></li>
       </ul>
@@ -128,8 +125,9 @@
     </article>
     <article class="need-card">
       <h3>Погонаж дополнительно</h3>
+      <p class="need-note">Что докупают сверх комплекта — считаем по замеру.</p>
       <dl class="need-defs">
-        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера.</dd>
+        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера. Ширины добора к комплекту — 100, 150, 200 мм.</dd>
       </dl>
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
     </article>
@@ -154,6 +152,11 @@
       <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
     </article>
   </div>
+</section>
+
+<section class="model-features" aria-label="Особенности">
+  <h2>Особенности</h2>
+  <ul><li>Классический двухфилёнчатый рисунок полотна</li><li>Покрытие — эмаль, три оттенка: Белый, Серый, Шампань</li><li>Только глухое полотно (ПГ) — без остекления</li><li>Телескопический погонаж в эмали того же цвета</li><li>Типовая ширина полотна — от 600 до 900 мм</li><li>Точный размер и комплектация подбираются при замере</li></ul>
 </section>
 
 <section class="model-variants" id="varianty" aria-label="Варианты и цены">
@@ -332,7 +335,7 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/kristall/01-kristall-pg-belyy.jpg", "alt": "Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Белый цвет", "w": 760, "h": 1600, "c": "белый"}, {"src": "../assets/img/kristall/02-kristall-pg-seryy.jpg", "alt": "Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Серый цвет", "w": 760, "h": 1600, "c": "серый"}, {"src": "../assets/img/kristall/03-kristall-pg-shampan.jpg", "alt": "Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, цвет Шампань", "w": 760, "h": 1600, "c": "шампань"}]</script>
 
-<script type="application/json" id="kit-data">[{"colors": ["белый", "серый", "шампань"], "g": "pg", "total": 15352, "fins": "Белый, Серый, Шампань", "delta": "+7 015 ₽", "totalf": "15 352 ₽", "pol": "от 8 337 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}]</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый", "серый", "шампань"], "g": "pg", "total": 15352, "fins": "Белый, Серый, Шампань", "delta": "+7 015 ₽", "totalf": "15 352 ₽", "pol": "8 337 ₽", "kor": "1 130 ₽ за шт", "nal": "725 ₽ за шт"}]</script>
 
 </main>
 <footer class="site-footer">
