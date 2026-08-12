@@ -242,6 +242,12 @@
       g.disabled = !comboIdxs(activeColor, k).length;
       g.setAttribute('aria-pressed', String(k === activeGlass));
     });
+    /* И наоборот: свотчи отделок, которых нет с выбранным стеклом, гасим
+       (правка владельцев 11.08.2026: Миланский орех не бывает с Сатинато) */
+    chipList.forEach(function (c) {
+      c.disabled = Boolean(activeGlass) &&
+        !comboIdxs(c.dataset.color, activeGlass).length;
+    });
     if (!activeColor && !activeGlass) {
       resetPrice();      /* ни цвет, ни стекло не выбраны — полный сброс */
     } else {
