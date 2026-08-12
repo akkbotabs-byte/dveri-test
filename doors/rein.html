@@ -40,6 +40,15 @@
         <a class="btn btn--primary btn--header" href="#zayavka">Заявка</a>
       </div>
     </nav>
+    <!-- Корзина: без JS скрыта (.no-js), счётчик позиций ведёт cart.js -->
+    <a class="cart-link" href="../cart.html" aria-label="Корзина">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <circle cx="9.5" cy="20" r="1"></circle>
+        <circle cx="17.5" cy="20" r="1"></circle>
+        <path d="M3.5 4h2l2.3 10.8a1.5 1.5 0 0 0 1.5 1.2h7.6a1.5 1.5 0 0 0 1.5-1.2L20 8.5H6.5"></path>
+      </svg>
+      <span class="cart-count" hidden></span>
+    </a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="burger-box" aria-hidden="true"><span class="burger-line"></span></span>
       <span class="visually-hidden">Меню</span>
@@ -100,8 +109,22 @@
           <p class="price-kit">Комплект с коробкой и наличниками — от <strong>6 124 ₽</strong></p>
           <p class="price-kit">Полный комплект под ключ с фурнитурой — от <strong>7 959 ₽</strong></p>
           <p class="price-dims">Размеры: 600–900 × 2000; укороченные 550/600 × 1900.</p>
+          <div class="model-size">
+          <h2 class="model-size-title">Размер полотна, мм</h2>
+          <div class="size-chips">
+<button type="button" class="size-chip" data-size="600" aria-pressed="false"><span class="size-dim">600 × 2000</span><span class="size-stock size-stock--out">под заказ</span></button>
+<button type="button" class="size-chip" data-size="700" aria-pressed="false"><span class="size-dim">700 × 2000</span><span class="size-stock size-stock--out">под заказ</span></button>
+<button type="button" class="size-chip" data-size="800" aria-pressed="true"><span class="size-dim">800 × 2000</span><span class="size-stock size-stock--out">под заказ</span></button>
+<button type="button" class="size-chip" data-size="900" aria-pressed="false"><span class="size-dim">900 × 2000</span><span class="size-stock size-stock--out">под заказ</span></button>
+<button type="button" class="size-chip" data-size="550u" aria-pressed="false"><span class="size-dim">550 × 1900</span><span class="size-stock size-stock--out">под заказ</span></button>
+<button type="button" class="size-chip" data-size="600u" aria-pressed="false"><span class="size-dim">600 × 1900</span><span class="size-stock size-stock--out">под заказ</span></button>
+          </div>
+        </div>
           <p class="price-note">Цена указана за дверное полотно. Коробка, наличники и доборы подбираются отдельно (раздел «Погонаж»).</p>
-          <a class="btn btn--primary btn--wide" href="#zayavka">Оставить заявку</a>
+          <div class="price-actions">
+            <button type="button" class="btn btn--primary cart-add cart-add-door">В корзину</button>
+            <a class="btn btn--secondary" href="#zayavka">Оставить заявку</a>
+          </div>
           <p class="price-phone">Или по телефону: <a class="nowrap" href="tel:+79932689322">+7 993 268-93-22</a></p>
         </div>
       </div>
@@ -124,7 +147,7 @@
         <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">475 ₽ за шт</span></li>
         <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">216 ₽ за шт</span></li>
       </ul>
-      <p class="need-foot"><a class="btn btn--secondary btn--card" href="#komplekt">Стоимость комплекта</a></p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add cart-add-kit">Комплект в корзину</button><a class="btn btn--secondary btn--card" href="#komplekt">Стоимость комплекта</a></p>
     </article>
     <article class="need-card">
       <h3>Погонаж дополнительно</h3>
@@ -149,12 +172,12 @@
       <details class="need-details">
         <summary>Опции: санузел, магнитная защёлка, замок под ключ</summary>
         <ul class="need-opts">
-          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Для санузла</a><span class="need-num">+690 ₽</span></p><p class="need-opt-sub">Защёлка санузловая Punto PL96WC, матовый никель (410 ₽) вместо обычной защёлки, плюс Завёртка Punto BK6 QL, матовый никель/хром (645 ₽)</p></li>
-          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Тихая магнитная защёлка</a><span class="need-num">+115 ₽</span></p><p class="need-opt-sub">Защёлка магнитная Fuaro MAGNET M12, матовый никель (480 ₽) вместо обычной защёлки</p></li>
-          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Замок под ключ</a><span class="need-num">+1 449 ₽</span></p><p class="need-opt-sub">Корпус замка Punto PL85 под цилиндр, матовый никель (580 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром (650 ₽) и Накладка Punto ET QL под цилиндр, матовый никель/хром (584 ₽)</p></li>
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Для санузла</a><span class="need-num">+690 ₽</span><button type="button" class="btn btn--secondary btn--card cart-add cart-plus" data-added="✓" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49245&quot;, &quot;n&quot;: &quot;Защёлка санузловая Punto PL96WC, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 410, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:zavertka-33229&quot;, &quot;n&quot;: &quot;Завёртка Punto BK6 QL, матовый никель/хром&quot;, &quot;v&quot;: &quot;Punto · матовый никель/хром&quot;, &quot;p&quot;: 645, &quot;q&quot;: 1}]" data-cart-remove="[&quot;f:zashchelka-33595&quot;]" aria-label="В корзину: вариант для санузла (защёлка WC и завёртка вместо обычной защёлки)">+</button></p><p class="need-opt-sub">Защёлка санузловая Punto PL96WC, матовый никель (410 ₽) вместо обычной защёлки, плюс Завёртка Punto BK6 QL, матовый никель/хром (645 ₽)</p></li>
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Тихая магнитная защёлка</a><span class="need-num">+115 ₽</span><button type="button" class="btn btn--secondary btn--card cart-add cart-plus" data-added="✓" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-33667&quot;, &quot;n&quot;: &quot;Защёлка магнитная Fuaro MAGNET M12, матовый никель&quot;, &quot;v&quot;: &quot;Fuaro · матовый никель&quot;, &quot;p&quot;: 480, &quot;q&quot;: 1}]" data-cart-remove="[&quot;f:zashchelka-33595&quot;]" aria-label="В корзину: магнитная защёлка вместо обычной">+</button></p><p class="need-opt-sub">Защёлка магнитная Fuaro MAGNET M12, матовый никель (480 ₽) вместо обычной защёлки</p></li>
+          <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Замок под ключ</a><span class="need-num">+1 449 ₽</span><button type="button" class="btn btn--secondary btn--card cart-add cart-plus" data-added="✓" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49223&quot;, &quot;n&quot;: &quot;Корпус замка Punto PL85 под цилиндр, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 580, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:tsilindr-37051&quot;, &quot;n&quot;: &quot;Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром&quot;, &quot;v&quot;: &quot;Fuaro · хром&quot;, &quot;p&quot;: 650, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:nakladka-33119&quot;, &quot;n&quot;: &quot;Накладка Punto ET QL под цилиндр, матовый никель/хром&quot;, &quot;v&quot;: &quot;Punto · матовый никель/хром&quot;, &quot;p&quot;: 584, &quot;q&quot;: 1}]" data-cart-remove="[&quot;f:zashchelka-33595&quot;]" aria-label="В корзину: замок под ключ (корпус, цилиндр и накладка вместо защёлки)">+</button></p><p class="need-opt-sub">Корпус замка Punto PL85 под цилиндр, матовый никель (580 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром (650 ₽) и Накладка Punto ET QL под цилиндр, матовый никель/хром (584 ₽)</p></li>
         </ul>
       </details>
-      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-33063&quot;, &quot;n&quot;: &quot;Ручка Punto BLADE, матовый никель/хром&quot;, &quot;v&quot;: &quot;Punto · матовый никель/хром&quot;, &quot;p&quot;: 1070, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:zashchelka-33595&quot;, &quot;n&quot;: &quot;Защёлка Fuaro PLAST P12, матовый никель&quot;, &quot;v&quot;: &quot;Fuaro · матовый никель&quot;, &quot;p&quot;: 365, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:petlya-35491&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 200, &quot;q&quot;: 2}]">Добавить фурнитуру</button><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
     </article>
   </div>
 </section>
@@ -338,7 +361,8 @@
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/rein/01-reyn-zhasmin-belyy-front.jpg", "alt": "Межкомнатная дверь Рейн в цвете Белый, вид спереди", "w": 742, "h": 1600, "c": "белый"}, {"src": "../assets/img/rein/02-reyn-zhasmin-belyy-side.jpg", "alt": "Межкомнатная дверь Рейн в цвете Белый, вид сбоку", "w": 742, "h": 1600, "c": "белый"}, {"src": "../assets/img/rein/03-reyn-zhasmin-belyy-zoom.jpg", "alt": "Фрагмент полотна двери Рейн в цвете Белый крупным планом", "w": 756, "h": 1600, "c": "белый"}, {"src": "../assets/img/rein/04-reyn-perlamutr-front.jpg", "alt": "Межкомнатная дверь Рейн в цвете Перламутр, вид спереди", "w": 742, "h": 1600, "c": "перламутр"}, {"src": "../assets/img/rein/05-reyn-perlamutr-side.jpg", "alt": "Межкомнатная дверь Рейн в цвете Перламутр, вид сбоку", "w": 742, "h": 1600, "c": "перламутр"}, {"src": "../assets/img/rein/06-reyn-perlamutr-zoom.jpg", "alt": "Фрагмент полотна двери Рейн в цвете Перламутр крупным планом", "w": 756, "h": 1600, "c": "перламутр"}]</script>
 
-<script type="application/json" id="kit-data">[{"colors": ["белый", "перламутр"], "g": "pg", "total": 6124, "fins": "Белый, Перламутр", "delta": "+2 505 ₽", "totalf": "6 124 ₽", "pol": "3 619 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт"}]</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый", "перламутр"], "g": "pg", "total": 6124, "fins": "Белый, Перламутр", "delta": "+2 505 ₽", "totalf": "6 124 ₽", "pol": "3 619 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт", "vi": 0, "korItem": {"id": "p:korobka:prostoy:70x2060", "n": "Коробка", "v": "70×26×2060 мм · Простой", "p": 475}, "nalItem": {"id": "p:nalichnik:prostoy:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 мм · Простой", "p": 216}}]</script>
+<script type="application/json" id="cart-data">{"slug": "rein", "name": "Рейн", "variants": [{"colors": ["белый", "перламутр"], "g": "pg", "gid": "pg", "price": 3619, "label": "ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000", "550u": "550 × 1900", "600u": "600 × 1900"}, "cslug": {"белый": "bely", "перламутр": "perlamutr"}, "stock": {"белый|pg": [], "перламутр|pg": []}}</script>
 
 </main>
 <footer class="site-footer">
@@ -354,6 +378,7 @@
       <div class="footer-contacts">
         <p>Телефон: <a class="nowrap" href="tel:+79932689322">+7&nbsp;993&nbsp;268-93-22</a></p>
         <p>Telegram: <a href="https://t.me/doors_fabrika" target="_blank" rel="noopener">@doors_fabrika</a></p>
+        <p>Почта: <a href="mailto:fabrika.shopdoors@yandex.ru">fabrika.shopdoors@yandex.ru</a></p>
         <p>г.&nbsp;Павловск (адрес уточняется)</p>
       </div>
       <div class="footer-brand">
@@ -368,6 +393,7 @@
   </div>
 </footer>
 <script src="../js/main.js" defer></script>
+<script src="../js/cart.js" defer></script>
 <script src="../js/model.js" defer></script>
 </body>
 </html>

@@ -440,5 +440,175 @@
     }, { passive: true });
   }
 
+  /* ---- Корзина: размер полотна и кнопки «В корзину» ----
+     #cart-data (build.py): варианты прайса (цвета, стекло, цена, размеры,
+     ключ gid), подписи размеров, слаги цветов и срез наличия по размерам.
+     Кнопка полотна собирает строку корзины из ТЕКУЩЕГО выбора
+     (цвет × стекло × размер), «Комплект в корзину» кладёт полотно,
+     коробку × 3 и наличники × 5 отдельными строками с пометкой
+     «комплект». Без JS этих контролов нет (.no-js в styles.css). */
+  var cartEl = document.getElementById('cart-data');
+  var cartData = null;
+  if (cartEl && window.DSDCart) {
+    try { cartData = JSON.parse(cartEl.textContent); } catch (err3) { cartData = null; }
+  }
+  if (cartData) {
+    var sizeChips = Array.prototype.slice.call(
+      document.querySelectorAll('.size-chip'));
+    var doorBtn = document.querySelector('.cart-add-door');
+    var kitBtn = document.querySelector('.cart-add-kit');
+    var selSize = null;
+    sizeChips.forEach(function (chSel) {
+      if (chSel.getAttribute('aria-pressed') === 'true') {
+        selSize = chSel.dataset.size;
+      }
+    });
+
+    var colorNow = function () {
+      var c = null;
+      chipList.forEach(function (chip) {
+        if (chip.getAttribute('aria-pressed') === 'true') {
+          c = chip.dataset.color || null;
+        }
+      });
+      return c;
+    };
+
+    var capitalize = function (s) {
+      return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+    };
+
+    /* Варианты прайса под выбранные цвет и стекло (пусто не бывает:
+       несуществующие пары model.js гасит на свотчах) */
+    var scopeVariants = function (color, glass) {
+      var out = cartData.variants.filter(function (v) {
+        return (!color || v.colors.indexOf(color) !== -1) &&
+          (!glass || v.g === glass);
+      });
+      return out.length ? out : cartData.variants;
+    };
+
+    var sizeInStock = function (scope, color, k) {
+      if (!cartData.stock) { return null; }
+      return scope.some(function (v) {
+        if (v.sizes.indexOf(k) === -1) { return false; }
+        return v.colors.some(function (c) {
+          if (color && c !== color) { return false; }
+          var have = cartData.stock[c + '|' + v.g];
+          return Boolean(have) && have.indexOf(k) !== -1;
+        });
+      });
+    };
+
+    /* Таблетки размеров: гасим размеры, которых нет у выбранной пары
+       (укороченные — только ПГ; 2300 — только эмаль Альбы), обновляем
+       бейджи «есть»/«под заказ», при выпадении выбранного размера
+       выбираем 800 или первый доступный */
+    var updateSizes = function () {
+      var color = colorNow();
+      var glass = activeGlass;
+      var scope = scopeVariants(color, glass);
+      var enabled = [];
+      sizeChips.forEach(function (chip) {
+        var k = chip.dataset.size;
+        var ok = scope.some(function (v) { return v.sizes.indexOf(k) !== -1; });
+        chip.disabled = !ok;
+        if (ok) { enabled.push(k); }
+        var st = chip.querySelector('.size-stock');
+        if (st) {
+          var have = ok && sizeInStock(scope, color, k);
+          st.textContent = have ? 'есть' : 'под заказ';
+          st.classList.toggle('size-stock--in', Boolean(have));
+          st.classList.toggle('size-stock--out', !have);
+        }
+      });
+      if (enabled.indexOf(selSize) === -1) {
+        selSize = enabled.indexOf('800') !== -1 ? '800' : enabled[0];
+      }
+      sizeChips.forEach(function (chip) {
+        chip.setAttribute('aria-pressed', String(chip.dataset.size === selSize));
+      });
+    };
+
+    sizeChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        if (chip.disabled) { return; }
+        selSize = chip.dataset.size;
+        sizeChips.forEach(function (c) {
+          c.setAttribute('aria-pressed', String(c === chip));
+        });
+      });
+    });
+    /* Свотчи и «Стекло» уже слушаются выше — здесь только пересчёт
+       размеров (сработает после установки состояния первым слушателем) */
+    chipList.forEach(function (chip) {
+      chip.addEventListener('click', updateSizes);
+    });
+    glassChips.forEach(function (g) {
+      g.addEventListener('click', updateSizes);
+    });
+
+    /* Полотно в корзину: цена и ключ — у самого дешёвого варианта,
+       подходящего под выбор (без выбора цвета это цена «от», её
+       покупатель и видит в блоке) */
+    if (doorBtn) {
+      doorBtn.addEventListener('click', function () {
+        var color = colorNow();
+        var scope = scopeVariants(color, activeGlass).filter(function (v) {
+          return v.sizes.indexOf(selSize) !== -1;
+        });
+        if (!scope.length || !selSize) { return; }
+        var v = scope.reduce(function (a, b) { return b.price < a.price ? b : a; });
+        var c = (color && v.colors.indexOf(color) !== -1) ? color : v.colors[0];
+        window.DSDCart.add([{
+          id: 'd:' + cartData.slug + ':' + cartData.cslug[c] + ':' +
+            v.gid + ':' + selSize,
+          n: 'Полотно ' + cartData.name,
+          v: capitalize(c) + (v.label ? ', ' + v.label : '') + ', ' +
+            cartData.sizes[selSize] + ' мм',
+          p: v.price, q: 1
+        }]);
+        window.DSDCart.flash(doorBtn);
+      });
+    }
+
+    /* Комплект в корзину: строка комплекта — та же, что показана в
+       карточке (минимальная по выбранной паре отделка × стекло) */
+    if (kitBtn && kitData) {
+      kitBtn.addEventListener('click', function () {
+        var best = null;
+        kitData.forEach(function (k) {
+          if (kitColor && k.colors.indexOf(kitColor) === -1) { return; }
+          if (activeGlass && k.g !== activeGlass) { return; }
+          if (!best || k.total < best.total) { best = k; }
+        });
+        if (!best) { return; }
+        var v = cartData.variants[best.vi];
+        var c = (kitColor && v.colors.indexOf(kitColor) !== -1)
+          ? kitColor : v.colors[0];
+        var size = v.sizes.indexOf(selSize) !== -1 ? selSize
+          : (v.sizes.indexOf('800') !== -1 ? '800' : v.sizes[0]);
+        var fin = ' · в цвет полотна: ' + capitalize(c);
+        window.DSDCart.add([
+          {
+            id: 'd:' + cartData.slug + ':' + cartData.cslug[c] + ':' +
+              v.gid + ':' + size,
+            n: 'Полотно ' + cartData.name,
+            v: capitalize(c) + (v.label ? ', ' + v.label : '') + ', ' +
+              cartData.sizes[size] + ' мм',
+            p: v.price, q: 1, k: true
+          },
+          { id: best.korItem.id, n: best.korItem.n,
+            v: best.korItem.v + fin, p: best.korItem.p, q: 3, k: true },
+          { id: best.nalItem.id, n: best.nalItem.n,
+            v: best.nalItem.v + fin, p: best.nalItem.p, q: 5, k: true }
+        ]);
+        window.DSDCart.flash(kitBtn);
+      });
+    }
+
+    updateSizes();
+  }
+
   updateNav();
 })();

@@ -693,3 +693,115 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
   .footer-grid { grid-template-columns: 1fr 1fr 1.2fr; }
   .footer-bottom { grid-template-columns: 1fr auto; }
 }
+
+/* ---------- Корзина ----------
+   Бэкенда нет: состав в localStorage (js/cart.js), оформление на /cart.html
+   (Telegram / письмо). Прогрессивная деградация: без JS кнопки корзины,
+   ссылка в шапке и селектор размера скрыты — работают формы заявки. */
+.no-js .cart-link, .no-js .cart-add, .no-js .model-size { display: none !important; }
+
+/* Иконка в шапке со счётчиком позиций (badge прячется при пустой корзине) */
+.cart-link {
+  position: relative; flex: none;
+  width: var(--tap-target-min); height: var(--tap-target-min);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--color-ink); border-radius: var(--radius-m);
+}
+.cart-link:hover { color: var(--color-accent); }
+.cart-count {
+  position: absolute; top: 1px; right: 0;
+  min-width: 1.125rem; height: 1.125rem; padding: 0 0.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent); color: var(--color-ink-inverse);
+  font-size: 0.6875rem; font-weight: var(--fw-bold);
+  line-height: 1.125rem; text-align: center;
+}
+
+/* Селектор «Размер полотна» в блоке цены: таблетки с бейджем наличия;
+   недоступные для выбранной пары отделка×стекло размеры гаснут (model.js) */
+.model-size { margin-block: var(--space-4); }
+.model-size-title {
+  font-family: var(--font-body); font-size: var(--fs-small);
+  font-weight: var(--fw-semibold); margin-bottom: var(--space-2);
+}
+.size-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.size-chip {
+  display: inline-flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 2px;
+  min-height: var(--tap-target-min); padding: var(--space-1) var(--space-4);
+  border: 1px solid var(--color-line); border-radius: var(--radius-pill);
+  background: var(--color-surface); font-size: var(--fs-small);
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+.size-chip:hover { border-color: var(--color-accent); }
+.size-chip[aria-pressed="true"] { border-color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); }
+.size-chip[disabled] { opacity: .45; cursor: not-allowed; }
+.size-chip[disabled]:hover { border-color: var(--color-line); }
+.size-dim { font-weight: var(--fw-semibold); white-space: nowrap; }
+.size-stock { font-size: var(--fs-caption); line-height: var(--lh-small); }
+.size-stock--in { color: var(--color-accent); font-weight: var(--fw-semibold); }
+.size-stock--out { color: var(--color-ink-soft); }
+
+/* «В корзину» + «Оставить заявку» в блоке цены */
+.price-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.price-actions .btn { flex: 1 1 10rem; }
+
+/* Отклик добавления (cart.js меняет текст кнопки на 1.4 с) */
+.btn--secondary.is-added { border-color: var(--color-accent); color: var(--color-accent); }
+.btn--primary.is-added { background: var(--color-accent-hover); }
+
+/* Кнопки корзины в карточках допродажи и на карточках фурнитуры */
+.need-foot { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.need-foot .btn { flex: 1 1 auto; }
+.furn-card .cart-add { margin-top: var(--space-2); }
+/* «+» у опции: поверх растянутой ссылки опции (см. need-opt-head a::after) */
+.cart-plus {
+  position: relative; z-index: 1; flex: none;
+  min-width: 2.25rem; padding: 0 var(--space-2);
+  margin-left: var(--space-2); align-self: center;
+}
+.price-table .cart-add { white-space: nowrap; }
+
+/* ---------- Страница /cart.html ---------- */
+.cart-page h1 { margin-bottom: var(--space-4); }
+.cart-stock-note { margin-bottom: var(--space-3); }
+.cart-item-name {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2);
+  font-weight: var(--fw-semibold);
+}
+.cart-item-var { margin-top: var(--space-1); max-width: 34rem; }
+.cart-item .stock-line { display: block; margin-top: var(--space-1); }
+.cart-qty {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--color-line-input); border-radius: var(--radius-m);
+}
+.cart-qty-btn {
+  width: 2.25rem; height: 2.25rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1rem; line-height: 1;
+}
+.cart-qty-btn:hover { background: var(--color-bg-soft); }
+.cart-qty-btn[disabled] { opacity: .4; cursor: default; }
+.cart-qty-num { min-width: 2rem; text-align: center; font-weight: var(--fw-semibold); }
+@media (pointer: coarse) {
+  .cart-qty-btn { width: var(--tap-target-min); height: var(--tap-target-min); }
+}
+.cart-remove {
+  width: var(--tap-target-min); height: var(--tap-target-min);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--color-ink-soft); border-radius: var(--radius-m);
+}
+.cart-remove:hover { color: var(--color-error); background: var(--color-bg-soft); }
+.cart-summary {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: var(--space-4);
+  margin-block: var(--space-4) var(--space-3);
+}
+.cart-total { font-size: var(--fs-price); font-weight: var(--fw-bold); }
+.cart-total span { color: var(--color-accent); }
+.cart-send { display: grid; gap: var(--space-2); }
+.cart-send-alt { display: grid; gap: var(--space-2); grid-template-columns: 1fr 1fr; }
+@media (max-width: 479px) {
+  .cart-send-alt { grid-template-columns: 1fr; }
+}
+.cart-sent { color: var(--color-accent); font-size: var(--fs-small); font-weight: var(--fw-semibold); }

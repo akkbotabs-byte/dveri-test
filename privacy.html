@@ -40,6 +40,15 @@
         <a class="btn btn--primary btn--header" href="contacts.html#zayavka">Заявка</a>
       </div>
     </nav>
+    <!-- Корзина: без JS скрыта (.no-js), счётчик позиций ведёт cart.js -->
+    <a class="cart-link" href="cart.html" aria-label="Корзина">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <circle cx="9.5" cy="20" r="1"></circle>
+        <circle cx="17.5" cy="20" r="1"></circle>
+        <path d="M3.5 4h2l2.3 10.8a1.5 1.5 0 0 0 1.5 1.2h7.6a1.5 1.5 0 0 0 1.5-1.2L20 8.5H6.5"></path>
+      </svg>
+      <span class="cart-count" hidden></span>
+    </a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="burger-box" aria-hidden="true"><span class="burger-line"></span></span>
       <span class="visually-hidden">Меню</span>
@@ -111,6 +120,7 @@
       <div class="footer-contacts">
         <p>Телефон: <a class="nowrap" href="tel:+79932689322">+7&nbsp;993&nbsp;268-93-22</a></p>
         <p>Telegram: <a href="https://t.me/doors_fabrika" target="_blank" rel="noopener">@doors_fabrika</a></p>
+        <p>Почта: <a href="mailto:fabrika.shopdoors@yandex.ru">fabrika.shopdoors@yandex.ru</a></p>
         <p>г.&nbsp;Павловск (адрес уточняется)</p>
       </div>
       <div class="footer-brand">
@@ -125,5 +135,6 @@
   </div>
 </footer>
 <script src="js/main.js" defer></script>
+<script src="js/cart.js" defer></script>
 </body>
 </html>

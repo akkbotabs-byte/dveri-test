@@ -40,6 +40,15 @@
         <a class="btn btn--primary btn--header" href="#zayavka">Заявка</a>
       </div>
     </nav>
+    <!-- Корзина: без JS скрыта (.no-js), счётчик позиций ведёт cart.js -->
+    <a class="cart-link" href="cart.html" aria-label="Корзина">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <circle cx="9.5" cy="20" r="1"></circle>
+        <circle cx="17.5" cy="20" r="1"></circle>
+        <path d="M3.5 4h2l2.3 10.8a1.5 1.5 0 0 0 1.5 1.2h7.6a1.5 1.5 0 0 0 1.5-1.2L20 8.5H6.5"></path>
+      </svg>
+      <span class="cart-count" hidden></span>
+    </a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="burger-box" aria-hidden="true"><span class="burger-line"></span></span>
       <span class="visually-hidden">Меню</span>
@@ -75,6 +84,7 @@
   <p class="furn-sub">Punto · матовый никель/хром</p>
   <p class="card-price">1 070 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-33063&quot;, &quot;n&quot;: &quot;Ручка Punto BLADE, матовый никель/хром&quot;, &quot;v&quot;: &quot;Punto · матовый никель/хром&quot;, &quot;p&quot;: 1070, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/ruchka-44325.jpg" alt="Ручка Ajax LEVEL, чёрный" width="600" height="600" loading="lazy">
@@ -82,6 +92,7 @@
   <p class="furn-sub">Ajax · чёрный</p>
   <p class="card-price">1 050 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-44325&quot;, &quot;n&quot;: &quot;Ручка Ajax LEVEL, чёрный&quot;, &quot;v&quot;: &quot;Ajax · чёрный&quot;, &quot;p&quot;: 1050, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/ruchka-41355.jpg" alt="Ручка Ajax POLO JK, матовый никель/хром" width="600" height="600" loading="lazy">
@@ -89,6 +100,7 @@
   <p class="furn-sub">Ajax · матовый никель/хром</p>
   <p class="card-price">860 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-41355&quot;, &quot;n&quot;: &quot;Ручка Ajax POLO JK, матовый никель/хром&quot;, &quot;v&quot;: &quot;Ajax · матовый никель/хром&quot;, &quot;p&quot;: 860, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/ruchka-43183.jpg" alt="Ручка Ajax SIGMA, матовый никель/хром" width="600" height="600" loading="lazy">
@@ -97,6 +109,7 @@
   <p class="furn-note">105 мм</p>
   <p class="card-price">750 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-43183&quot;, &quot;n&quot;: &quot;Ручка Ajax SIGMA, матовый никель/хром&quot;, &quot;v&quot;: &quot;Ajax · матовый никель/хром&quot;, &quot;p&quot;: 750, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/ruchka-41745.jpg" alt="Ручка Punto BLADE, чёрный" width="600" height="600" loading="lazy">
@@ -104,6 +117,7 @@
   <p class="furn-sub">Punto · чёрный</p>
   <p class="card-price">1 070 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-41745&quot;, &quot;n&quot;: &quot;Ручка Punto BLADE, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 1070, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/ruchka-41743.jpg" alt="Ручка Punto STYLE, чёрный" width="600" height="600" loading="lazy">
@@ -111,6 +125,7 @@
   <p class="furn-sub">Punto · чёрный</p>
   <p class="card-price">1 070 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-41743&quot;, &quot;n&quot;: &quot;Ручка Punto STYLE, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 1070, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/ruchka-43387.jpg" alt="Ручка Ajax POLO JR, чёрный" width="600" height="600" loading="lazy">
@@ -118,6 +133,7 @@
   <p class="furn-sub">Ajax · чёрный</p>
   <p class="card-price">860 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-43387&quot;, &quot;n&quot;: &quot;Ручка Ajax POLO JR, чёрный&quot;, &quot;v&quot;: &quot;Ajax · чёрный&quot;, &quot;p&quot;: 860, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/ruchka-47099.jpg" alt="Ручка Punto ARC MAIN, чёрный" width="600" height="600" loading="lazy">
@@ -125,6 +141,7 @@
   <p class="furn-sub">Punto · чёрный</p>
   <p class="card-price">985 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-47099&quot;, &quot;n&quot;: &quot;Ручка Punto ARC MAIN, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 985, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/ruchka-47109.jpg" alt="Ручка Punto ARC MAIN, сатиновое золото" width="600" height="600" loading="lazy">
@@ -132,6 +149,7 @@
   <p class="furn-sub">Punto · сатиновое золото</p>
   <p class="card-price">965 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-47109&quot;, &quot;n&quot;: &quot;Ручка Punto ARC MAIN, сатиновое золото&quot;, &quot;v&quot;: &quot;Punto · сатиновое золото&quot;, &quot;p&quot;: 965, &quot;q&quot;: 1}]">В корзину</button>
 </article>
   </div>
 </section>
@@ -145,6 +163,7 @@
   <p class="furn-sub">Punto · матовый никель/хром</p>
   <p class="card-price">645 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zavertka-33229&quot;, &quot;n&quot;: &quot;Завёртка Punto BK6 QL, матовый никель/хром&quot;, &quot;v&quot;: &quot;Punto · матовый никель/хром&quot;, &quot;p&quot;: 645, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zavertka-41383.jpg" alt="Завёртка Ajax BK6 JK, матовый никель/хром" width="600" height="600" loading="lazy">
@@ -152,6 +171,7 @@
   <p class="furn-sub">Ajax · матовый никель/хром</p>
   <p class="card-price">540 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zavertka-41383&quot;, &quot;n&quot;: &quot;Завёртка Ajax BK6 JK, матовый никель/хром&quot;, &quot;v&quot;: &quot;Ajax · матовый никель/хром&quot;, &quot;p&quot;: 540, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zavertka-41393.jpg" alt="Завёртка Ajax BK6 JR, матовый никель/хром" width="600" height="600" loading="lazy">
@@ -159,6 +179,7 @@
   <p class="furn-sub">Ajax · матовый никель/хром</p>
   <p class="card-price">470 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zavertka-41393&quot;, &quot;n&quot;: &quot;Завёртка Ajax BK6 JR, матовый никель/хром&quot;, &quot;v&quot;: &quot;Ajax · матовый никель/хром&quot;, &quot;p&quot;: 470, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zavertka-43389.jpg" alt="Завёртка Ajax BK6 JK, чёрный" width="600" height="600" loading="lazy">
@@ -166,6 +187,7 @@
   <p class="furn-sub">Ajax · чёрный</p>
   <p class="card-price">540 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zavertka-43389&quot;, &quot;n&quot;: &quot;Завёртка Ajax BK6 JK, чёрный&quot;, &quot;v&quot;: &quot;Ajax · чёрный&quot;, &quot;p&quot;: 540, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zavertka-43397.jpg" alt="Завёртка Ajax BK6 JR, чёрный" width="600" height="600" loading="lazy">
@@ -173,6 +195,7 @@
   <p class="furn-sub">Ajax · чёрный</p>
   <p class="card-price">470 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zavertka-43397&quot;, &quot;n&quot;: &quot;Завёртка Ajax BK6 JR, чёрный&quot;, &quot;v&quot;: &quot;Ajax · чёрный&quot;, &quot;p&quot;: 470, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zavertka-41749.jpg" alt="Завёртка Punto BK6 QL, чёрный" width="600" height="600" loading="lazy">
@@ -180,6 +203,7 @@
   <p class="furn-sub">Punto · чёрный</p>
   <p class="card-price">680 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zavertka-41749&quot;, &quot;n&quot;: &quot;Завёртка Punto BK6 QL, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 680, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zavertka-47177.jpg" alt="Завёртка Punto BK6 ARC, чёрный" width="600" height="600" loading="lazy">
@@ -187,6 +211,7 @@
   <p class="furn-sub">Punto · чёрный</p>
   <p class="card-price">530 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zavertka-47177&quot;, &quot;n&quot;: &quot;Завёртка Punto BK6 ARC, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 530, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zavertka-47187.jpg" alt="Завёртка Punto BK6 ARC, сатиновое золото" width="600" height="600" loading="lazy">
@@ -194,6 +219,7 @@
   <p class="furn-sub">Punto · сатиновое золото</p>
   <p class="card-price">500 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zavertka-47187&quot;, &quot;n&quot;: &quot;Завёртка Punto BK6 ARC, сатиновое золото&quot;, &quot;v&quot;: &quot;Punto · сатиновое золото&quot;, &quot;p&quot;: 500, &quot;q&quot;: 1}]">В корзину</button>
 </article>
   </div>
 </section>
@@ -207,6 +233,7 @@
   <p class="furn-sub">Fuaro · матовый никель</p>
   <p class="card-price">365 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-33595&quot;, &quot;n&quot;: &quot;Защёлка Fuaro PLAST P12, матовый никель&quot;, &quot;v&quot;: &quot;Fuaro · матовый никель&quot;, &quot;p&quot;: 365, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-42357.jpg" alt="Защёлка Fuaro PLAST P12, чёрный" width="600" height="600" loading="lazy">
@@ -214,6 +241,7 @@
   <p class="furn-sub">Fuaro · чёрный</p>
   <p class="card-price">350 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-42357&quot;, &quot;n&quot;: &quot;Защёлка Fuaro PLAST P12, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 350, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-33665.jpg" alt="Защёлка магнитная Fuaro MAGN M12, матовое золото" width="600" height="600" loading="lazy">
@@ -222,6 +250,7 @@
   <p class="furn-note">магнитная — срабатывает тише обычной</p>
   <p class="card-price">495 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-33665&quot;, &quot;n&quot;: &quot;Защёлка магнитная Fuaro MAGN M12, матовое золото&quot;, &quot;v&quot;: &quot;Fuaro · матовое золото&quot;, &quot;p&quot;: 495, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-33667.jpg" alt="Защёлка магнитная Fuaro MAGNET M12, матовый никель" width="600" height="600" loading="lazy">
@@ -230,6 +259,7 @@
   <p class="furn-note">магнитная — срабатывает тише обычной</p>
   <p class="card-price">480 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-33667&quot;, &quot;n&quot;: &quot;Защёлка магнитная Fuaro MAGNET M12, матовый никель&quot;, &quot;v&quot;: &quot;Fuaro · матовый никель&quot;, &quot;p&quot;: 480, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-49245.jpg" alt="Защёлка санузловая Punto PL96WC, матовый никель" width="600" height="600" loading="lazy">
@@ -238,6 +268,7 @@
   <p class="furn-note">санузловая (WC) — ставится с завёрткой</p>
   <p class="card-price">410 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49245&quot;, &quot;n&quot;: &quot;Защёлка санузловая Punto PL96WC, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 410, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-49235.jpg" alt="Защёлка санузловая Punto PL96WC, чёрный" width="600" height="600" loading="lazy">
@@ -246,6 +277,7 @@
   <p class="furn-note">санузловая (WC) — ставится с завёрткой</p>
   <p class="card-price">410 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49235&quot;, &quot;n&quot;: &quot;Защёлка санузловая Punto PL96WC, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 410, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-49243.jpg" alt="Защёлка санузловая Punto PL96WC, сатиновое золото" width="600" height="600" loading="lazy">
@@ -254,6 +286,7 @@
   <p class="furn-note">санузловая (WC) — ставится с завёрткой</p>
   <p class="card-price">455 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49243&quot;, &quot;n&quot;: &quot;Защёлка санузловая Punto PL96WC, сатиновое золото&quot;, &quot;v&quot;: &quot;Punto · сатиновое золото&quot;, &quot;p&quot;: 455, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-46519.jpg" alt="Защёлка магнитная санузловая Fuaro MAGN M96WC, сатиновое золото" width="600" height="600" loading="lazy">
@@ -262,6 +295,7 @@
   <p class="furn-note">магнитная санузловая (WC) — тихая, ставится с завёрткой</p>
   <p class="card-price">1 130 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-46519&quot;, &quot;n&quot;: &quot;Защёлка магнитная санузловая Fuaro MAGN M96WC, сатиновое золото&quot;, &quot;v&quot;: &quot;Fuaro · сатиновое золото&quot;, &quot;p&quot;: 1130, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-48759.jpg" alt="Защёлка магнитная санузловая Punto ML96WC, матовый никель" width="600" height="600" loading="lazy">
@@ -270,6 +304,7 @@
   <p class="furn-note">магнитная санузловая (WC) — тихая, ставится с завёрткой</p>
   <p class="card-price">625 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-48759&quot;, &quot;n&quot;: &quot;Защёлка магнитная санузловая Punto ML96WC, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 625, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-48755.jpg" alt="Защёлка магнитная санузловая Punto ML96WC, чёрный" width="600" height="600" loading="lazy">
@@ -278,6 +313,7 @@
   <p class="furn-note">магнитная санузловая (WC) — тихая, ставится с завёрткой</p>
   <p class="card-price">625 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-48755&quot;, &quot;n&quot;: &quot;Защёлка магнитная санузловая Punto ML96WC, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 625, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-49223.jpg" alt="Корпус замка Punto PL85 под цилиндр, матовый никель" width="600" height="600" loading="lazy">
@@ -286,6 +322,7 @@
   <p class="furn-note">корпус замка — для запирания на ключ, нужен цилиндр</p>
   <p class="card-price">580 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49223&quot;, &quot;n&quot;: &quot;Корпус замка Punto PL85 под цилиндр, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 580, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-41763.jpg" alt="Корпус замка Fuaro PLAST P85C с защёлкой под цилиндр, чёрный" width="600" height="600" loading="lazy">
@@ -294,6 +331,7 @@
   <p class="furn-note">корпус замка — для запирания на ключ, нужен цилиндр</p>
   <p class="card-price">920 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-41763&quot;, &quot;n&quot;: &quot;Корпус замка Fuaro PLAST P85C с защёлкой под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 920, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/zashchelka-49219.jpg" alt="Корпус замка Punto PL85 под цилиндр, чёрный" width="600" height="600" loading="lazy">
@@ -302,6 +340,7 @@
   <p class="furn-note">корпус замка — для запирания на ключ, нужен цилиндр</p>
   <p class="card-price">510 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49219&quot;, &quot;n&quot;: &quot;Корпус замка Punto PL85 под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 510, &quot;q&quot;: 1}]">В корзину</button>
 </article>
   </div>
 </section>
@@ -316,6 +355,7 @@
   <p class="furn-note">универсальная, без врезки, 100×2,5 мм</p>
   <p class="card-price">200 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:petlya-35491&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 200, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/petlya-43133.jpg" alt="Петля универсальная Punto IN4200W, чёрный" width="600" height="600" loading="lazy">
@@ -324,6 +364,7 @@
   <p class="furn-note">универсальная, без врезки, 100×2,5 мм</p>
   <p class="card-price">200 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:petlya-43133&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 200, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/petlya-48383.jpg" alt="Петля универсальная Punto IN4200W-HD, сатиновое золото" width="600" height="600" loading="lazy">
@@ -332,6 +373,7 @@
   <p class="furn-note">универсальная, без врезки, 100×2,5 мм</p>
   <p class="card-price">220 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:petlya-48383&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W-HD, сатиновое золото&quot;, &quot;v&quot;: &quot;Punto · сатиновое золото&quot;, &quot;p&quot;: 220, &quot;q&quot;: 1}]">В корзину</button>
 </article>
   </div>
 </section>
@@ -346,6 +388,7 @@
   <p class="furn-note">5 ключей, длина 60 мм (25+10+25)</p>
   <p class="card-price">650 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:tsilindr-37051&quot;, &quot;n&quot;: &quot;Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром&quot;, &quot;v&quot;: &quot;Fuaro · хром&quot;, &quot;p&quot;: 650, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/tsilindr-45437.jpg" alt="Цилиндр Fuaro 100 ZM/60 ключ-вертушка, чёрный" width="600" height="600" loading="lazy">
@@ -354,6 +397,7 @@
   <p class="furn-note">5 ключей, длина 60 мм (25+10+25)</p>
   <p class="card-price">650 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:tsilindr-45437&quot;, &quot;n&quot;: &quot;Цилиндр Fuaro 100 ZM/60 ключ-вертушка, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 650, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/tsilindr-d-pro502-60.jpg" alt="Цилиндр Fuaro D-PRO502/60, чёрный" width="600" height="600" loading="lazy">
@@ -362,6 +406,7 @@
   <p class="furn-note">5 ключей, длина 60 мм (25+10+25)</p>
   <p class="card-price">950 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:tsilindr-d-pro502-60&quot;, &quot;n&quot;: &quot;Цилиндр Fuaro D-PRO502/60, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 950, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/tsilindr-45433.jpg" alt="Цилиндр Fuaro 100 ZA/60 ключ-ключ, чёрный" width="600" height="600" loading="lazy">
@@ -370,6 +415,7 @@
   <p class="furn-note">5 ключей, длина 60 мм (25+10+25)</p>
   <p class="card-price">650 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:tsilindr-45433&quot;, &quot;n&quot;: &quot;Цилиндр Fuaro 100 ZA/60 ключ-ключ, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 650, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/nakladka-47189.jpg" alt="Накладка Punto ET ARC под цилиндр, чёрный" width="600" height="600" loading="lazy">
@@ -377,6 +423,7 @@
   <p class="furn-sub">Punto · чёрный</p>
   <p class="card-price">350 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:nakladka-47189&quot;, &quot;n&quot;: &quot;Накладка Punto ET ARC под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 350, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/nakladka-43407.jpg" alt="Накладка Ajax ET JK под цилиндр, чёрный" width="600" height="600" loading="lazy">
@@ -384,6 +431,7 @@
   <p class="furn-sub">Ajax · чёрный</p>
   <p class="card-price">380 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:nakladka-43407&quot;, &quot;n&quot;: &quot;Накладка Ajax ET JK под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Ajax · чёрный&quot;, &quot;p&quot;: 380, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/nakladka-41751.jpg" alt="Накладка Punto ET QL под цилиндр, чёрный" width="600" height="600" loading="lazy">
@@ -391,6 +439,7 @@
   <p class="furn-sub">Punto · чёрный</p>
   <p class="card-price">584 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:nakladka-41751&quot;, &quot;n&quot;: &quot;Накладка Punto ET QL под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 584, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/nakladka-33119.jpg" alt="Накладка Punto ET QL под цилиндр, матовый никель/хром" width="600" height="600" loading="lazy">
@@ -398,6 +447,7 @@
   <p class="furn-sub">Punto · матовый никель/хром</p>
   <p class="card-price">584 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:nakladka-33119&quot;, &quot;n&quot;: &quot;Накладка Punto ET QL под цилиндр, матовый никель/хром&quot;, &quot;v&quot;: &quot;Punto · матовый никель/хром&quot;, &quot;p&quot;: 584, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/nakladka-41389.jpg" alt="Накладка Ajax ET JK под цилиндр, матовый никель/хром" width="600" height="600" loading="lazy">
@@ -405,6 +455,7 @@
   <p class="furn-sub">Ajax · матовый никель/хром</p>
   <p class="card-price">355 ₽</p>
   <p class="stock-line stock-line--out">Под заказ</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:nakladka-41389&quot;, &quot;n&quot;: &quot;Накладка Ajax ET JK под цилиндр, матовый никель/хром&quot;, &quot;v&quot;: &quot;Ajax · матовый никель/хром&quot;, &quot;p&quot;: 355, &quot;q&quot;: 1}]">В корзину</button>
 </article>
 <article class="furn-card">
   <img src="assets/img/furnitura-web/nakladka-et-tl-bl.jpg" alt="Накладка Punto ET TL под цилиндр, чёрный" width="600" height="600" loading="lazy">
@@ -412,6 +463,7 @@
   <p class="furn-sub">Punto · чёрный</p>
   <p class="card-price">355 ₽</p>
   <p class="stock-line stock-line--in">В наличии</p>
+  <button type="button" class="btn btn--secondary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:nakladka-et-tl-bl&quot;, &quot;n&quot;: &quot;Накладка Punto ET TL под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 355, &quot;q&quot;: 1}]">В корзину</button>
 </article>
   </div>
 </section>
@@ -473,6 +525,7 @@
       <div class="footer-contacts">
         <p>Телефон: <a class="nowrap" href="tel:+79932689322">+7&nbsp;993&nbsp;268-93-22</a></p>
         <p>Telegram: <a href="https://t.me/doors_fabrika" target="_blank" rel="noopener">@doors_fabrika</a></p>
+        <p>Почта: <a href="mailto:fabrika.shopdoors@yandex.ru">fabrika.shopdoors@yandex.ru</a></p>
         <p>г.&nbsp;Павловск (адрес уточняется)</p>
       </div>
       <div class="footer-brand">
@@ -487,5 +540,6 @@
   </div>
 </footer>
 <script src="js/main.js" defer></script>
+<script src="js/cart.js" defer></script>
 </body>
 </html>
