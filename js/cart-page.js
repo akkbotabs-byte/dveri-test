@@ -145,8 +145,10 @@
     var empty = items.length === 0;
     if (emptyEl) { emptyEl.hidden = !empty; }
     if (contentEl) { contentEl.hidden = empty; }
-    if (empty) { return; }
+    /* Чистим строки и при пустой корзине: иначе в скрытом контейнере
+       остаются устаревшие узлы с живыми обработчиками */
     rowsEl.textContent = '';
+    if (empty) { return; }
     var total = 0;
     items.forEach(function (it, idx) {
       total += linePrice(it) * it.q;
@@ -172,23 +174,33 @@
 
   /* ---- Текст заказа ---- */
 
-  function orderText(name, phone, comment) {
+  /* Текст заказа по полям формы f = {name, phone, comment}. maxItems —
+     сокращённый состав для mailto (лимит длины у почтовых клиентов):
+     в тексте первые N позиций, итог всегда по всем. */
+  function orderText(f, maxItems) {
     var items = Cart.read();
+    var cap = typeof maxItems === 'number' ? maxItems : items.length;
     var lines = ['Заказ с сайта «Магазин дверей»', ''];
     var total = 0;
     items.forEach(function (it, i) {
       var p = linePrice(it);
       total += p * it.q;
-      lines.push((i + 1) + '. ' + it.n + (it.k ? ' [комплект]' : '') +
-        (it.v ? ' — ' + it.v : '') +
-        ' — ' + it.q + ' шт × ' + fmt(p) + ' = ' + fmt(p * it.q));
+      if (i < cap) {
+        lines.push((i + 1) + '. ' + it.n + (it.k ? ' [комплект]' : '') +
+          (it.v ? ' — ' + it.v : '') +
+          ' — ' + it.q + ' шт × ' + fmt(p) + ' = ' + fmt(p * it.q));
+      }
     });
+    if (items.length > cap) {
+      lines.push('…и ещё позиций: ' + (items.length - cap) +
+        ' (в итоге ниже учтены все; полный список — отдельным сообщением)');
+    }
     lines.push('');
     lines.push('Итого: ' + fmt(total));
     lines.push('');
-    lines.push('Имя: ' + name);
-    lines.push('Телефон: ' + phone);
-    if (comment) { lines.push('Комментарий: ' + comment); }
+    lines.push('Имя: ' + f.name);
+    lines.push('Телефон: ' + f.phone);
+    if (f.comment) { lines.push('Комментарий: ' + f.comment); }
     return lines.join('\n');
   }
 
@@ -236,8 +248,8 @@
       return null;
     }
     if (!Cart.read().length) { return null; }
-    return orderText(name.value.trim(), phone.value.trim(),
-      comment ? comment.value.trim() : '');
+    return { name: name.value.trim(), phone: phone.value.trim(),
+      comment: comment ? comment.value.trim() : '' };
   }
 
   /* Корзина НЕ очищается после отправки: заказ подтверждает менеджер,
@@ -252,34 +264,67 @@
     form.setAttribute('novalidate', 'novalidate');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var text = validate();
-      if (!text) { return; }
-      window.open(TG_LINK + '?text=' + encodeURIComponent(text),
-        '_blank', 'noopener');
-      sent('Открыли Telegram с текстом заказа — проверьте его и нажмите ' +
-        '«Отправить» в чате. Если чат не открылся, нажмите «Скопировать ' +
-        'заказ» и пришлите текст нам: ' + TG_LINK.replace('https://', '') +
-        ' или ' + MAIL + '. Корзина сохранена.');
+      var f = validate();
+      if (!f) { return; }
+      /* Без 'noopener' в features: с ним window.open возвращает null
+         и в успехе, а нам нужно отличить заблокированное окно.
+         opener обнуляем вручную. */
+      var w = window.open(TG_LINK + '?text=' +
+        encodeURIComponent(orderText(f)), '_blank');
+      if (w) {
+        try { w.opener = null; } catch (err) { /* ничего */ }
+        sent('Открыли Telegram с текстом заказа — проверьте его и нажмите ' +
+          '«Отправить» в чате. Если чат не открылся, нажмите «Скопировать ' +
+          'заказ» и пришлите текст нам: ' + TG_LINK.replace('https://', '') +
+          ' или ' + MAIL + '. Корзина сохранена.');
+      } else {
+        sent('Браузер не дал открыть Telegram во всплывающем окне. Нажмите ' +
+          '«Скопировать заказ» и пришлите текст нам: ' +
+          TG_LINK.replace('https://', '') + ' или ' + MAIL +
+          '. Корзина сохранена.');
+      }
     });
+  }
+
+  /* Старые почтовые клиенты молча режут mailto-ссылки длиннее ~2 КБ:
+     длинный заказ сокращаем до позиций, которые влезают (итог — по всем) */
+  var MAILTO_LIMIT = 1900;
+
+  function mailtoHref(text) {
+    return 'mailto:' + MAIL + '?subject=' +
+      encodeURIComponent('Заказ с сайта') +
+      '&body=' + encodeURIComponent(text);
   }
 
   if (mailBtn) {
     mailBtn.addEventListener('click', function () {
-      var text = validate();
-      if (!text) { return; }
-      window.location.href = 'mailto:' + MAIL +
-        '?subject=' + encodeURIComponent('Заказ с сайта') +
-        '&body=' + encodeURIComponent(text);
-      sent('Открыли почтовую программу с письмом-заказом — проверьте и ' +
-        'отправьте. Если письмо не открылось, нажмите «Скопировать заказ» ' +
-        'и вставьте текст в письмо на ' + MAIL + '. Корзина сохранена.');
+      var f = validate();
+      if (!f) { return; }
+      var n = Cart.read().length;
+      var cap = n;
+      var href = mailtoHref(orderText(f));
+      while (href.length > MAILTO_LIMIT && cap > 1) {
+        cap -= 1;
+        href = mailtoHref(orderText(f, cap));
+      }
+      window.location.href = href;
+      sent(cap < n
+        ? 'Открыли почтовую программу. Заказ длинный: в письме первые ' +
+          'позиции (' + cap + ' из ' + n + '), итог — по всем. Полный ' +
+          'состав добавьте в письмо кнопкой «Скопировать заказ». ' +
+          'Корзина сохранена.'
+        : 'Открыли почтовую программу с письмом-заказом — проверьте и ' +
+          'отправьте. Если письмо не открылось, нажмите «Скопировать ' +
+          'заказ» и вставьте текст в письмо на ' + MAIL +
+          '. Корзина сохранена.');
     });
   }
 
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
-      var text = validate();
-      if (!text) { return; }
+      var f = validate();
+      if (!f) { return; }
+      var text = orderText(f);
       var done = function () {
         sent('Заказ скопирован — вставьте его в сообщение ' +
           TG_LINK.replace('https://', '') + ' или в письмо на ' + MAIL + '.');

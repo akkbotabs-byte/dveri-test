@@ -48,6 +48,10 @@
   }
 
   document.querySelectorAll('form.lead-form').forEach(function (form) {
+    /* Форма корзины (#cart-form) выглядит как lead-form (общие стили),
+       но заказ отправляет cart-page.js. Второй обработчик здесь открывал
+       бы лишнее окно (без состава корзины) и прятал форму. */
+    if (form.id === 'cart-form') { return; }
     form.setAttribute('novalidate', 'novalidate');
     form.addEventListener('submit', function (e) {
       e.preventDefault();

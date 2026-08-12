@@ -162,15 +162,30 @@
   var kitCard = document.querySelector('.need-card--kit');
   var kitColor = null;
 
-  /* Минимальный комплект выбранной пары отделка×стекло. Если комплекта
-     для пары нет (отделка вне прайса погонажа), карточку прячем: оставить
-     её значило бы показать цену предыдущей отделки, а не выбранной. */
+  /* Строка комплекта следует и за выбором размера с исполнением
+     (selSize/selEdge из блока корзины ниже; var — в общей области
+     видимости IIFE): высота 2300 у Альбы — отдельный вариант прайса
+     с погонажем своей высоты, кромка Прайма — отдельный gid. */
+  function kitVariantOk(k) {
+    if (!cartData) { return true; }
+    var v = cartData.variants[k.vi];
+    if (!v) { return true; }
+    if (selEdge && v.gid !== selEdge) { return false; }
+    if (selSize && v.sizes.indexOf(selSize) === -1) { return false; }
+    return true;
+  }
+
+  /* Минимальный комплект выбранной пары отделка×стекло (и размера
+     с исполнением). Если комплекта для выбора нет (отделка вне прайса
+     погонажа), карточку прячем: оставить её значило бы показать цену
+     предыдущей отделки, а не выбранной. */
   function updateKitCard() {
     if (!kitData) { return; }
     var best = null;
     kitData.forEach(function (k) {
       if (kitColor && k.colors.indexOf(kitColor) === -1) { return; }
       if (activeGlass && k.g !== activeGlass) { return; }
+      if (!kitVariantOk(k)) { return; }
       if (!best || k.total < best.total) { best = k; }
     });
     if (kitCard) { kitCard.hidden = !best; }
@@ -454,13 +469,25 @@
   }
   if (cartData) {
     var sizeChips = Array.prototype.slice.call(
-      document.querySelectorAll('.size-chip'));
+      document.querySelectorAll('.size-chip:not(.edge-chip)'));
     var doorBtn = document.querySelector('.cart-add-door');
     var kitBtn = document.querySelector('.cart-add-kit');
     var selSize = null;
     sizeChips.forEach(function (chSel) {
       if (chSel.getAttribute('aria-pressed') === 'true') {
         selSize = chSel.dataset.size;
+      }
+    });
+
+    /* Переключатель «Исполнение» (Прайм: кромка 4 AL / ПВХ) — варианты,
+       неразличимые по цвету×стеклу×размеру; selEdge — выбранный gid.
+       Дефолт проставлен при сборке (самый дешёвый вариант группы). */
+    var edgeChips = Array.prototype.slice.call(
+      document.querySelectorAll('.edge-chip'));
+    var selEdge = null;
+    edgeChips.forEach(function (chE) {
+      if (chE.getAttribute('aria-pressed') === 'true') {
+        selEdge = chE.dataset.gid;
       }
     });
 
@@ -478,12 +505,13 @@
       return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
     };
 
-    /* Варианты прайса под выбранные цвет и стекло (пусто не бывает:
-       несуществующие пары model.js гасит на свотчах) */
+    /* Варианты прайса под выбранные цвет, стекло и исполнение (пусто
+       не бывает: несуществующие пары model.js гасит на свотчах) */
     var scopeVariants = function (color, glass) {
       var out = cartData.variants.filter(function (v) {
         return (!color || v.colors.indexOf(color) !== -1) &&
-          (!glass || v.g === glass);
+          (!glass || v.g === glass) &&
+          (!selEdge || v.gid === selEdge);
       });
       return out.length ? out : cartData.variants;
     };
@@ -528,6 +556,21 @@
       sizeChips.forEach(function (chip) {
         chip.setAttribute('aria-pressed', String(chip.dataset.size === selSize));
       });
+      /* Цена «от» — по выбранному исполнению (у моделей без него ценой
+         управляют свотчи и updateCombo, здесь не вмешиваемся) */
+      if (edgeChips.length && priceLabel) {
+        var minV = null;
+        scope.forEach(function (v) {
+          if (!minV || v.price < minV.price) { minV = v; }
+        });
+        if (minV && minV.pricef) {
+          priceLabel.textContent = 'от ' + minV.pricef;
+        }
+      }
+      /* Карточка комплекта следует за размером и исполнением; вызов
+         здесь — с уже пересчитанным selSize (первый слушатель свотча
+         зовёт updateKitCard до пересчёта размеров) */
+      updateKitCard();
     };
 
     sizeChips.forEach(function (chip) {
@@ -537,6 +580,16 @@
         sizeChips.forEach(function (c) {
           c.setAttribute('aria-pressed', String(c === chip));
         });
+        updateKitCard();
+      });
+    });
+    edgeChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        selEdge = chip.dataset.gid;
+        edgeChips.forEach(function (c) {
+          c.setAttribute('aria-pressed', String(c === chip));
+        });
+        updateSizes();
       });
     });
     /* Свотчи и «Стекло» уже слушаются выше — здесь только пересчёт
@@ -573,13 +626,15 @@
     }
 
     /* Комплект в корзину: строка комплекта — та же, что показана в
-       карточке (минимальная по выбранной паре отделка × стекло) */
+       карточке (минимальная по выбранным отделке × стеклу × размеру ×
+       исполнению — тот же фильтр, что в updateKitCard) */
     if (kitBtn && kitData) {
       kitBtn.addEventListener('click', function () {
         var best = null;
         kitData.forEach(function (k) {
           if (kitColor && k.colors.indexOf(kitColor) === -1) { return; }
           if (activeGlass && k.g !== activeGlass) { return; }
+          if (!kitVariantOk(k)) { return; }
           if (!best || k.total < best.total) { best = k; }
         });
         if (!best) { return; }
