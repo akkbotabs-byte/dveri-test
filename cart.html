@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Корзина — Магазин дверей</title>
-<meta name="description" content="Корзина заказа: полотна, погонаж и фурнитура. Отправьте заказ в Telegram или письмом — посчитаем и перезвоним.">
+<meta name="description" content="Корзина заказа: полотна, погонаж и фурнитура. Отправьте заказ — он придёт менеджеру на почту, посчитаем и перезвоним; можно продублировать в Telegram или письмом.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://dveri-sd.example/cart.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Магазин дверей">
 <meta property="og:title" content="Корзина — Магазин дверей">
-<meta property="og:description" content="Корзина заказа: полотна, погонаж и фурнитура. Отправьте заказ в Telegram или письмом — посчитаем и перезвоним.">
+<meta property="og:description" content="Корзина заказа: полотна, погонаж и фурнитура. Отправьте заказ — он придёт менеджеру на почту, посчитаем и перезвоним; можно продублировать в Telegram или письмом.">
 <meta property="og:url" content="https://dveri-sd.example/cart.html">
 <meta property="og:image" content="https://dveri-sd.example/assets/img/nord/01-nord-belyy-shelk-pg-upd.jpg">
 <meta property="og:locale" content="ru_RU">
@@ -98,11 +98,12 @@
         <div class="lead-inner">
           <div class="lead-copy">
             <h2>Оформление</h2>
-            <p>Заказ уходит сообщением: мы получим состав корзины, имя и телефон, посчитаем точную сумму и перезвоним. Telegram — быстрее всего; письмо — если мессенджера нет.</p>
+            <p>Нажмите «Отправить заказ» — состав корзины, имя и телефон придут менеджеру на почту; он посчитает точную сумму и перезвонит. Самый быстрый способ связаться — Telegram: кнопка ниже откроет чат с готовым текстом заказа.</p>
             <p class="lead-phone">Или по телефону: <a class="nowrap" href="tel:+79932689322">+7&nbsp;993&nbsp;268-93-22</a></p>
           </div>
           <div class="form-col">
             <form class="lead-form" id="cart-form" method="post" action="#">
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
               <div class="field">
                 <label for="cart-name">Имя</label>
                 <input id="cart-name" name="name" type="text" autocomplete="name" placeholder="Иван" required aria-required="true" aria-describedby="cart-name-error">
@@ -120,16 +121,19 @@
               </div>
               <label class="consent">
                 <input type="checkbox" name="consent" required aria-required="true" aria-describedby="cart-consent-error">
-                <span>Нажимая «Отправить в Telegram», вы даёте согласие на обработку персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных». <a href="privacy.html">Политика обработки персональных данных</a>.<span class="field-error" id="cart-consent-error" role="alert"></span></span>
+                <span>Отправляя заказ (любой из кнопок), вы даёте согласие на обработку персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных». <a href="privacy.html">Политика обработки персональных данных</a>.<span class="field-error" id="cart-consent-error" role="alert"></span></span>
               </label>
               <div class="cart-send">
-                <button class="btn btn--primary btn--wide" type="submit">Отправить в Telegram</button>
+                <button class="btn btn--primary btn--wide" type="submit">Отправить заказ</button>
                 <div class="cart-send-alt">
+                  <button class="btn btn--secondary" type="button" id="cart-tg">Отправить в Telegram</button>
                   <button class="btn btn--secondary" type="button" id="cart-mail">Отправить письмом</button>
                   <button class="btn btn--secondary" type="button" id="cart-copy">Скопировать заказ</button>
                 </div>
               </div>
+              <p class="muted cart-note">Заказ придёт менеджеру на почту. Хотите быстрее — отправьте его в Telegram: менеджер увидит сообщение сразу.</p>
               <p class="cart-sent" id="cart-sent" role="status" hidden></p>
+              <button class="btn btn--secondary" type="button" id="cart-sent-clear" hidden>Очистить корзину</button>
               <p class="form-alt">Или напрямую: <a href="https://t.me/doors_fabrika" target="_blank" rel="noopener">@doors_fabrika</a> · <a href="mailto:fabrika.shopdoors@yandex.ru">fabrika.shopdoors@yandex.ru</a></p>
             </form>
           </div>

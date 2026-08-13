@@ -1,6 +1,16 @@
 /* Страница /cart.html: таблица позиций из localStorage (cart.js),
-   количество с +/−, удаление, итог и оформление заказа без бэкенда —
+   количество с +/−, удаление, итог и оформление заказа без бэкенда.
+
+   Главный путь — «Отправить заказ»: fetch POST на FormSubmit
+   (formsubmit.co/ajax/<почта>), заказ приходит менеджеру письмом.
+   Успех — сообщение «заказ отправлен» + предложение очистить корзину,
+   кнопки Telegram/письмо остаются как способ продублировать.
+   Ошибка сети или сервиса — честное сообщение и фолбэк на те же кнопки:
    deep-link в Telegram, письмо (mailto) или копирование текста заказа.
+
+   ВАЖНО: первый POST на новый адрес не доставляется — FormSubmit шлёт
+   на этот адрес письмо-активацию; пока менеджер не нажмёт в нём кнопку
+   подтверждения, заказы на почту не приходят (фолбэк работает всегда).
 
    Честность цен: цена каждой позиции берётся из реестра #cart-registry
    (генерируется build.py из актуального прайса), а не из localStorage;
@@ -17,6 +27,7 @@
 
   var TG_LINK = 'https://t.me/doors_fabrika';
   var MAIL = 'fabrika.shopdoors@yandex.ru';
+  var FS_URL = 'https://formsubmit.co/ajax/' + MAIL;
 
   var registry = {};
   var regEl = document.getElementById('cart-registry');
@@ -30,9 +41,11 @@
   var totalEl = document.getElementById('cart-total');
   var clearBtn = document.getElementById('cart-clear');
   var form = document.getElementById('cart-form');
+  var tgBtn = document.getElementById('cart-tg');
   var mailBtn = document.getElementById('cart-mail');
   var copyBtn = document.getElementById('cart-copy');
   var sentEl = document.getElementById('cart-sent');
+  var sentClearBtn = document.getElementById('cart-sent-clear');
 
   function fmt(n) {
     return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽';
@@ -252,18 +265,88 @@
       comment: comment ? comment.value.trim() : '' };
   }
 
-  /* Корзина НЕ очищается после отправки: заказ подтверждает менеджер,
-     а состав может ещё пригодиться. Отдельная кнопка «Очистить корзину». */
-  function sent(msg) {
+  /* Корзина НЕ очищается после отправки сама: заказ подтверждает менеджер,
+     а состав может ещё пригодиться. При успехе автоотправки показываем
+     кнопку «Очистить корзину» (offerClear), решает посетитель. */
+  function sent(msg, offerClear) {
     if (!sentEl) { return; }
     sentEl.textContent = msg;
     sentEl.hidden = false;
+    if (sentClearBtn) { sentClearBtn.hidden = !offerClear; }
   }
+
+  if (sentClearBtn) {
+    sentClearBtn.addEventListener('click', function () {
+      Cart.write([]);
+      render();
+    });
+  }
+
+  /* ---- Главная кнопка «Отправить заказ»: письмо менеджеру через
+     FormSubmit (см. шапку файла про активацию адреса) ---- */
 
   if (form) {
     form.setAttribute('novalidate', 'novalidate');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var f = validate();
+      if (!f) { return; }
+      if (!window.fetch) { /* совсем старый браузер — сразу фолбэк */
+        sent('Ваш браузер не поддерживает автоотправку. Нажмите ' +
+          '«Отправить в Telegram» или «Отправить письмом» — текст заказа ' +
+          'подставится сам. Корзина сохранена.');
+        return;
+      }
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var honeyEl = form.querySelector('[name="_honey"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем…';
+      }
+      var finish = function (ok) {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Отправить заказ';
+        }
+        if (ok) {
+          sent('Заказ отправлен — менеджер получит его на почту и свяжется ' +
+            'с вами. Продублировать можно кнопками «Отправить в Telegram» ' +
+            'и «Отправить письмом». Корзина сохранена — если она больше ' +
+            'не нужна, очистите её кнопкой ниже.', true);
+        } else {
+          sent('Не получилось отправить заказ автоматически: нет сети или ' +
+            'сервис отправки недоступен. Нажмите «Отправить в Telegram» ' +
+            'или «Отправить письмом» — текст заказа подставится сам. ' +
+            'Корзина сохранена.');
+        }
+      };
+      fetch(FS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+          'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'Заказ с сайта',
+          _template: 'box',
+          _honey: honeyEl ? honeyEl.value : '',
+          'Имя': f.name,
+          'Телефон': f.phone,
+          'Заказ': orderText(f)
+        })
+      }).then(function (res) {
+        /* FormSubmit и на ошибках отвечает JSON: success приходит
+           строкой "true"/"false" или булевым значением */
+        return res.json().then(function (data) {
+          finish(res.ok && data &&
+            (data.success === true || data.success === 'true'));
+        });
+      }).then(null, function () { finish(false); });
+    });
+  }
+
+  /* ---- Фолбэк и дубль: заказ сообщением в Telegram ---- */
+
+  if (tgBtn) {
+    tgBtn.addEventListener('click', function () {
       var f = validate();
       if (!f) { return; }
       /* Без 'noopener' в features: с ним window.open возвращает null
