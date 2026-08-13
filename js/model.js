@@ -467,7 +467,83 @@
   if (cartEl && window.DSDCart) {
     try { cartData = JSON.parse(cartEl.textContent); } catch (err3) { cartData = null; }
   }
-  if (cartData) {
+  /* ---- Скрытая дверь (Инвизибл): три селектора высота × открывание ×
+     кромка вместо размера. #cart-data.hoe — варианты прайса в порядке
+     таблицы «Варианты и цены»; сторона обратного открывания
+     (правое/левое) на цену не влияет и уходит только в подпись
+     позиции корзины. ---- */
+  if (cartData && cartData.hoe) {
+    var hoe = cartData.hoe;
+    var hoeChips = Array.prototype.slice.call(
+      document.querySelectorAll('.hoe-chip'));
+    var hoeBtn = document.querySelector('.cart-add-door');
+    var hoeSel = { h: null, o: null, e: null };
+    hoeChips.forEach(function (c) {
+      if (c.getAttribute('aria-pressed') === 'true') {
+        hoeSel[c.dataset.group] = c.dataset.val;
+      }
+    });
+
+    var hoeVariant = function () {
+      var o = hoeSel.o === 'pryamoe' ? 'pryamoe' : 'obratnoe';
+      for (var hi = 0; hi < hoe.variants.length; hi += 1) {
+        var v = hoe.variants[hi];
+        if (v.h === hoeSel.h && v.o === o && v.e === hoeSel.e) {
+          return { v: v, i: hi };
+        }
+      }
+      return null;
+    };
+
+    /* Комбинация выбрана всегда (в каждой группе есть активная
+       таблетка) — показываем точную цену варианта и подсвечиваем
+       его строку в таблице «Варианты и цены» */
+    var hoeUpdate = function () {
+      var f = hoeVariant();
+      if (!f) { return; }
+      if (priceLabel) { priceLabel.textContent = f.v.pricef; }
+      variantRows.forEach(function (tr, i) {
+        tr.classList.toggle('is-active', i === f.i);
+      });
+    };
+
+    hoeChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        hoeSel[chip.dataset.group] = chip.dataset.val;
+        hoeChips.forEach(function (c) {
+          if (c.dataset.group === chip.dataset.group) {
+            c.setAttribute('aria-pressed', String(c === chip));
+          }
+        });
+        hoeUpdate();
+      });
+    });
+    /* Клик по свотчу цвета возвращает цену «от …» (базовый слушатель
+       выше) — восстанавливаем точную цену выбранной комбинации */
+    chipList.forEach(function (chip) {
+      chip.addEventListener('click', hoeUpdate);
+    });
+
+    if (hoeBtn) {
+      hoeBtn.addEventListener('click', function () {
+        var f = hoeVariant();
+        if (!f) { return; }
+        var side = hoeSel.o === 'obr-r' ? ', правое'
+          : hoeSel.o === 'obr-l' ? ', левое' : '';
+        window.DSDCart.add([{
+          id: 'd:' + cartData.slug + ':' + hoe.cslug + ':' +
+            f.v.o + '-' + f.v.e + ':' + f.v.h,
+          n: 'Полотно ' + cartData.name,
+          v: hoe.color + ', ' + hoe.open[f.v.o] + side + ', ' +
+            hoe.edge[f.v.e] + ', высота ' + f.v.h + ' мм, ширина под проём',
+          p: f.v.price, q: 1
+        }]);
+        window.DSDCart.flash(hoeBtn);
+      });
+    }
+
+    hoeUpdate();
+  } else if (cartData) {
     var sizeChips = Array.prototype.slice.call(
       document.querySelectorAll('.size-chip:not(.edge-chip)'));
     var doorBtn = document.querySelector('.cart-add-door');
