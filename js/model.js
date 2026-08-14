@@ -124,7 +124,26 @@
   var chipList = Array.prototype.slice.call(
     document.querySelectorAll('.swatch-chip:not(.glass-chip)'));
   var priceLabel = document.querySelector('.model-price .price-label');
+  /* Строка «за полотно …» под ценой — показывается вместе с точной
+     ценой выбранной комбинации (замечание владельцев 14.08.2026) */
+  var priceVariant = document.querySelector('.model-price .price-variant');
   var nophotoNote = document.querySelector('.swatch-nophoto-note');
+
+  /* Плавная смена цены: короткое затухание, текст меняется в паузе.
+     Повторный вызов до конца паузы просто перецеливает текст — видимой
+     остаётся одна смена (обработчики клика зовут её по цепочке). */
+  function fadeSwap(el, text) {
+    if (!el) { return; }
+    var now = el._fadeText !== undefined ? el._fadeText : el.textContent;
+    if (now === text) { return; }
+    el._fadeText = text;
+    window.clearTimeout(el._fadeTimer);
+    el.style.opacity = '0';
+    el._fadeTimer = window.setTimeout(function () {
+      el.textContent = text;
+      el.style.opacity = '';
+    }, 150);
+  }
   var variantRows = Array.prototype.slice.call(
     document.querySelectorAll('#varianty .price-table tbody tr:not(.facing-group)'));
 
@@ -202,7 +221,7 @@
   var initialKits = kitStrongs.map(function (s) { return s.textContent; });
 
   function resetPrice() {
-    if (priceLabel) { priceLabel.textContent = initialPrice; }
+    fadeSwap(priceLabel, initialPrice);
     kitStrongs.forEach(function (s, i) { s.textContent = initialKits[i]; });
     variantRows.forEach(function (tr) { tr.classList.remove('is-active'); });
   }
@@ -234,7 +253,7 @@
       var v = combo.variants[i];
       if (!best || v.price < best.price) { best = v; }
     });
-    if (priceLabel && best) { priceLabel.textContent = 'от ' + best.pricef; }
+    if (best) { fadeSwap(priceLabel, 'от ' + best.pricef); }
     variantRows.forEach(function (tr, i) {
       tr.classList.toggle('is-active', idxs.indexOf(i) !== -1);
     });
@@ -313,7 +332,7 @@
         show(parseInt(chip.dataset.photo, 10) || 0);
       }
       if (priceLabel && chip.dataset.pricef) {
-        priceLabel.textContent = 'от ' + chip.dataset.pricef;
+        fadeSwap(priceLabel, 'от ' + chip.dataset.pricef);
       }
       var idxs = (chip.dataset.variants || '').split(' ');
       variantRows.forEach(function (tr, i) {
@@ -498,12 +517,18 @@
     };
 
     /* Комбинация выбрана всегда (в каждой группе есть активная
-       таблетка) — показываем точную цену варианта и подсвечиваем
-       его строку в таблице «Варианты и цены» */
+       таблетка) — показываем точную цену варианта без «от», строку
+       «за полотно …» и подсвечиваем его строку в «Вариантах и ценах» */
     var hoeUpdate = function () {
       var f = hoeVariant();
       if (!f) { return; }
-      if (priceLabel) { priceLabel.textContent = f.v.pricef; }
+      fadeSwap(priceLabel, f.v.pricef);
+      if (priceVariant) {
+        priceVariant.hidden = false;
+        fadeSwap(priceVariant, 'за полотно ' + hoe.color + ', ' +
+          hoe.open[f.v.o] + ', ' + hoe.edge[f.v.e] + ', высота ' +
+          f.v.h + ' мм');
+      }
       variantRows.forEach(function (tr, i) {
         tr.classList.toggle('is-active', i === f.i);
       });
@@ -568,6 +593,13 @@
         selEdge = chE.dataset.gid;
       }
     });
+    /* Дефолт исполнения (для сброса) и следы явного выбора покупателя:
+       размер и исполнение имеют дефолт уже в разметке, поэтому точную
+       цену наверху показываем только после реального клика (у ДПГ
+       комбинацию «делает» один лишь размер) */
+    var initialEdge = selEdge;
+    var sizeTouched = false;
+    var edgeTouched = false;
 
     var colorNow = function () {
       var c = null;
@@ -642,7 +674,7 @@
           if (!minV || v.price < minV.price) { minV = v; }
         });
         if (minV && minV.pricef) {
-          priceLabel.textContent = 'от ' + minV.pricef;
+          fadeSwap(priceLabel, 'от ' + minV.pricef);
         }
       }
       /* Карточка комплекта следует за размером и исполнением; вызов
@@ -677,6 +709,114 @@
     });
     glassChips.forEach(function (g) {
       g.addEventListener('click', updateSizes);
+    });
+
+    /* ---- Живая цена наверху (замечание владельцев 14.08.2026) ----
+       Пока выбор не определяет цену однозначно — «от N ₽» (его ведут
+       обработчики выше). Как только выбранная комбинация цвет × стекло ×
+       исполнение × размер сходится к одной цене прайса — точная цена
+       без «от» и строка «за полотно …». Кандидаты — варианты cart-data
+       под текущий выбор; сам выбор может быть и неполным: у ДПГ
+       с единственным вариантом прайса хватает клика по размеру. */
+    var anyPicked = function () {
+      return Boolean(colorNow() || activeGlass || sizeTouched || edgeTouched);
+    };
+
+    var pickedVariants = function () {
+      var color = colorNow();
+      return cartData.variants.filter(function (v) {
+        return (!color || v.colors.indexOf(color) !== -1) &&
+          (!activeGlass || v.g === activeGlass) &&
+          (!selEdge || v.gid === selEdge) &&
+          Boolean(selSize) && v.sizes.indexOf(selSize) !== -1;
+      });
+    };
+
+    /* Минимальная строка комплекта под текущий выбор — тот же фильтр,
+       что у карточки «Комплект с погонажем» (updateKitCard) */
+    var bestKitNow = function () {
+      var best = null;
+      (kitData || []).forEach(function (k) {
+        if (kitColor && k.colors.indexOf(kitColor) === -1) { return; }
+        if (activeGlass && k.g !== activeGlass) { return; }
+        if (!kitVariantOk(k)) { return; }
+        if (!best || k.total < best.total) { best = k; }
+      });
+      return best;
+    };
+
+    var updatePriceHeader = function () {
+      var cands = anyPicked() ? pickedVariants() : [];
+      var exact = cands.length && cands.every(function (v) {
+        return v.price === cands[0].price;
+      });
+      if (exact) {
+        fadeSwap(priceLabel, cands[0].pricef);
+        if (priceVariant) {
+          var parts = [];
+          var c = colorNow();
+          if (!c && cands.length === 1 && cands[0].colors.length === 1) {
+            c = cands[0].colors[0];
+          }
+          if (c) { parts.push((cartData.cname || {})[c] || capitalize(c)); }
+          if (cands.length === 1 && cands[0].label) {
+            parts.push(cands[0].label);
+          }
+          parts.push(cartData.sizes[selSize] + ' мм');
+          priceVariant.hidden = false;
+          fadeSwap(priceVariant, 'за полотно ' + parts.join(', '));
+        }
+      } else if (priceVariant) {
+        priceVariant.hidden = true;
+      }
+      /* Строки «Комплект…» и «под ключ…» — под ту же комбинацию;
+         без выбора resetPrice уже вернул исходные значения */
+      if (anyPicked() && kitStrongs.length) {
+        var best = bestKitNow();
+        if (best) {
+          if (kitStrongs[0]) { kitStrongs[0].textContent = best.totalf; }
+          if (best.podf && kitStrongs[1]) {
+            kitStrongs[1].textContent = best.podf;
+          }
+        }
+      }
+    };
+
+    /* Слушатели ставятся последними: состояние выбора уже обновлено
+       обработчиками выше (включая пересчёт размеров) */
+    chipList.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        if (!colorNow()) {
+          /* Сброс свотча — селекторы размера и исполнения к дефолту
+             страницы, чтобы наверху снова была стартовая «от N ₽» */
+          sizeTouched = false;
+          edgeTouched = false;
+          if (selEdge !== initialEdge) {
+            selEdge = initialEdge;
+            edgeChips.forEach(function (c) {
+              c.setAttribute('aria-pressed', String(c.dataset.gid === selEdge));
+            });
+          }
+          selSize = null;
+          updateSizes();  /* вернёт дефолтный размер и бейджи наличия */
+        }
+        updatePriceHeader();
+      });
+    });
+    glassChips.forEach(function (g) {
+      g.addEventListener('click', updatePriceHeader);
+    });
+    sizeChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        if (!chip.disabled) { sizeTouched = true; }
+        updatePriceHeader();
+      });
+    });
+    edgeChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        edgeTouched = true;
+        updatePriceHeader();
+      });
     });
 
     /* Полотно в корзину: цена и ключ — у самого дешёвого варианта,

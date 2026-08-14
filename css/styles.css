@@ -530,6 +530,10 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 }
 /* Цена модели — акцентным зелёным, как в карточках */
 .price-label { color: var(--color-accent); font-size: var(--fs-h2); font-weight: var(--fw-bold); line-height: var(--lh-heading); margin-bottom: var(--space-1); }
+/* Плавная смена цены при выборе комбинации (model.js меняет текст в паузе
+   затухания) и строка «за полотно …» под точной ценой выбранного варианта */
+.price-label, .price-variant { transition: opacity .15s ease; }
+.price-variant { color: var(--color-ink-soft); font-size: var(--fs-small); margin-bottom: var(--space-1); }
 .price-note { color: var(--color-ink-soft); font-size: var(--fs-small); margin-bottom: var(--space-4); }
 /* Телефон рядом с primary-кнопкой блока цены (DESIGN.md §2) */
 .price-phone { margin-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--fs-small); }
