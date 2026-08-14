@@ -148,9 +148,8 @@
     document.querySelectorAll('#varianty .price-table tbody tr:not(.facing-group)'));
 
   /* Переключатель «Стекло» (модели, где прайс различает остекление):
-     пара цвет×стекло обновляет цену «от», строки таблицы, строки
-     «комплект…» / «под ключ…» и фото (#variants-data: варианты с
-     цветами/стеклом/ценой + комплекты; у фото галереи — c/g). */
+     пара цвет×стекло обновляет цену «от», строки таблицы и фото
+     (#variants-data: варианты с цветами/стеклом/ценой; у фото — c/g). */
   var glassChips = Array.prototype.slice.call(document.querySelectorAll('.glass-chip'));
   var glassNote = document.querySelector('.glass-nophoto-note');
   var comboEl = document.getElementById('variants-data');
@@ -158,71 +157,14 @@
   if (comboEl && glassChips.length) {
     try { combo = JSON.parse(comboEl.textContent); } catch (err) { combo = null; }
   }
-  var kitStrongs = Array.prototype.slice.call(
-    document.querySelectorAll('.model-price .price-kit strong'));
   var activeColor = null;
   var activeGlass = null;
 
-  /* Карточка «Комплект с погонажем» (#furnitura): цифры пересчитываются
-     под выбранную отделку и остекление. #kit-data — строки комплекта
-     (цвета, остекление и уже готовые строки), те же, что в таблице
-     «Стоимость комплекта». */
-  var kitEl = document.getElementById('kit-data');
-  var kitData = null;
-  if (kitEl) {
-    try { kitData = JSON.parse(kitEl.textContent); } catch (err2) { kitData = null; }
-  }
-  var KIT_FIELDS = {
-    delta: '.need-kit-delta', totalf: '.need-kit-total', fins: '.need-kit-fins',
-    pol: '.need-kit-pol', kor: '.need-kit-kor', nal: '.need-kit-nal'
-  };
-  var kitNodes = {};
-  Object.keys(KIT_FIELDS).forEach(function (k) {
-    kitNodes[k] = document.querySelector(KIT_FIELDS[k]);
-  });
-  var kitCard = document.querySelector('.need-card--kit');
-  var kitColor = null;
-
-  /* Строка комплекта следует и за выбором размера с исполнением
-     (selSize/selEdge из блока корзины ниже; var — в общей области
-     видимости IIFE): высота 2300 у Альбы — отдельный вариант прайса
-     с погонажем своей высоты, кромка Прайма — отдельный gid. */
-  function kitVariantOk(k) {
-    if (!cartData) { return true; }
-    var v = cartData.variants[k.vi];
-    if (!v) { return true; }
-    if (selEdge && v.gid !== selEdge) { return false; }
-    if (selSize && v.sizes.indexOf(selSize) === -1) { return false; }
-    return true;
-  }
-
-  /* Минимальный комплект выбранной пары отделка×стекло (и размера
-     с исполнением). Если комплекта для выбора нет (отделка вне прайса
-     погонажа), карточку прячем: оставить её значило бы показать цену
-     предыдущей отделки, а не выбранной. */
-  function updateKitCard() {
-    if (!kitData) { return; }
-    var best = null;
-    kitData.forEach(function (k) {
-      if (kitColor && k.colors.indexOf(kitColor) === -1) { return; }
-      if (activeGlass && k.g !== activeGlass) { return; }
-      if (!kitVariantOk(k)) { return; }
-      if (!best || k.total < best.total) { best = k; }
-    });
-    if (kitCard) { kitCard.hidden = !best; }
-    if (!best) { return; }
-    Object.keys(kitNodes).forEach(function (n) {
-      if (kitNodes[n]) { kitNodes[n].textContent = best[n]; }
-    });
-  }
-
-  /* Исходные цены — для сброса при повторном клике по активному свотчу */
+  /* Исходная цена — для сброса при повторном клике по активному свотчу */
   var initialPrice = priceLabel ? priceLabel.textContent : '';
-  var initialKits = kitStrongs.map(function (s) { return s.textContent; });
 
   function resetPrice() {
     fadeSwap(priceLabel, initialPrice);
-    kitStrongs.forEach(function (s, i) { s.textContent = initialKits[i]; });
     variantRows.forEach(function (tr) { tr.classList.remove('is-active'); });
   }
 
@@ -257,15 +199,6 @@
     variantRows.forEach(function (tr, i) {
       tr.classList.toggle('is-active', idxs.indexOf(i) !== -1);
     });
-    /* Строки «Комплект…» и «под ключ…» — минимум по комплектам пары */
-    var kit = null;
-    combo.kits.forEach(function (k) {
-      if (idxs.indexOf(k.v) === -1) { return; }
-      if (activeColor && k.colors.indexOf(activeColor) === -1) { return; }
-      if (!kit || k.total < kit.total) { kit = k; }
-    });
-    if (kit && kitStrongs[0]) { kitStrongs[0].textContent = kit.totalf; }
-    if (kit && kit.podf && kitStrongs[1]) { kitStrongs[1].textContent = kit.podf; }
   }
 
   function updateCombo(colorChip) {
@@ -289,7 +222,6 @@
     } else {
       applyIdxs(comboIdxs(activeColor, activeGlass));
     }
-    updateKitCard();     /* стекло могло сброситься — считаем после него */
     /* Фото: сперва пара цвет×стекло, затем первое фото цвета;
        нет фото выбранного остекления — пометка «фото уточняется» */
     var pi = photoFor(activeColor, activeGlass);
@@ -315,15 +247,11 @@
          data-nophoto — дефолтный набор (пометка «фото уточняется») */
       applyFilter((wasActive || chip.hasAttribute('data-nophoto'))
         ? null : chip.dataset.color);
-      kitColor = wasActive ? null : (chip.dataset.color || null);
       if (combo) {
-        /* Карточку комплекта обновит updateCombo — там уже согласованы
-           выбранные отделка и остекление */
-        activeColor = kitColor;
+        activeColor = wasActive ? null : (chip.dataset.color || null);
         updateCombo(wasActive ? null : chip);
         return;
       }
-      updateKitCard();
       if (wasActive) {
         resetPrice();
         return;
@@ -476,13 +404,12 @@
     }, { passive: true });
   }
 
-  /* ---- Корзина: размер полотна и кнопки «В корзину» ----
+  /* ---- Корзина: размер полотна и кнопка «В корзину» ----
      #cart-data (build.py): варианты прайса (цвета, стекло, цена, размеры,
      ключ gid), подписи размеров, слаги цветов и срез наличия по размерам.
      Кнопка полотна собирает строку корзины из ТЕКУЩЕГО выбора
-     (цвет × стекло × размер), «Комплект в корзину» кладёт полотно,
-     коробку × 3 и наличники × 5 отдельными строками с пометкой
-     «комплект». Без JS этих контролов нет (.no-js в styles.css). */
+     (цвет × стекло × размер). Без JS этих контролов нет
+     (.no-js в styles.css). */
   var cartEl = document.getElementById('cart-data');
   var cartData = null;
   if (cartEl && window.DSDCart) {
@@ -581,7 +508,6 @@
     var sizeChips = Array.prototype.slice.call(
       document.querySelectorAll('.size-chip:not(.edge-chip)'));
     var doorBtn = document.querySelector('.cart-add-door');
-    var kitBtn = document.querySelector('.cart-add-kit');
     var selSize = null;
     sizeChips.forEach(function (chSel) {
       if (chSel.getAttribute('aria-pressed') === 'true') {
@@ -690,10 +616,6 @@
           fadeSwap(priceLabel, 'от ' + minV.pricef);
         }
       }
-      /* Карточка комплекта следует за размером и исполнением; вызов
-         здесь — с уже пересчитанным selSize (первый слушатель свотча
-         зовёт updateKitCard до пересчёта размеров) */
-      updateKitCard();
     };
 
     sizeChips.forEach(function (chip) {
@@ -703,7 +625,6 @@
         sizeChips.forEach(function (c) {
           c.setAttribute('aria-pressed', String(c === chip));
         });
-        updateKitCard();
       });
     });
     edgeChips.forEach(function (chip) {
@@ -745,19 +666,6 @@
       });
     };
 
-    /* Минимальная строка комплекта под текущий выбор — тот же фильтр,
-       что у карточки «Комплект с погонажем» (updateKitCard) */
-    var bestKitNow = function () {
-      var best = null;
-      (kitData || []).forEach(function (k) {
-        if (kitColor && k.colors.indexOf(kitColor) === -1) { return; }
-        if (activeGlass && k.g !== activeGlass) { return; }
-        if (!kitVariantOk(k)) { return; }
-        if (!best || k.total < best.total) { best = k; }
-      });
-      return best;
-    };
-
     var updatePriceHeader = function () {
       var cands = anyPicked() ? pickedVariants() : [];
       var exact = cands.length && cands.every(function (v) {
@@ -781,17 +689,6 @@
         }
       } else if (priceVariant) {
         priceVariant.hidden = true;
-      }
-      /* Строки «Комплект…» и «под ключ…» — под ту же комбинацию;
-         без выбора resetPrice уже вернул исходные значения */
-      if (anyPicked() && kitStrongs.length) {
-        var best = bestKitNow();
-        if (best) {
-          if (kitStrongs[0]) { kitStrongs[0].textContent = best.totalf; }
-          if (best.podf && kitStrongs[1]) {
-            kitStrongs[1].textContent = best.podf;
-          }
-        }
       }
     };
 
@@ -856,50 +753,13 @@
       });
     }
 
-    /* Комплект в корзину: строка комплекта — та же, что показана в
-       карточке (минимальная по выбранным отделке × стеклу × размеру ×
-       исполнению — тот же фильтр, что в updateKitCard) */
-    if (kitBtn && kitData) {
-      kitBtn.addEventListener('click', function () {
-        var best = null;
-        kitData.forEach(function (k) {
-          if (kitColor && k.colors.indexOf(kitColor) === -1) { return; }
-          if (activeGlass && k.g !== activeGlass) { return; }
-          if (!kitVariantOk(k)) { return; }
-          if (!best || k.total < best.total) { best = k; }
-        });
-        if (!best) { return; }
-        var v = cartData.variants[best.vi];
-        var c = (kitColor && v.colors.indexOf(kitColor) !== -1)
-          ? kitColor : v.colors[0];
-        var size = v.sizes.indexOf(selSize) !== -1 ? selSize
-          : (v.sizes.indexOf('800') !== -1 ? '800' : v.sizes[0]);
-        var fin = ' · в цвет полотна: ' + colorLabel(c);
-        window.DSDCart.add([
-          {
-            id: 'd:' + cartData.slug + ':' + cartData.cslug[c] + ':' +
-              v.gid + ':' + size,
-            n: 'Полотно ' + cartData.name,
-            v: colorLabel(c) + (v.label ? ', ' + v.label : '') + ', ' +
-              cartData.sizes[size] + ' мм',
-            p: v.price, q: 1, k: true
-          },
-          { id: best.korItem.id, n: best.korItem.n,
-            v: best.korItem.v + fin, p: best.korItem.p, q: 3, k: true },
-          { id: best.nalItem.id, n: best.nalItem.n,
-            v: best.nalItem.v + fin, p: best.nalItem.p, q: 5, k: true }
-        ]);
-        window.DSDCart.flash(kitBtn);
-      });
-    }
-
     updateSizes();
   }
 
   /* ---- Предвыбор отделки из ?color=<slug> ----
      Ссылки «Подробнее»/заголовка карточек каталога ведут сюда с выбранным
      на карточке цветом (cards.js). Клик по свотчу тянет за собой все
-     следствия: фото, цену, таблицу, комплект, размеры. Слаг сверяем
+     следствия: фото, цену, таблицу, размеры. Слаг сверяем
      с data-cslug реальных свотчей — невалидный игнорируется. Стоит после
      навешивания ВСЕХ слушателей свотчей (базового и корзинных). */
   if (window.URLSearchParams) {

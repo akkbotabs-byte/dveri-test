@@ -139,8 +139,6 @@
 <div class="model-price">
           <p class="price-label">от 3 619 ₽</p>
           <p class="price-variant" hidden></p>
-          <p class="price-kit">Комплект с коробкой и наличниками — от <strong>6 124 ₽</strong></p>
-          <p class="price-kit">Полный комплект под ключ с фурнитурой — от <strong>7 959 ₽</strong></p>
           <p class="price-dims">Размеры: 600–900 × 2000; укороченные 550/600 × 1900 (ПГ).</p>
           <div class="model-size">
           <h2 class="model-size-title">Размер полотна, мм</h2>
@@ -154,6 +152,7 @@
           </div>
         </div>
           <p class="price-note">Цена указана за дверное полотно. Коробка, наличники и доборы подбираются отдельно (раздел «Погонаж»).</p>
+          <p class="price-note price-complect">Полная комплектация двери: полотно, коробка (3 шт), наличники с двух сторон (5 шт) и фурнитура — ручка, защёлка, петли. Коробку и наличники выбирайте в разделе <a href="../pogonazh.html">«Погонаж»</a>, ручки и защёлки — в разделе <a href="../furnitura.html">«Фурнитура»</a>.</p>
           <div class="price-actions">
             <button type="button" class="btn btn--primary cart-add cart-add-door">В корзину</button>
             <a class="btn btn--secondary" href="#zayavka">Оставить заявку</a>
@@ -163,42 +162,25 @@
       </div>
     </div>
 
-<!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
-     фурнитура (решение владельца 2026-08-11). Стоит ВЫШЕ «Особенностей»,
-     иначе допродажа уезжает от цены. Детальные таблицы —
-     ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
-<section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
-  <h2>Вам может понадобиться</h2>
-  <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Менеджер рассчитает точный состав под ваш проём.</p>
+<!-- Допродажа «С этим товаром покупают» сразу под галереей и блоком цены:
+     фурнитура за штуку и ссылка на погонаж (решение владельцев 14.08.2026 —
+     «как у Невы»). Стоит ВЫШЕ «Особенностей», иначе допродажа уезжает
+     от цены. Таблица цен полотна — ниже, в «Вариантах и ценах» -->
+<section class="model-variants needs" id="furnitura" aria-label="С этим товаром покупают">
+  <h2>С этим товаром покупают</h2>
+  <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Всё продаётся поштучно — добавляйте в корзину, что нужно.</p>
   <div class="needs-grid">
-    <article class="need-card need-card--kit">
-      <h3>Комплект с погонажем</h3>
-      <p class="need-price"><span class="need-kit-delta">+2 505 ₽</span> <span class="need-price-note">к полотну</span></p>
-      <p class="need-note">Отделка «<span class="need-kit-fins">Белый</span>» · комплект целиком <strong class="need-kit-total">6 124 ₽</strong></p>
-      <ul class="need-list">
-        <li><span>Полотно</span><span class="need-num need-kit-pol">3 619 ₽</span></li>
-        <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">475 ₽ за шт</span></li>
-        <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">216 ₽ за шт</span></li>
-      </ul>
-      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add cart-add-kit">Комплект в корзину</button><a class="btn btn--secondary btn--card" href="#komplekt">Стоимость комплекта</a></p>
-    </article>
     <article class="need-card">
-      <h3>Погонаж дополнительно</h3>
-      <p class="need-note">Что докупают сверх комплекта — считаем по замеру.</p>
-      <dl class="need-defs">
-        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера. Ширины добора к комплекту — 120, 200 мм.</dd>
-        <dt>Фигурный наличник</dt><dd>Вместо гладкого — для отделки Белый: доплата 260 ₽ за 5 шт (268 ₽ вместо 216 ₽ за шт).</dd>
-      </dl>
-      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
-    </article>
-    <article class="need-card">
-      <h3>Фурнитура</h3>
-      <p class="need-price">~1 835 ₽ <span class="need-price-note">за дверь</span></p>
-      <p class="need-note">Ручка, защёлка и две петли — подобрали под отделки и стиль этой модели. Позиции можно поменять.</p>
+      <h3>Ручка</h3>
       <ul class="need-items">
-        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/ruchka-33063.jpg" alt="Ручка Punto BLADE, матовый никель/хром" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto BLADE, матовый никель/хром</span></span><span class="need-num">1 070 ₽</span></li>
-        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/zashchelka-33595.jpg" alt="Защёлка Fuaro PLAST P12, матовый никель" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, матовый никель</span></span><span class="need-num">365 ₽</span></li>
-        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/petlya-35491.jpg" alt="Петля универсальная Punto IN4200W, матовый никель" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#petli">Петли</a> × 2 <span class="muted">(200 ₽ за шт)</span><br><span class="muted">Петля универсальная Punto IN4200W, матовый никель</span></span><span class="need-num">400 ₽</span></li>
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/ruchka-33063.jpg" alt="Ручка Punto BLADE, матовый никель/хром" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto BLADE, матовый никель/хром</span></span><span class="need-num">1 070 ₽ за шт</span></li>
+      </ul>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-33063&quot;, &quot;n&quot;: &quot;Ручка Punto BLADE, матовый никель/хром&quot;, &quot;v&quot;: &quot;Punto · матовый никель/хром&quot;, &quot;p&quot;: 1070, &quot;q&quot;: 1}]" aria-label="В корзину: ручка, Ручка Punto BLADE, матовый никель/хром">В корзину</button><a class="btn btn--secondary btn--card" href="../furnitura.html#ruchki">Все ручки</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Защёлка</h3>
+      <ul class="need-items">
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/zashchelka-33595.jpg" alt="Защёлка Fuaro PLAST P12, матовый никель" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, матовый никель</span></span><span class="need-num">365 ₽ за шт</span></li>
       </ul>
       <details class="need-details">
         <summary>Опции: санузел, магнитная защёлка, замок под ключ</summary>
@@ -208,7 +190,23 @@
           <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Замок под ключ</a><span class="need-num">+1 449 ₽</span><button type="button" class="btn btn--secondary btn--card cart-add cart-plus" data-added="✓" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49223&quot;, &quot;n&quot;: &quot;Корпус замка Punto PL85 под цилиндр, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 580, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:tsilindr-37051&quot;, &quot;n&quot;: &quot;Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром&quot;, &quot;v&quot;: &quot;Fuaro · хром&quot;, &quot;p&quot;: 650, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:nakladka-33119&quot;, &quot;n&quot;: &quot;Накладка Punto ET QL под цилиндр, матовый никель/хром&quot;, &quot;v&quot;: &quot;Punto · матовый никель/хром&quot;, &quot;p&quot;: 584, &quot;q&quot;: 1}]" data-cart-remove="[&quot;f:zashchelka-33595&quot;]" aria-label="В корзину: замок под ключ (корпус, цилиндр и накладка вместо защёлки)">+</button></p><p class="need-opt-sub">Корпус замка Punto PL85 под цилиндр, матовый никель (580 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром (650 ₽) и Накладка Punto ET QL под цилиндр, матовый никель/хром (584 ₽)</p></li>
         </ul>
       </details>
-      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-33063&quot;, &quot;n&quot;: &quot;Ручка Punto BLADE, матовый никель/хром&quot;, &quot;v&quot;: &quot;Punto · матовый никель/хром&quot;, &quot;p&quot;: 1070, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:zashchelka-33595&quot;, &quot;n&quot;: &quot;Защёлка Fuaro PLAST P12, матовый никель&quot;, &quot;v&quot;: &quot;Fuaro · матовый никель&quot;, &quot;p&quot;: 365, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:petlya-35491&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 200, &quot;q&quot;: 2}]">Добавить фурнитуру</button><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-33595&quot;, &quot;n&quot;: &quot;Защёлка Fuaro PLAST P12, матовый никель&quot;, &quot;v&quot;: &quot;Fuaro · матовый никель&quot;, &quot;p&quot;: 365, &quot;q&quot;: 1}]" aria-label="В корзину: защёлка, Защёлка Fuaro PLAST P12, матовый никель">В корзину</button><a class="btn btn--secondary btn--card" href="../furnitura.html#zashchelki">Все защёлки</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Петли</h3>
+      <ul class="need-items">
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/petlya-35491.jpg" alt="Петля универсальная Punto IN4200W, матовый никель" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#petli">Петли</a> × 2<br><span class="muted">Петля универсальная Punto IN4200W, матовый никель</span></span><span class="need-num">200 ₽ за шт</span></li>
+      </ul>
+      <p class="need-note muted">На дверь нужны 2 петли — кнопка добавит пару.</p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:petlya-35491&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W, матовый никель&quot;, &quot;v&quot;: &quot;Punto · матовый никель&quot;, &quot;p&quot;: 200, &quot;q&quot;: 2}]" aria-label="В корзину: петли, Петля универсальная Punto IN4200W, матовый никель">В корзину · 2 шт</button><a class="btn btn--secondary btn--card" href="../furnitura.html#petli">Все петли</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Погонаж к этой двери</h3>
+      <p class="need-note">Коробка, наличники и доборы к отделкам этой модели. Цены за штуку — в разделе «Погонаж».</p>
+      <dl class="need-defs">
+        <dt>Простой погонаж</dt><dd>в цвет полотна</dd>
+      </dl>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Выбрать погонаж</a></p>
     </article>
   </div>
 </section>
@@ -232,22 +230,6 @@
   </div>
   <p class="price-sizes muted">Погонаж к этой модели: простой погонаж — в цвет полотна.</p>
   <p class="price-sizes muted">Цена указана за дверное полотно. Коробка, наличники и доборы подбираются отдельно (раздел «Погонаж»).</p>
-</section>
-
-<section class="model-variants pogonazh-prices" id="komplekt" aria-label="Стоимость комплекта">
-  <h2>Стоимость комплекта</h2>
-  <p class="price-sizes">Комплект на один проём: полотно, элементы коробки (3 шт — продажа целыми планками) и наличники с обеих сторон (5 шт). Доборы — при необходимости, отдельно.</p>
-  <div class="table-wrap">
-  <table class="price-table">
-    <thead><tr><th scope="col">Отделка</th><th scope="col">Полотно</th><th scope="col">Коробка, за шт (нужно 3)</th><th scope="col">Наличник, за шт (нужно 5)</th><th scope="col">Комплект</th></tr></thead>
-    <tbody>
-<tr><td>Белый<br><span class="muted">ПГ</span></td><td class="nowrap">3 619 ₽</td><td class="nowrap">475 ₽</td><td class="nowrap">216 ₽</td><td class="price-cell">6 124 ₽</td></tr>
-<tr><td>Белый<br><span class="muted">ПО</span></td><td class="nowrap">3 843 ₽</td><td class="nowrap">475 ₽</td><td class="nowrap">216 ₽</td><td class="price-cell">6 348 ₽</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="price-sizes">Комплект = полотно + элементы коробки × 3 (продажа целыми планками) + наличник × 5 (обе стороны проёма). Например, «Белый»: 3 619 ₽ + 475 ₽ × 3 + 216 ₽ × 5 = 6 124 ₽.</p>
-  <p class="price-sizes">Полный расчёт комплекта — по замеру. <a href="#furnitura">Что ещё понадобится</a></p>
 </section>
 
     <div class="model-details">
@@ -322,7 +304,6 @@
     <p class="card-sub">Ламинированное · Эмаль · 4 отделки</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="bely-shelk" aria-pressed="false" aria-label="Показать в цвете Белый шёлк" disabled><span class="swatch" style="background:#ECECEC" title="Белый шёлк" aria-hidden="true"></span></button></div>
     <p class="card-price">от 5 490 ₽</p>
-    <p class="card-kit muted">комплект от 8 522 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/alba.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/alba.html#zayavka">Заявка</a>
@@ -339,7 +320,6 @@
     <p class="card-sub">Ламинированное · Эмаль · 4 отделки</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely-shelk" aria-pressed="false" aria-label="Показать в цвете Белый шёлк" disabled><span class="swatch" style="background:#ECECEC" title="Белый шёлк" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button></div>
     <p class="card-price">от 5 490 ₽</p>
-    <p class="card-kit muted">комплект от 8 522 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/nord.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/nord.html#zayavka">Заявка</a>
@@ -356,7 +336,6 @@
     <p class="card-sub">Ламинированное покрытие · 4 отделки</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="beton" aria-pressed="false" aria-label="Показать в цвете Бетон" disabled><span class="swatch" style="background:#BDBBBC" title="Бетон" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="kapuchino" aria-pressed="false" aria-label="Показать в цвете Капучино" disabled><span class="swatch" style="background:#C0B4A8" title="Капучино" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="perlamutr" aria-pressed="false" aria-label="Показать в цвете Перламутр" disabled><span class="swatch" style="background:#D2CEC8" title="Перламутр" aria-hidden="true"></span></button></div>
     <p class="card-price">от 3 619 ₽</p>
-    <p class="card-kit muted">комплект от 6 124 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/orion.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/orion.html#zayavka">Заявка</a>
@@ -373,7 +352,6 @@
     <p class="card-sub">Ламинированное покрытие · 4 отделки</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="dub-pallada" aria-pressed="false" aria-label="Показать в цвете Дуб паллада" disabled><span class="swatch" style="background:#D4CFC9" title="Дуб паллада" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="ital-oreh" aria-pressed="false" aria-label="Показать в цвете Итальянский орех" disabled><span class="swatch" style="background:#814532" title="Итальянский орех" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="milan-oreh" aria-pressed="false" aria-label="Показать в цвете Миланский орех" disabled><span class="swatch" style="background:#AE764B" title="Миланский орех" aria-hidden="true"></span></button></div>
     <p class="card-price">от 3 477 ₽</p>
-    <p class="card-kit muted">комплект от 5 982 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/palitra-11-4.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/palitra-11-4.html#zayavka">Заявка</a>
@@ -393,8 +371,7 @@
   <button class="lightbox-next" type="button" aria-label="Следующее фото">›</button>
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/vesna/01-columnside0000.jpg", "alt": "Межкомнатная дверь Весна в белом цвете, вид сбоку — рендер полотна", "w": 629, "h": 1600, "c": "белый"}, {"src": "../assets/img/vesna/02-coumn-white0000.jpg", "alt": "Межкомнатная дверь Весна в белом цвете — рендер полотна", "w": 757, "h": 1600, "c": "белый"}, {"src": "../assets/img/vesna/03-id-vesna-stsena0-belaya-gluhaya.jpg", "alt": "Белая дверь Весна с глухим полотном в интерьере, сцена 0", "w": 1600, "h": 1280, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/04-id-vesna-stsena0-belaya-steklo-seroe.jpg", "alt": "Белая дверь Весна с серым стеклом в интерьере, сцена 0", "w": 1600, "h": 1280, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/05-id-vesna-stsena0-belaya-steklo-chernoe.jpg", "alt": "Белая дверь Весна с чёрным стеклом в интерьере, сцена 0", "w": 1600, "h": 1280, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/06-id-vesna-stsena0-belaya-fgr-gluh.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой, глухое полотно — интерьер, сцена 0", "w": 1600, "h": 1100, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/07-id-vesna-stsena0-belaya-fgr-st-ser.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и серым стеклом — интерьер, сцена 0", "w": 1600, "h": 1100, "c": "белый"}, {"src": "../assets/img/vesna/08-id-vesna-stsena0-belaya-fgr-st-cher.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и чёрным стеклом — интерьер, сцена 0", "w": 1600, "h": 1100, "c": "белый"}, {"src": "../assets/img/vesna/09-id-vesna-stsena1-belaya-steklo-gluhaya.jpg", "alt": "Белая дверь Весна с глухим полотном в интерьере, сцена 1", "w": 1600, "h": 1181, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/10-id-vesna-stsena1-belaya-steklo-seroe.jpg", "alt": "Белая дверь Весна с серым стеклом в интерьере, сцена 1", "w": 1600, "h": 1181, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/11-id-vesna-stsena1-belaya-steklo-chernoe.jpg", "alt": "Белая дверь Весна с чёрным стеклом в интерьере, сцена 1", "w": 1600, "h": 1181, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/12-id-vesna-stsena1-belaya-fgr-gluh.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой, глухое полотно — интерьер, сцена 1", "w": 1600, "h": 1121, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/13-id-vesna-stsena1-belaya-fgr-st-ser.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и серым стеклом — интерьер, сцена 1", "w": 1600, "h": 1121, "c": "белый"}, {"src": "../assets/img/vesna/14-id-vesna-stsena1-belaya-fgr-st-cher.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и чёрным стеклом — интерьер, сцена 1", "w": 1600, "h": 1121, "c": "белый"}, {"src": "../assets/img/vesna/15-id-vesna-stsena2-belaya-steklo-gluhaya.jpg", "alt": "Белая дверь Весна с глухим полотном в интерьере, сцена 2", "w": 1600, "h": 1177, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/16-id-vesna-stsena2-belaya-steklo-seroe.jpg", "alt": "Белая дверь Весна с серым стеклом в интерьере, сцена 2", "w": 1600, "h": 1177, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/17-id-vesna-stsena2-belaya-steklo-chernoe.jpg", "alt": "Белая дверь Весна с чёрным стеклом в интерьере, сцена 2", "w": 1600, "h": 1177, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/18-id-vesna-stsena2-belaya-fgr-gluh.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой, глухое полотно — интерьер, сцена 2", "w": 1600, "h": 1035, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/19-id-vesna-stsena2-belaya-fgr-st-ser.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и серым стеклом — интерьер, сцена 2", "w": 1600, "h": 1035, "c": "белый"}, {"src": "../assets/img/vesna/20-id-vesna-stsena2-belaya-fgr-st-cher.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и чёрным стеклом — интерьер, сцена 2", "w": 1600, "h": 1035, "c": "белый"}, {"src": "../assets/img/vesna/21-id-vesna-stsena3-belaya-gluhaya.jpg", "alt": "Белая дверь Весна с глухим полотном в интерьере, сцена 3", "w": 1600, "h": 800, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/22-id-vesna-stsena3-belaya-steklo-seroe.jpg", "alt": "Белая дверь Весна с серым стеклом в интерьере, сцена 3", "w": 1600, "h": 800, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/23-id-vesna-stsena3-belaya-steklo-chernoe.jpg", "alt": "Белая дверь Весна с чёрным стеклом в интерьере, сцена 3", "w": 1600, "h": 800, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/24-id-vesna-stsena3-belaya-fgr-gluh.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой, глухое полотно — интерьер, сцена 3", "w": 1600, "h": 800, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/25-id-vesna-stsena3-belaya-fgr-st-ser.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и серым стеклом — интерьер, сцена 3", "w": 1600, "h": 800, "c": "белый"}, {"src": "../assets/img/vesna/26-id-vesna-stsena3-belaya-fgr-st-cher.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и чёрным стеклом — интерьер, сцена 3", "w": 1600, "h": 800, "c": "белый"}, {"src": "../assets/img/vesna/27-id-vesna-stsena4-belaya-gluhaya.jpg", "alt": "Белая дверь Весна с глухим полотном в интерьере, сцена 4", "w": 1600, "h": 800, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/28-id-vesna-stsena4-belaya-steklo-seroe.jpg", "alt": "Белая дверь Весна с серым стеклом в интерьере, сцена 4", "w": 1600, "h": 800, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/29-id-vesna-stsena4-belaya-steklo-chernoe.jpg", "alt": "Белая дверь Весна с чёрным стеклом в интерьере, сцена 4", "w": 1600, "h": 800, "c": "белый", "g": "po"}, {"src": "../assets/img/vesna/30-id-vesna-stsena4-belaya-fgr-gluh.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой, глухое полотно — интерьер, сцена 4", "w": 1600, "h": 800, "c": "белый", "g": "pg"}, {"src": "../assets/img/vesna/31-id-vesna-stsena4-belaya-fgr-st-ser.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и серым стеклом — интерьер, сцена 4", "w": 1600, "h": 800, "c": "белый"}, {"src": "../assets/img/vesna/32-id-vesna-stsena4-belaya-fgr-st-cher.jpg", "alt": "Белая дверь Весна с фигурной фрезеровкой и чёрным стеклом — интерьер, сцена 4", "w": 1600, "h": 800, "c": "белый"}]</script>
-<script type="application/json" id="variants-data">{"variants": [{"colors": ["белый"], "g": "pg", "price": 3619, "pricef": "3 619 ₽"}, {"colors": ["белый"], "g": "po", "price": 3843, "pricef": "3 843 ₽"}], "kits": [{"v": 0, "colors": ["белый"], "total": 6124, "totalf": "6 124 ₽", "pod": 7959, "podf": "7 959 ₽"}, {"v": 1, "colors": ["белый"], "total": 6348, "totalf": "6 348 ₽", "pod": 8183, "podf": "8 183 ₽"}]}</script>
-<script type="application/json" id="kit-data">[{"colors": ["белый"], "g": "pg", "total": 6124, "fins": "Белый", "delta": "+2 505 ₽", "totalf": "6 124 ₽", "pol": "3 619 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт", "vi": 0, "korItem": {"id": "p:korobka:prostoy:70x2060", "n": "Коробка", "v": "70×26×2060 мм · Простой", "p": 475}, "nalItem": {"id": "p:nalichnik:prostoy:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 мм · Простой", "p": 216}, "podf": "7 959 ₽"}, {"colors": ["белый"], "g": "po", "total": 6348, "fins": "Белый", "delta": "+2 505 ₽", "totalf": "6 348 ₽", "pol": "3 843 ₽", "kor": "475 ₽ за шт", "nal": "216 ₽ за шт", "vi": 1, "korItem": {"id": "p:korobka:prostoy:70x2060", "n": "Коробка", "v": "70×26×2060 мм · Простой", "p": 475}, "nalItem": {"id": "p:nalichnik:prostoy:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 мм · Простой", "p": 216}, "podf": "8 183 ₽"}]</script>
+<script type="application/json" id="variants-data">{"variants": [{"colors": ["белый"], "g": "pg", "price": 3619, "pricef": "3 619 ₽"}, {"colors": ["белый"], "g": "po", "price": 3843, "pricef": "3 843 ₽"}]}</script>
 <script type="application/json" id="cart-data">{"slug": "vesna", "name": "Весна", "variants": [{"colors": ["белый"], "g": "pg", "gid": "pg", "price": 3619, "pricef": "3 619 ₽", "label": "ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}, {"colors": ["белый"], "g": "po", "gid": "po", "price": 3843, "pricef": "3 843 ₽", "label": "ПО", "sizes": ["600", "700", "800", "900"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000", "550u": "550 × 1900", "600u": "600 × 1900"}, "cslug": {"белый": "bely"}, "cname": {"белый": "Белый"}, "stock": {"белый|pg": [], "белый|po": []}}</script>
 
 </main>

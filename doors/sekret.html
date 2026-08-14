@@ -130,6 +130,7 @@
         </div>
           <p class="price-dims">Ширина — под ваш проём, уточнит менеджер.</p>
           <p class="price-note">Цена указана за дверное полотно. Скрытый алюминиевый короб и доборы рассчитываются менеджером под проём.</p>
+          <p class="price-note price-complect">Полная комплектация скрытой двери: полотно, скрытый алюминиевый короб, доборы и фурнитура — ручка, защёлка, петли. Короб и доборы рассчитает менеджер под ваш проём, ручки и защёлки выбирайте в разделе <a href="../furnitura.html">«Фурнитура»</a>.</p>
           <div class="price-actions">
             <button type="button" class="btn btn--primary cart-add cart-add-door">В корзину</button>
             <a class="btn btn--secondary" href="#zayavka">Оставить заявку</a>
@@ -139,30 +140,27 @@
       </div>
     </div>
 
-<!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
-     фурнитура (решение владельца 2026-08-11). Стоит ВЫШЕ «Особенностей»,
-     иначе допродажа уезжает от цены. Детальные таблицы —
-     ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
-<section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
-  <h2>Вам может понадобиться</h2>
+<!-- Допродажа «С этим товаром покупают» сразу под галереей и блоком цены:
+     фурнитура за штуку и ссылка на погонаж (решение владельцев 14.08.2026 —
+     «как у Невы»). Стоит ВЫШЕ «Особенностей», иначе допродажа уезжает
+     от цены. Таблица цен полотна — ниже, в «Вариантах и ценах» -->
+<section class="model-variants needs" id="furnitura" aria-label="С этим товаром покупают">
+  <h2>С этим товаром покупают</h2>
   <p class="price-sizes">Скрытая дверь ставится в алюминиевый короб скрытого монтажа, на полотно нужны ручка, защёлка и петли. Менеджер рассчитает точный состав под ваш проём.</p>
   <div class="needs-grid">
     <article class="need-card">
-      <h3>Скрытый короб и доборы</h3>
-      <p class="need-note">Скрытый алюминиевый короб и доборы рассчитываются менеджером под проём. Обычные коробки и наличники к двери-невидимке не подходят: полотно ставится заподлицо со стеной, наличников нет.</p>
-      <p class="need-foot"><a class="btn btn--primary btn--card" href="#zayavka">Заявка на расчёт</a></p>
-    </article>
-    <article class="need-card">
-      <h3>Фурнитура</h3>
-      <p class="need-price">~1 735 ₽ <span class="need-price-note">за дверь</span></p>
-      <p class="need-note">Ручка, защёлка и две петли — подобрали под отделки и стиль этой модели. Позиции можно поменять.</p>
+      <h3>Ручка</h3>
       <ul class="need-items">
-        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/ruchka-47099.jpg" alt="Ручка Punto ARC MAIN, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto ARC MAIN, чёрный</span></span><span class="need-num">985 ₽</span></li>
-        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/zashchelka-42357.jpg" alt="Защёлка Fuaro PLAST P12, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, чёрный</span></span><span class="need-num">350 ₽</span></li>
-        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/petlya-43133.jpg" alt="Петля универсальная Punto IN4200W, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#petli">Петли</a> × 2 <span class="muted">(200 ₽ за шт)</span><br><span class="muted">Петля универсальная Punto IN4200W, чёрный</span></span><span class="need-num">400 ₽</span></li>
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/ruchka-47099.jpg" alt="Ручка Punto ARC MAIN, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto ARC MAIN, чёрный</span></span><span class="need-num">985 ₽ за шт</span></li>
       </ul>
       <p class="need-note muted">Под другие отделки этой модели подойдут: Ручка Punto BLADE, матовый никель/хром — 1 070 ₽.</p>
-      <p class="need-note muted">Для полотна высотой 2300 мм нужна третья петля (+200 ₽).</p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-47099&quot;, &quot;n&quot;: &quot;Ручка Punto ARC MAIN, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 985, &quot;q&quot;: 1}]" aria-label="В корзину: ручка, Ручка Punto ARC MAIN, чёрный">В корзину</button><a class="btn btn--secondary btn--card" href="../furnitura.html#ruchki">Все ручки</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Защёлка</h3>
+      <ul class="need-items">
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/zashchelka-42357.jpg" alt="Защёлка Fuaro PLAST P12, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, чёрный</span></span><span class="need-num">350 ₽ за шт</span></li>
+      </ul>
       <details class="need-details">
         <summary>Опции: санузел, магнитная защёлка, замок под ключ</summary>
         <ul class="need-opts">
@@ -171,7 +169,21 @@
           <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Замок под ключ</a><span class="need-num">+1 160 ₽</span><button type="button" class="btn btn--secondary btn--card cart-add cart-plus" data-added="✓" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49219&quot;, &quot;n&quot;: &quot;Корпус замка Punto PL85 под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 510, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:tsilindr-45437&quot;, &quot;n&quot;: &quot;Цилиндр Fuaro 100 ZM/60 ключ-вертушка, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 650, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:nakladka-47189&quot;, &quot;n&quot;: &quot;Накладка Punto ET ARC под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 350, &quot;q&quot;: 1}]" data-cart-remove="[&quot;f:zashchelka-42357&quot;]" aria-label="В корзину: замок под ключ (корпус, цилиндр и накладка вместо защёлки)">+</button></p><p class="need-opt-sub">Корпус замка Punto PL85 под цилиндр, чёрный (510 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, чёрный (650 ₽) и Накладка Punto ET ARC под цилиндр, чёрный (350 ₽)</p></li>
         </ul>
       </details>
-      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-47099&quot;, &quot;n&quot;: &quot;Ручка Punto ARC MAIN, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 985, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:zashchelka-42357&quot;, &quot;n&quot;: &quot;Защёлка Fuaro PLAST P12, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 350, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:petlya-43133&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 200, &quot;q&quot;: 2}]">Добавить фурнитуру</button><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-42357&quot;, &quot;n&quot;: &quot;Защёлка Fuaro PLAST P12, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 350, &quot;q&quot;: 1}]" aria-label="В корзину: защёлка, Защёлка Fuaro PLAST P12, чёрный">В корзину</button><a class="btn btn--secondary btn--card" href="../furnitura.html#zashchelki">Все защёлки</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Петли</h3>
+      <ul class="need-items">
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/petlya-43133.jpg" alt="Петля универсальная Punto IN4200W, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#petli">Петли</a> × 2<br><span class="muted">Петля универсальная Punto IN4200W, чёрный</span></span><span class="need-num">200 ₽ за шт</span></li>
+      </ul>
+      <p class="need-note muted">На дверь нужны 2 петли — кнопка добавит пару.</p>
+      <p class="need-note muted">Для полотна высотой 2300 мм нужна третья петля (+200 ₽).</p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:petlya-43133&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 200, &quot;q&quot;: 2}]" aria-label="В корзину: петли, Петля универсальная Punto IN4200W, чёрный">В корзину · 2 шт</button><a class="btn btn--secondary btn--card" href="../furnitura.html#petli">Все петли</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Скрытый короб и доборы</h3>
+      <p class="need-note">Скрытый алюминиевый короб и доборы рассчитываются менеджером под проём. Обычные коробки и наличники к двери-невидимке не подходят: полотно ставится заподлицо со стеной, наличников нет.</p>
+      <p class="need-foot"><a class="btn btn--primary btn--card" href="#zayavka">Заявка на расчёт</a></p>
     </article>
   </div>
 </section>
@@ -211,8 +223,6 @@
   </div>
   <p class="price-sizes muted">Цена указана за дверное полотно. Скрытый алюминиевый короб и доборы рассчитываются менеджером под проём.</p>
 </section>
-
-
 
     <div class="model-details">
       <section class="model-specs" aria-label="Характеристики">
@@ -288,7 +298,6 @@
     <p class="card-sub">Ламинированное · Эмаль · 4 отделки</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="bely-shelk" aria-pressed="false" aria-label="Показать в цвете Белый шёлк" disabled><span class="swatch" style="background:#ECECEC" title="Белый шёлк" aria-hidden="true"></span></button></div>
     <p class="card-price">от 5 490 ₽</p>
-    <p class="card-kit muted">комплект от 8 522 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/alba.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/alba.html#zayavka">Заявка</a>
@@ -305,7 +314,6 @@
     <p class="card-sub">Ламинированное · Эмаль · 4 отделки</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="bely-shelk" aria-pressed="false" aria-label="Показать в цвете Белый шёлк" disabled><span class="swatch" style="background:#ECECEC" title="Белый шёлк" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="sery" aria-pressed="false" aria-label="Показать в цвете Серый" disabled><span class="swatch" style="background:#C0C1C3" title="Серый" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="shampan" aria-pressed="false" aria-label="Показать в цвете Шампань" disabled><span class="swatch" style="background:#C9BFB4" title="Шампань" aria-hidden="true"></span></button></div>
     <p class="card-price">от 5 490 ₽</p>
-    <p class="card-kit muted">комплект от 8 522 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/alyaska.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/alyaska.html#zayavka">Заявка</a>
@@ -322,7 +330,6 @@
     <p class="card-sub">Ламинированное покрытие · Белый</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button></div>
     <p class="card-price">от 3 619 ₽</p>
-    <p class="card-kit muted">комплект от 6 124 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/vesna.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/vesna.html#zayavka">Заявка</a>
@@ -339,7 +346,6 @@
     <p class="card-sub">Ламинированное покрытие · Белый</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button></div>
     <p class="card-price">от 3 152 ₽</p>
-    <p class="card-kit muted">комплект от 5 657 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/dpg.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/dpg.html#zayavka">Заявка</a>
@@ -359,7 +365,6 @@
   <button class="lightbox-next" type="button" aria-label="Следующее фото">›</button>
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/sekret/01-sekret-belyy-pod-pokrasku-1.jpg", "alt": "Скрытая дверь Секрет: белое полотно под покраску с чёрной ручкой — рендер", "w": 900, "h": 1600, "c": "белый (под покраску)"}, {"src": "../assets/img/sekret/02-sekret-belyy-pod-pokrasku-2.jpg", "alt": "Скрытая дверь-невидимка Секрет, грунтованное полотно под покраску — рендер, вид спереди", "w": 1238, "h": 1600, "c": "белый (под покраску)"}, {"src": "../assets/img/sekret/03-sekret-belyy-pod-pokrasku-3.jpg", "alt": "Полотно скрытой двери Секрет под покраску с чёрной ручкой и тонкой кромкой — рендер", "w": 1065, "h": 1600, "c": "белый (под покраску)"}, {"src": "../assets/img/sekret/04-sekret-belyy-interer-1.jpg", "alt": "Белая скрытая дверь Секрет заподлицо со стеной, видна только чёрная ручка — интерьер гостиной", "w": 1600, "h": 1200, "c": "белый (под покраску)"}]</script>
-
 
 <script type="application/json" id="cart-data">{"slug": "sekret", "name": "Секрет", "hoe": {"cslug": "bely-pokraska", "color": "Белый (под покраску)", "open": {"pryamoe": "прямое открывание (полотно 40 мм)", "obratnoe": "обратное открывание (полотно 59 мм)"}, "edge": {"abs": "кромка ABS", "hrom": "кромка хром", "chernaya": "кромка чёрная"}, "variants": [{"h": "2000", "o": "pryamoe", "e": "abs", "price": 10556, "pricef": "10 556 ₽"}, {"h": "2000", "o": "pryamoe", "e": "hrom", "price": 13962, "pricef": "13 962 ₽"}, {"h": "2000", "o": "pryamoe", "e": "chernaya", "price": 13962, "pricef": "13 962 ₽"}, {"h": "2000", "o": "obratnoe", "e": "abs", "price": 14451, "pricef": "14 451 ₽"}, {"h": "2000", "o": "obratnoe", "e": "hrom", "price": 19309, "pricef": "19 309 ₽"}, {"h": "2000", "o": "obratnoe", "e": "chernaya", "price": 19309, "pricef": "19 309 ₽"}, {"h": "2100", "o": "pryamoe", "e": "abs", "price": 12668, "pricef": "12 668 ₽"}, {"h": "2100", "o": "pryamoe", "e": "hrom", "price": 16752, "pricef": "16 752 ₽"}, {"h": "2100", "o": "pryamoe", "e": "chernaya", "price": 16752, "pricef": "16 752 ₽"}, {"h": "2100", "o": "obratnoe", "e": "abs", "price": 17336, "pricef": "17 336 ₽"}, {"h": "2100", "o": "obratnoe", "e": "hrom", "price": 23171, "pricef": "23 171 ₽"}, {"h": "2100", "o": "obratnoe", "e": "chernaya", "price": 23171, "pricef": "23 171 ₽"}, {"h": "2300", "o": "pryamoe", "e": "abs", "price": 12668, "pricef": "12 668 ₽"}, {"h": "2300", "o": "pryamoe", "e": "hrom", "price": 16752, "pricef": "16 752 ₽"}, {"h": "2300", "o": "pryamoe", "e": "chernaya", "price": 16752, "pricef": "16 752 ₽"}, {"h": "2300", "o": "obratnoe", "e": "abs", "price": 17336, "pricef": "17 336 ₽"}, {"h": "2300", "o": "obratnoe", "e": "hrom", "price": 23171, "pricef": "23 171 ₽"}, {"h": "2300", "o": "obratnoe", "e": "chernaya", "price": 23171, "pricef": "23 171 ₽"}]}}</script>
 

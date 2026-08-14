@@ -121,8 +121,6 @@
 <div class="model-price">
           <p class="price-label">от 5 267 ₽</p>
           <p class="price-variant" hidden></p>
-          <p class="price-kit">Комплект с коробкой и наличниками — от <strong>8 299 ₽</strong></p>
-          <p class="price-kit">Полный комплект под ключ с фурнитурой — от <strong>10 034 ₽</strong></p>
           <p class="price-dims">Размеры: 600–900 × 2000; укороченные 550/600 × 1900.</p>
           <div class="model-size">
           <h2 class="model-size-title">Размер полотна, мм</h2>
@@ -136,6 +134,7 @@
           </div>
         </div>
           <p class="price-note">Цена указана за дверное полотно. Коробка, наличники и доборы подбираются отдельно (раздел «Погонаж»).</p>
+          <p class="price-note price-complect">Полная комплектация двери: полотно, коробка (3 шт), наличники с двух сторон (5 шт) и фурнитура — ручка, защёлка, петли. Коробку и наличники выбирайте в разделе <a href="../pogonazh.html">«Погонаж»</a>, ручки и защёлки — в разделе <a href="../furnitura.html">«Фурнитура»</a>.</p>
           <div class="price-actions">
             <button type="button" class="btn btn--primary cart-add cart-add-door">В корзину</button>
             <a class="btn btn--secondary" href="#zayavka">Оставить заявку</a>
@@ -145,43 +144,27 @@
       </div>
     </div>
 
-<!-- Допродажа сразу под галереей и блоком цены: комплект, погонаж,
-     фурнитура (решение владельца 2026-08-11). Стоит ВЫШЕ «Особенностей»,
-     иначе допродажа уезжает от цены. Детальные таблицы —
-     ниже, в «Варианты и цены» и «Стоимость комплекта» (#komplekt) -->
-<section class="model-variants needs" id="furnitura" aria-label="Вам может понадобиться">
-  <h2>Вам может понадобиться</h2>
-  <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Менеджер рассчитает точный состав под ваш проём.</p>
+<!-- Допродажа «С этим товаром покупают» сразу под галереей и блоком цены:
+     фурнитура за штуку и ссылка на погонаж (решение владельцев 14.08.2026 —
+     «как у Невы»). Стоит ВЫШЕ «Особенностей», иначе допродажа уезжает
+     от цены. Таблица цен полотна — ниже, в «Вариантах и ценах» -->
+<section class="model-variants needs" id="furnitura" aria-label="С этим товаром покупают">
+  <h2>С этим товаром покупают</h2>
+  <p class="price-sizes">Дверь ставят в сборе: к полотну нужны коробка и наличники, а на полотно — ручка, защёлка и петли. Всё продаётся поштучно — добавляйте в корзину, что нужно.</p>
   <div class="needs-grid">
-    <article class="need-card need-card--kit">
-      <h3>Комплект с погонажем</h3>
-      <p class="need-price"><span class="need-kit-delta">+3 032 ₽</span> <span class="need-price-note">к полотну</span></p>
-      <p class="need-note">Отделка «<span class="need-kit-fins">Капучино, Перламутр, Бетон</span>» · комплект целиком <strong class="need-kit-total">8 299 ₽</strong></p>
-      <ul class="need-list">
-        <li><span>Полотно</span><span class="need-num need-kit-pol">5 267 ₽</span></li>
-        <li><span>Коробка, 3 шт</span><span class="need-num need-kit-kor">579 ₽ за шт</span></li>
-        <li><span>Наличники, 5 шт</span><span class="need-num need-kit-nal">259 ₽ за шт</span></li>
-      </ul>
-      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add cart-add-kit">Комплект в корзину</button><a class="btn btn--secondary btn--card" href="#komplekt">Стоимость комплекта</a></p>
-    </article>
     <article class="need-card">
-      <h3>Погонаж дополнительно</h3>
-      <p class="need-note">Что докупают сверх комплекта — считаем по замеру.</p>
-      <dl class="need-defs">
-        <dt>Доборы</dt><dd>Нужны, когда стена толще коробки: добор закрывает откос заподлицо с наличником. Подбираются по толщине стены. Точный расчёт сделает менеджер после замера. Ширины добора к комплекту — 100, 150, 200 мм.</dd>
-      </dl>
-      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Весь погонаж</a></p>
-    </article>
-    <article class="need-card">
-      <h3>Фурнитура</h3>
-      <p class="need-price">~1 735 ₽ <span class="need-price-note">за дверь</span></p>
-      <p class="need-note">Ручка, защёлка и две петли — подобрали под отделки и стиль этой модели. Позиции можно поменять.</p>
+      <h3>Ручка</h3>
       <ul class="need-items">
-        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/ruchka-47099.jpg" alt="Ручка Punto ARC MAIN, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto ARC MAIN, чёрный</span></span><span class="need-num">985 ₽</span></li>
-        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/zashchelka-42357.jpg" alt="Защёлка Fuaro PLAST P12, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, чёрный</span></span><span class="need-num">350 ₽</span></li>
-        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/petlya-43133.jpg" alt="Петля универсальная Punto IN4200W, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#petli">Петли</a> × 2 <span class="muted">(200 ₽ за шт)</span><br><span class="muted">Петля универсальная Punto IN4200W, чёрный</span></span><span class="need-num">400 ₽</span></li>
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/ruchka-47099.jpg" alt="Ручка Punto ARC MAIN, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#ruchki">Ручка</a><br><span class="muted">Ручка Punto ARC MAIN, чёрный</span></span><span class="need-num">985 ₽ за шт</span></li>
       </ul>
       <p class="need-note muted">Под другие отделки этой модели подойдут: Ручка Punto BLADE, матовый никель/хром — 1 070 ₽; Ручка Punto ARC MAIN, сатиновое золото — 965 ₽.</p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-47099&quot;, &quot;n&quot;: &quot;Ручка Punto ARC MAIN, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 985, &quot;q&quot;: 1}]" aria-label="В корзину: ручка, Ручка Punto ARC MAIN, чёрный">В корзину</button><a class="btn btn--secondary btn--card" href="../furnitura.html#ruchki">Все ручки</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Защёлка</h3>
+      <ul class="need-items">
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/zashchelka-42357.jpg" alt="Защёлка Fuaro PLAST P12, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#zashchelki">Защёлка</a><br><span class="muted">Защёлка Fuaro PLAST P12, чёрный</span></span><span class="need-num">350 ₽ за шт</span></li>
+      </ul>
       <details class="need-details">
         <summary>Опции: санузел, магнитная защёлка, замок под ключ</summary>
         <ul class="need-opts">
@@ -190,7 +173,23 @@
           <li class="need-opt"><p class="need-opt-head"><a href="../furnitura.html#zashchelki">Замок под ключ</a><span class="need-num">+1 160 ₽</span><button type="button" class="btn btn--secondary btn--card cart-add cart-plus" data-added="✓" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-49219&quot;, &quot;n&quot;: &quot;Корпус замка Punto PL85 под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 510, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:tsilindr-45437&quot;, &quot;n&quot;: &quot;Цилиндр Fuaro 100 ZM/60 ключ-вертушка, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 650, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:nakladka-47189&quot;, &quot;n&quot;: &quot;Накладка Punto ET ARC под цилиндр, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 350, &quot;q&quot;: 1}]" data-cart-remove="[&quot;f:zashchelka-42357&quot;]" aria-label="В корзину: замок под ключ (корпус, цилиндр и накладка вместо защёлки)">+</button></p><p class="need-opt-sub">Корпус замка Punto PL85 под цилиндр, чёрный (510 ₽) вместо защёлки, плюс Цилиндр Fuaro 100 ZM/60 ключ-вертушка, чёрный (650 ₽) и Накладка Punto ET ARC под цилиндр, чёрный (350 ₽)</p></li>
         </ul>
       </details>
-      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:ruchka-47099&quot;, &quot;n&quot;: &quot;Ручка Punto ARC MAIN, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 985, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:zashchelka-42357&quot;, &quot;n&quot;: &quot;Защёлка Fuaro PLAST P12, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 350, &quot;q&quot;: 1}, {&quot;id&quot;: &quot;f:petlya-43133&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 200, &quot;q&quot;: 2}]">Добавить фурнитуру</button><a class="btn btn--secondary btn--card" href="../furnitura.html">Вся фурнитура</a></p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:zashchelka-42357&quot;, &quot;n&quot;: &quot;Защёлка Fuaro PLAST P12, чёрный&quot;, &quot;v&quot;: &quot;Fuaro · чёрный&quot;, &quot;p&quot;: 350, &quot;q&quot;: 1}]" aria-label="В корзину: защёлка, Защёлка Fuaro PLAST P12, чёрный">В корзину</button><a class="btn btn--secondary btn--card" href="../furnitura.html#zashchelki">Все защёлки</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Петли</h3>
+      <ul class="need-items">
+        <li class="need-item"><img class="need-thumb" src="../assets/img/furnitura-web/petlya-43133.jpg" alt="Петля универсальная Punto IN4200W, чёрный" width="600" height="600" loading="lazy"><span class="need-item-body"><a href="../furnitura.html#petli">Петли</a> × 2<br><span class="muted">Петля универсальная Punto IN4200W, чёрный</span></span><span class="need-num">200 ₽ за шт</span></li>
+      </ul>
+      <p class="need-note muted">На дверь нужны 2 петли — кнопка добавит пару.</p>
+      <p class="need-foot"><button type="button" class="btn btn--primary btn--card cart-add" data-cart-add="[{&quot;id&quot;: &quot;f:petlya-43133&quot;, &quot;n&quot;: &quot;Петля универсальная Punto IN4200W, чёрный&quot;, &quot;v&quot;: &quot;Punto · чёрный&quot;, &quot;p&quot;: 200, &quot;q&quot;: 2}]" aria-label="В корзину: петли, Петля универсальная Punto IN4200W, чёрный">В корзину · 2 шт</button><a class="btn btn--secondary btn--card" href="../furnitura.html#petli">Все петли</a></p>
+    </article>
+    <article class="need-card">
+      <h3>Погонаж к этой двери</h3>
+      <p class="need-note">Коробка, наличники и доборы к отделкам этой модели. Цены за штуку — в разделе «Погонаж».</p>
+      <dl class="need-defs">
+        <dt>Телескопический погонаж</dt><dd>в цвет полотна</dd>
+      </dl>
+      <p class="need-foot"><a class="btn btn--secondary btn--card" href="../pogonazh.html">Выбрать погонаж</a></p>
     </article>
   </div>
 </section>
@@ -216,24 +215,6 @@
   </div>
   <p class="price-sizes muted">Погонаж к этой модели: телескопический погонаж — в цвет полотна.</p>
   <p class="price-sizes muted">Цена указана за дверное полотно. Коробка, наличники и доборы подбираются отдельно (раздел «Погонаж»).</p>
-</section>
-
-<section class="model-variants pogonazh-prices" id="komplekt" aria-label="Стоимость комплекта">
-  <h2>Стоимость комплекта</h2>
-  <p class="price-sizes">Комплект на один проём: полотно, элементы коробки (3 шт — продажа целыми планками) и наличники с обеих сторон (5 шт). Доборы — при необходимости, отдельно.</p>
-  <div class="table-wrap">
-  <table class="price-table">
-    <thead><tr><th scope="col">Отделка</th><th scope="col">Полотно</th><th scope="col">Коробка, за шт (нужно 3)</th><th scope="col">Наличник, за шт (нужно 5)</th><th scope="col">Комплект</th></tr></thead>
-    <tbody>
-<tr><td>Капучино, Перламутр, Бетон<br><span class="muted">ПО, стекло Сатинато</span></td><td class="nowrap">5 267 ₽</td><td class="nowrap">579 ₽</td><td class="nowrap">259 ₽</td><td class="price-cell">8 299 ₽</td></tr>
-<tr><td>Капучино, Перламутр, Бетон<br><span class="muted">ПО, чёрное стекло</span></td><td class="nowrap">5 470 ₽</td><td class="nowrap">579 ₽</td><td class="nowrap">259 ₽</td><td class="price-cell">8 502 ₽</td></tr>
-<tr><td>Дуб дымчатый, Ясень арктический<br><span class="muted">ПО, стекло Сатинато</span></td><td class="nowrap">5 612 ₽</td><td class="nowrap">579 ₽</td><td class="nowrap">259 ₽</td><td class="price-cell">8 644 ₽</td></tr>
-<tr><td>Дуб дымчатый, Ясень арктический<br><span class="muted">ПО, чёрное стекло</span></td><td class="nowrap">5 795 ₽</td><td class="nowrap">579 ₽</td><td class="nowrap">259 ₽</td><td class="price-cell">8 827 ₽</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="price-sizes">Комплект = полотно + элементы коробки × 3 (продажа целыми планками) + наличник × 5 (обе стороны проёма). Например, «Капучино»: 5 267 ₽ + 579 ₽ × 3 + 259 ₽ × 5 = 8 299 ₽.</p>
-  <p class="price-sizes">Полный расчёт комплекта — по замеру. <a href="#furnitura">Что ещё понадобится</a></p>
 </section>
 
     <div class="model-details">
@@ -308,7 +289,6 @@
     <p class="card-sub">Ламинированное · Эмаль · 4 отделки</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="bely-shelk" aria-pressed="false" aria-label="Показать в цвете Белый шёлк" disabled><span class="swatch" style="background:#ECECEC" title="Белый шёлк" aria-hidden="true"></span></button></div>
     <p class="card-price">от 5 490 ₽</p>
-    <p class="card-kit muted">комплект от 8 522 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/alba.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/alba.html#zayavka">Заявка</a>
@@ -325,7 +305,6 @@
     <p class="card-sub">Ламинированное покрытие · Белый</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button></div>
     <p class="card-price">от 3 619 ₽</p>
-    <p class="card-kit muted">комплект от 6 124 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/vesna.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/vesna.html#zayavka">Заявка</a>
@@ -342,7 +321,6 @@
     <p class="card-sub">Ламинированное покрытие · Белый</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="bely" aria-pressed="false" aria-label="Показать в цвете Белый" disabled><span class="swatch" style="background:#E7E7E7" title="Белый" aria-hidden="true"></span></button></div>
     <p class="card-price">от 3 965 ₽</p>
-    <p class="card-kit muted">комплект от 6 470 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/volna.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/volna.html#zayavka">Заявка</a>
@@ -359,7 +337,6 @@
     <p class="card-sub">Ламинированное покрытие · 5 отделок</p>
     <div class="swatches"><button type="button" class="card-swatch" data-color="beton" aria-pressed="false" aria-label="Показать в цвете Бетон" disabled><span class="swatch" style="background:#BDBBBC" title="Бетон" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="dub-dymchaty" aria-pressed="false" aria-label="Показать в цвете Дуб дымчатый" disabled><span class="swatch" style="background:#A19894" title="Дуб дымчатый" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="kapuchino" aria-pressed="false" aria-label="Показать в цвете Капучино" disabled><span class="swatch" style="background:#C0B4A8" title="Капучино" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="perlamutr" aria-pressed="false" aria-label="Показать в цвете Перламутр" disabled><span class="swatch" style="background:#D2CEC8" title="Перламутр" aria-hidden="true"></span></button><button type="button" class="card-swatch" data-color="yasen-arkticheskiy" aria-pressed="false" aria-label="Показать в цвете Ясень арктический" disabled><span class="swatch" style="background:#EDE1D9" title="Ясень арктический" aria-hidden="true"></span></button></div>
     <p class="card-price">от 4 433 ₽</p>
-    <p class="card-kit muted">комплект от 7 465 ₽</p>
     <div class="card-actions">
       <a class="btn btn--secondary btn--card" href="../doors/kvadro-05.html">Подробнее</a>
       <a class="btn btn--primary btn--card" href="../doors/kvadro-05.html#zayavka">Заявка</a>
@@ -379,8 +356,7 @@
   <button class="lightbox-next" type="button" aria-label="Следующее фото">›</button>
 </div>
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/kvadro-11/01-kvadro-11-po-beton.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Бетон, остеклённое полотно со стеклом Сатинато", "w": 756, "h": 1600, "c": "бетон", "g": "satinato"}, {"src": "../assets/img/kvadro-11/02-kvadro-11-po-beton-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Бетон со стеклом Лакобель чёрный", "w": 756, "h": 1600, "c": "бетон", "g": "lakobel"}, {"src": "../assets/img/kvadro-11/03-kvadro-11-po-dub-dymchatyy.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Дуб дымчатый, остеклённое полотно со стеклом Сатинато", "w": 729, "h": 1600, "c": "дуб дымчатый", "g": "satinato"}, {"src": "../assets/img/kvadro-11/04-kvadro-11-po-dub-dymchatyy-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Дуб дымчатый со стеклом Лакобель чёрный", "w": 742, "h": 1600, "c": "дуб дымчатый", "g": "lakobel"}, {"src": "../assets/img/kvadro-11/05-kvadro-11-po-kapuchino.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Капучино, остеклённое полотно со стеклом Сатинато", "w": 758, "h": 1600, "c": "капучино", "g": "satinato"}, {"src": "../assets/img/kvadro-11/06-kvadro-11-po-kapuchino-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Капучино со стеклом Лакобель чёрный", "w": 747, "h": 1600, "c": "капучино", "g": "lakobel"}, {"src": "../assets/img/kvadro-11/07-kvadro-11-po-perlamutr.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Перламутр, остеклённое полотно со стеклом Сатинато", "w": 740, "h": 1600, "c": "перламутр", "g": "satinato"}, {"src": "../assets/img/kvadro-11/08-kvadro-11-po-perlamutr-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Перламутр со стеклом Лакобель чёрный", "w": 735, "h": 1600, "c": "перламутр", "g": "lakobel"}, {"src": "../assets/img/kvadro-11/09-kvadro-11-po-yasen-arkticheskiy.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Ясень арктический, остеклённое полотно со стеклом Сатинато", "w": 738, "h": 1600, "c": "ясень арктический", "g": "satinato"}, {"src": "../assets/img/kvadro-11/10-kvadro-11-po-yasen-arkticheskiy-lakobel-chernyy.jpg", "alt": "Межкомнатная дверь Квадро 11 в отделке Ясень арктический со стеклом Лакобель чёрный", "w": 745, "h": 1600, "c": "ясень арктический", "g": "lakobel"}]</script>
-<script type="application/json" id="variants-data">{"variants": [{"colors": ["бетон", "капучино", "перламутр"], "g": "satinato", "price": 5267, "pricef": "5 267 ₽"}, {"colors": ["бетон", "капучино", "перламутр"], "g": "lakobel", "price": 5470, "pricef": "5 470 ₽"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "satinato", "price": 5612, "pricef": "5 612 ₽"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "lakobel", "price": 5795, "pricef": "5 795 ₽"}], "kits": [{"v": 0, "colors": ["бетон", "капучино", "перламутр"], "total": 8299, "totalf": "8 299 ₽", "pod": 10034, "podf": "10 034 ₽"}, {"v": 1, "colors": ["бетон", "капучино", "перламутр"], "total": 8502, "totalf": "8 502 ₽", "pod": 10237, "podf": "10 237 ₽"}, {"v": 2, "colors": ["дуб дымчатый", "ясень арктический"], "total": 8644, "totalf": "8 644 ₽", "pod": 10379, "podf": "10 379 ₽"}, {"v": 3, "colors": ["дуб дымчатый", "ясень арктический"], "total": 8827, "totalf": "8 827 ₽", "pod": 10562, "podf": "10 562 ₽"}]}</script>
-<script type="application/json" id="kit-data">[{"colors": ["бетон", "капучино", "перламутр"], "g": "satinato", "total": 8299, "fins": "Капучино, Перламутр, Бетон", "delta": "+3 032 ₽", "totalf": "8 299 ₽", "pol": "5 267 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт", "vi": 0, "korItem": {"id": "p:korobka:teleskop:70x2060", "n": "Коробка", "v": "70×32×2060 мм · Телескопический", "p": 579}, "nalItem": {"id": "p:nalichnik:teleskop:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический", "p": 259}, "podf": "10 034 ₽"}, {"colors": ["бетон", "капучино", "перламутр"], "g": "lakobel", "total": 8502, "fins": "Капучино, Перламутр, Бетон", "delta": "+3 032 ₽", "totalf": "8 502 ₽", "pol": "5 470 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт", "vi": 1, "korItem": {"id": "p:korobka:teleskop:70x2060", "n": "Коробка", "v": "70×32×2060 мм · Телескопический", "p": 579}, "nalItem": {"id": "p:nalichnik:teleskop:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический", "p": 259}, "podf": "10 237 ₽"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "satinato", "total": 8644, "fins": "Дуб дымчатый, Ясень арктический", "delta": "+3 032 ₽", "totalf": "8 644 ₽", "pol": "5 612 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт", "vi": 2, "korItem": {"id": "p:korobka:teleskop:70x2060:2", "n": "Коробка", "v": "70×32×2060 мм · Телескопический", "p": 579}, "nalItem": {"id": "p:nalichnik:teleskop:70x2140:2", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический", "p": 259}, "podf": "10 379 ₽"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "lakobel", "total": 8827, "fins": "Дуб дымчатый, Ясень арктический", "delta": "+3 032 ₽", "totalf": "8 827 ₽", "pol": "5 795 ₽", "kor": "579 ₽ за шт", "nal": "259 ₽ за шт", "vi": 3, "korItem": {"id": "p:korobka:teleskop:70x2060:2", "n": "Коробка", "v": "70×32×2060 мм · Телескопический", "p": 579}, "nalItem": {"id": "p:nalichnik:teleskop:70x2140:2", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический", "p": 259}, "podf": "10 562 ₽"}]</script>
+<script type="application/json" id="variants-data">{"variants": [{"colors": ["бетон", "капучино", "перламутр"], "g": "satinato", "price": 5267, "pricef": "5 267 ₽"}, {"colors": ["бетон", "капучино", "перламутр"], "g": "lakobel", "price": 5470, "pricef": "5 470 ₽"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "satinato", "price": 5612, "pricef": "5 612 ₽"}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "lakobel", "price": 5795, "pricef": "5 795 ₽"}]}</script>
 <script type="application/json" id="cart-data">{"slug": "kvadro-11", "name": "Квадро 11", "variants": [{"colors": ["бетон", "капучино", "перламутр"], "g": "satinato", "gid": "satinato", "price": 5267, "pricef": "5 267 ₽", "label": "ПО, стекло Сатинато", "sizes": ["600", "700", "800", "900", "550u", "600u"]}, {"colors": ["бетон", "капучино", "перламутр"], "g": "lakobel", "gid": "lakobel", "price": 5470, "pricef": "5 470 ₽", "label": "ПО, чёрное стекло", "sizes": ["600", "700", "800", "900", "550u", "600u"]}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "satinato", "gid": "satinato", "price": 5612, "pricef": "5 612 ₽", "label": "ПО, стекло Сатинато", "sizes": ["600", "700", "800", "900", "550u", "600u"]}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "lakobel", "gid": "lakobel", "price": 5795, "pricef": "5 795 ₽", "label": "ПО, чёрное стекло", "sizes": ["600", "700", "800", "900", "550u", "600u"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000", "550u": "550 × 1900", "600u": "600 × 1900"}, "cslug": {"бетон": "beton", "дуб дымчатый": "dub-dymchaty", "капучино": "kapuchino", "перламутр": "perlamutr", "ясень арктический": "yasen-arkticheskiy"}, "cname": {"бетон": "Бетон", "дуб дымчатый": "Дуб дымчатый", "капучино": "Капучино", "перламутр": "Перламутр", "ясень арктический": "Ясень арктический"}, "stock": {"капучино|satinato": ["600"], "перламутр|satinato": ["700"], "бетон|satinato": [], "капучино|lakobel": [], "перламутр|lakobel": ["700"], "бетон|lakobel": ["600", "700", "800"], "дуб дымчатый|satinato": ["700"], "ясень арктический|satinato": [], "дуб дымчатый|lakobel": [], "ясень арктический|lakobel": []}}</script>
 
 </main>

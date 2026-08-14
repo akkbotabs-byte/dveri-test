@@ -583,10 +583,6 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 .swatch-nophoto-note { margin-top: var(--space-2); }
 
 /* ---------- Фурнитура: раздел и блок на странице модели ---------- */
-/* Строки «комплект от…» / «под ключ от…» в блоке цены модели */
-.price-kit { color: var(--color-ink-soft); font-size: var(--fs-small); }
-.price-kit strong { color: var(--color-ink); font-weight: var(--fw-semibold); }
-.price-kit + .price-note { margin-top: var(--space-2); }
 .furn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-4); }
 .furn-card {
   display: flex; flex-direction: column; gap: var(--space-1);
@@ -598,7 +594,7 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 .furn-sub, .furn-note { color: var(--color-ink-soft); font-size: var(--fs-caption); }
 .furn-card .card-price { margin-top: auto; padding-top: var(--space-2); }
 
-/* ---------- «Вам может понадобиться»: три карточки допродажи ----------
+/* ---------- «С этим товаром покупают»: карточки допродажи ----------
    Секция стоит сразу под галереей и блоком цены (#furnitura). Одна колонка
    на телефоне, две на планшете, три на десктопе; карточки — тонкая рамка
    --color-line, цена акцентным зелёным, кнопка-ссылка прижата к низу. */
@@ -620,9 +616,6 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
   border: 1px solid var(--color-line); border-radius: var(--radius-m);
   padding: var(--space-4);
 }
-/* display: flex перебивает hidden — возвращаем (model.js прячет карточку
-   комплекта, когда для выбранной пары отделка×стекло комплекта нет) */
-.need-card[hidden] { display: none; }
 .need-card h3 { margin-bottom: var(--space-2); }
 .need-price { color: var(--color-accent); font-size: var(--fs-price); font-weight: var(--fw-bold); line-height: var(--lh-heading); }
 .need-price-note { color: var(--color-ink-soft); font-size: var(--fs-small); font-weight: var(--fw-regular); }
