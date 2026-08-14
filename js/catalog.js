@@ -8,6 +8,10 @@
    При активном фильтре цвета карточка перекрашивается: картинка
    меняется на вариант первого выбранного пользователем цвета,
    который есть у модели (data-img-<slug цвета>), с коротким fade.
+   Саму перекраску (фото, цена, свотчи) делает общий компонент
+   карточек cards.js (window.DSDCards) — он же обслуживает клики
+   по свотчам; фильтр передаёт ему приоритет цветов, при смене
+   набора цветов локальный выбор на карточках сбрасывается.
    Состояние фильтров и сортировки зеркалится в query-параметры URL
    (replaceState) — выборку можно пошарить и восстановить по ссылке.
    Без JS виден весь каталог (сортировка скрыта через .no-js). */
@@ -25,6 +29,11 @@
   /* Порядок выбора цветов пользователем: первый выбранный — приоритет
      перекраски карточек. Снятые цвета выбывают, новые встают в конец. */
   var colorOrder = [];
+  /* Общий компонент карточек (cards.js, подключён перед catalog.js) */
+  var cardsApi = window.DSDCards;
+  /* Последний переданный компоненту набор цветов: локальный выбор на
+     карточке сбрасываем только при реальной смене цветового фильтра */
+  var lastColorsKey = null;
 
   function checked(nameAttr) {
     return Array.prototype.slice.call(form.querySelectorAll('input[name="' + nameAttr + '"]:checked'));
@@ -36,71 +45,6 @@
     vals.forEach(function (v) {
       if (colorOrder.indexOf(v) === -1) { colorOrder.push(v); }
     });
-  }
-
-  /* ---- Перекраска карточки: вариант цвета или дефолт, короткий fade.
-     Вместе с src подменяется и alt (data-alt-<slug> / data-alt-default) —
-     подпись соответствует показанному цвету. ---- */
-  function cardVariant(card) {
-    var have = (card.dataset.colors || '').split(' ');
-    for (var i = 0; i < colorOrder.length; i += 1) {
-      if (have.indexOf(colorOrder[i]) !== -1) {
-        var src = card.getAttribute('data-img-' + colorOrder[i]);
-        if (src) {
-          return { src: src, alt: card.getAttribute('data-alt-' + colorOrder[i]) };
-        }
-        break; /* цвет есть, но отдельного варианта нет — дефолт */
-      }
-    }
-    return { src: card.getAttribute('data-img-default'),
-             alt: card.getAttribute('data-alt-default') };
-  }
-
-  /* ---- Цена карточки: при активном фильтре цвета показываем «от N ₽»
-     по вариантам первого выбранного цвета, который есть у модели
-     (data-pricef-<slug>), без фильтра — данные по модели целиком. ---- */
-  function updateCardPrice(card) {
-    var priceEl = card.querySelector('.card-price');
-    var def = card.getAttribute('data-pricef-default');
-    if (!priceEl || !def) { return; }
-    var value = def;
-    var have = (card.dataset.colors || '').split(' ');
-    for (var i = 0; i < colorOrder.length; i += 1) {
-      if (have.indexOf(colorOrder[i]) !== -1) {
-        value = card.getAttribute('data-pricef-' + colorOrder[i]) || def;
-        break;
-      }
-    }
-    var text = 'от ' + value;
-    if (priceEl.textContent !== text) { priceEl.textContent = text; }
-  }
-
-  function swapImage(card) {
-    var img = card.querySelector('.card-media img');
-    if (!img) { return; }
-    var v = cardVariant(card);
-    if (!v.src || img.getAttribute('src') === v.src) { return; }
-    /* Отменяем незавершённый предыдущий свап: при быстром щёлканье
-       фильтрами таймеры и reveal разных свапов не перекрываются */
-    (img._swapTimers || []).forEach(window.clearTimeout);
-    if (img._swapReveal) { img.removeEventListener('load', img._swapReveal); }
-    var timers = img._swapTimers = [];
-    var reveal = function () {
-      img.classList.remove('is-swapping');
-      img._swapReveal = null;
-    };
-    img._swapReveal = reveal;
-    img.classList.add('is-swapping');
-    timers.push(window.setTimeout(function () {
-      img.setAttribute('src', v.src);
-      if (v.alt) { img.setAttribute('alt', v.alt); }
-      if (img.complete) {
-        reveal();
-      } else {
-        img.addEventListener('load', reveal, { once: true });
-        timers.push(window.setTimeout(reveal, 400)); /* страховка от зависшей загрузки */
-      }
-    }, 150));
   }
 
   /* ---- Связные фасеты отделка × цвет ---- */
@@ -159,6 +103,15 @@
        вместе со скрытием цвет не должен участвовать в фильтрации */
     updateColorOptions(facing);
     syncColorOrder();
+    if (cardsApi) {
+      /* Смена набора цветов фильтра — сброс локального выбора карточек
+         к состоянию фильтра; прочие фильтры локальный выбор не трогают */
+      var colorsKey = colorOrder.join(',');
+      if (colorsKey !== lastColorsKey) {
+        lastColorsKey = colorsKey;
+        cardsApi.setFilterColors(colorOrder);
+      }
+    }
     var colors = checked('color').map(function (i) { return i.value; });
     var stockOnly = checked('stock').length > 0;
     var shown = 0;
@@ -172,8 +125,7 @@
       card.hidden = !match;
       if (match) {
         shown += 1;
-        swapImage(card);
-        updateCardPrice(card);
+        if (cardsApi) { cardsApi.paint(card); }
       }
     });
 

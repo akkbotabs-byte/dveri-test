@@ -118,13 +118,15 @@
      у прайсовых отделок без фото (data-nophoto) фото не меняется,
      появляется пометка «фото уточняется». Любой свотч обновляет цену
      «от N ₽» (data-pricef) и подсвечивает свои строки в таблице
-     «Варианты и цены» (data-variants — индексы строк tbody). */
+     «Варианты и цены» (data-variants — индексы строк tbody; заголовки
+     групп покрытий tr.facing-group в нумерацию не входят — build.py
+     нумерует только варианты прайса). */
   var chipList = Array.prototype.slice.call(
     document.querySelectorAll('.swatch-chip:not(.glass-chip)'));
   var priceLabel = document.querySelector('.model-price .price-label');
   var nophotoNote = document.querySelector('.swatch-nophoto-note');
   var variantRows = Array.prototype.slice.call(
-    document.querySelectorAll('#varianty .price-table tbody tr'));
+    document.querySelectorAll('#varianty .price-table tbody tr:not(.facing-group)'));
 
   /* Переключатель «Стекло» (модели, где прайс различает остекление):
      пара цвет×стекло обновляет цену «от», строки таблицы, строки
@@ -739,6 +741,25 @@
     }
 
     updateSizes();
+  }
+
+  /* ---- Предвыбор отделки из ?color=<slug> ----
+     Ссылки «Подробнее»/заголовка карточек каталога ведут сюда с выбранным
+     на карточке цветом (cards.js). Клик по свотчу тянет за собой все
+     следствия: фото, цену, таблицу, комплект, размеры. Слаг сверяем
+     с data-cslug реальных свотчей — невалидный игнорируется. Стоит после
+     навешивания ВСЕХ слушателей свотчей (базового и корзинных). */
+  if (window.URLSearchParams) {
+    var wantColor = new URLSearchParams(window.location.search).get('color');
+    if (wantColor) {
+      chipList.some(function (chip) {
+        if (chip.dataset.cslug === wantColor && !chip.disabled) {
+          chip.click();
+          return true;
+        }
+        return false;
+      });
+    }
   }
 
   updateNav();
