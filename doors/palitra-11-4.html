@@ -141,6 +141,7 @@
           <p class="price-note price-complect">Полная комплектация двери: полотно, коробка (3 шт), наличники с двух сторон (5 шт) и фурнитура — ручка, защёлка, петли. Коробку и наличники выбирайте в разделе <a href="../pogonazh.html">«Погонаж»</a>, ручки и защёлки — в разделе <a href="../furnitura.html">«Фурнитура»</a>.</p>
           <div class="price-actions">
             <button type="button" class="btn btn--primary cart-add cart-add-door">В корзину</button>
+            <button type="button" class="btn btn--secondary calc-open">Рассчитать стоимость</button>
             <a class="btn btn--secondary" href="#zayavka">Оставить заявку</a>
           </div>
           <p class="price-phone">Или по телефону: <a class="nowrap" href="tel:+79932689322">+7 993 268-93-22</a></p>
@@ -349,6 +350,65 @@
     </section>
   </div>
 </section>
+
+<!-- Модалка «Рассчитать стоимость» (идея владельцев 14.08.2026, по образцу
+     mk-doors.ru): нативный dialog — showModal() держит фокус и делает фон
+     inert, Esc закрывает сам. Кнопку .calc-open открывает model.js;
+     без JS кнопки нет (.no-js), запасной путь — форма #zayavka внизу.
+     Подзаголовок дополняется текущим выбором (цвет/стекло/размер),
+     отправка — тем же механизмом, что заказ корзины (FormSubmit AJAX,
+     фолбэк Telegram/mailto). -->
+<dialog class="calc-modal" id="calc-modal" aria-labelledby="calc-title" data-model="Палитра 11-4">
+  <div class="calc-inner">
+    <div class="calc-head">
+      <h2 class="calc-title" id="calc-title">Быстрый расчёт стоимости</h2>
+      <button class="calc-close" type="button" aria-label="Закрыть окно расчёта">✕</button>
+    </div>
+    <p class="calc-sub">Дверь «Палитра 11-4»<span id="calc-variant"></span>. Отметьте, что посчитать, — менеджер пришлёт расчёт и свяжется с вами.</p>
+    <form class="calc-form" id="calc-form" method="post" action="#">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+      <fieldset class="calc-group">
+        <legend>Что включить в расчёт</legend>
+        <label class="check"><input type="checkbox" name="calc-opt" value="установка"><span>Установка</span></label>
+        <label class="check"><input type="checkbox" name="calc-opt" value="погонаж (коробка и наличники)"><span>Погонаж — коробка и наличники</span></label>
+        <label class="check"><input type="checkbox" name="calc-opt" value="доборы"><span>Доборы</span></label>
+        <label class="check"><input type="checkbox" name="calc-opt" value="фурнитура"><span>Фурнитура — ручка, защёлка, петли</span></label>
+      </fieldset>
+      <fieldset class="calc-group">
+        <legend>Как с вами связаться</legend>
+        <div class="calc-radios">
+          <label class="check"><input type="radio" name="calc-contact" value="Телефон" checked><span>Телефон</span></label>
+          <label class="check"><input type="radio" name="calc-contact" value="Telegram"><span>Telegram</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="calc-name">Имя</label>
+        <input id="calc-name" name="name" type="text" autocomplete="name" placeholder="Иван" required aria-required="true" aria-describedby="calc-name-error">
+        <p class="field-error" id="calc-name-error" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="calc-phone">Телефон</label>
+        <input id="calc-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" required aria-required="true" aria-describedby="calc-phone-error">
+        <p class="field-error" id="calc-phone-error" role="alert"></p>
+      </div>
+      <label class="consent">
+        <input type="checkbox" name="consent" required aria-required="true" aria-describedby="calc-consent-error">
+        <span>Нажимая «Получить расчёт», вы даёте согласие на обработку персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных». <a href="../privacy.html">Политика обработки персональных данных</a>.<span class="field-error" id="calc-consent-error" role="alert"></span></span>
+      </label>
+      <button class="btn btn--primary btn--wide" type="submit">Получить расчёт</button>
+      <p class="calc-status" role="status" hidden></p>
+      <div class="calc-fallback" hidden>
+        <button type="button" class="btn btn--secondary" id="calc-tg">Отправить в Telegram</button>
+        <a class="btn btn--secondary" id="calc-mail" href="mailto:fabrika.shopdoors@yandex.ru">Отправить письмом</a>
+      </div>
+    </form>
+    <div class="form-success calc-success" hidden>
+      <h3>Заявка отправлена</h3>
+      <p>Менеджер посчитает стоимость с выбранными опциями и свяжется с вами указанным способом.</p>
+      <p>Быстрее всего — Telegram: <a href="https://t.me/doors_fabrika" target="_blank" rel="noopener">@doors_fabrika</a><br>Или позвоните: <a class="nowrap" href="tel:+79932689322">+7&nbsp;993&nbsp;268-93-22</a></p>
+    </div>
+  </div>
+</dialog>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото" hidden>
   <button class="lightbox-close" type="button" aria-label="Закрыть">✕</button>

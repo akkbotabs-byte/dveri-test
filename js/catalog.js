@@ -79,6 +79,36 @@
     });
   }
 
+  /* ---- Чипы покрытий над каталогом (идея владельцев 14.08.2026,
+     по образцу mk-doors.ru): клик выбирает ровно одну отделку в фасете
+     «Отделка» («Все» — сброс), дальше работает обычный apply() —
+     сужение цветов, счётчик, чипы, URL. Синхронизация двусторонняя:
+     чип подсвечен, только когда в фильтре выбрана ровно его отделка
+     (несколько галочек в чекбоксах — активен только сам фильтр). ---- */
+  var facingTabs = Array.prototype.slice.call(
+    document.querySelectorAll('.facing-tab'));
+  var facingInputs = Array.prototype.slice.call(
+    form.querySelectorAll('input[name="facing"]'));
+
+  function updateFacingTabs() {
+    var vals = checked('facing').map(function (i) { return i.value; });
+    facingTabs.forEach(function (tab) {
+      var v = tab.dataset.facing || '';
+      var on = v ? (vals.length === 1 && vals[0] === v) : vals.length === 0;
+      tab.setAttribute('aria-pressed', String(on));
+    });
+  }
+
+  facingTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var v = tab.dataset.facing || '';
+      facingInputs.forEach(function (input) {
+        input.checked = input.value === v;
+      });
+      apply();
+    });
+  });
+
   function facetMatch(card, facing, colors) {
     var f = (card.dataset.facing || '').split(' ');
     var c = (card.dataset.colors || '').split(' ');
@@ -132,6 +162,7 @@
     if (countEl) { countEl.textContent = String(shown); }
     if (emptyEl) { emptyEl.hidden = shown !== 0; }
     renderChips();
+    updateFacingTabs();
     updateUrl();
   }
 

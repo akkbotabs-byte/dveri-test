@@ -60,6 +60,18 @@
     <h1>Межкомнатные двери в Санкт-Петербурге</h1>
     <p class="catalog-intro">Каталог с ценами от производителя: 24 модели в эмали, ПВХ, ПЭТ и ламинированном покрытии, включая скрытые двери под покраску, полотна от 3 152 ₽. Доставка по СПб и Ленинградской области.</p>
 
+    <!-- Быстрый выбор покрытия (идея владельцев 14.08.2026, по образцу
+         mk-doors.ru): чипы дублируют фасет «Отделка» — синхронизация
+         двусторонняя (catalog.js), без JS ряд скрыт, работают чекбоксы -->
+    <nav class="facing-tabs" aria-label="Быстрый выбор покрытия">
+      <button type="button" class="facing-tab" data-facing="" aria-pressed="true">Все</button>
+      <button type="button" class="facing-tab" data-facing="emal" aria-pressed="false">Эмаль</button>
+      <button type="button" class="facing-tab" data-facing="laminat" aria-pressed="false">Ламинированные</button>
+      <button type="button" class="facing-tab" data-facing="pvh" aria-pressed="false">ПВХ</button>
+      <button type="button" class="facing-tab" data-facing="pet" aria-pressed="false">ПЭТ</button>
+      <button type="button" class="facing-tab" data-facing="pokraska" aria-pressed="false">Под покраску</button>
+    </nav>
+
     <div class="catalog-toolbar">
       <p class="catalog-count" role="status" aria-live="polite"><span id="count-num">24</span> из 24 моделей</p>
       <div class="toolbar-actions">

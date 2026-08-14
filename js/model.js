@@ -415,6 +415,10 @@
   if (cartEl && window.DSDCart) {
     try { cartData = JSON.parse(cartEl.textContent); } catch (err3) { cartData = null; }
   }
+  /* Текст текущего выбора (цвет × стекло × исполнение × размер) для
+     подзаголовка модалки «Рассчитать стоимость» — та же строка, что
+     уходит в корзину; ветки корзины ниже подставляют свою функцию */
+  var calcVariantText = null;
   /* ---- Скрытая дверь (Инвизибл): три селектора высота × открывание ×
      кромка вместо размера. #cart-data.hoe — варианты прайса в порядке
      таблицы «Варианты и цены»; сторона обратного открывания
@@ -486,6 +490,15 @@
         }
       });
     });
+
+    calcVariantText = function () {
+      var f = hoeVariant();
+      if (!f) { return ''; }
+      var side = hoeSel.o === 'obr-r' ? ', правое'
+        : hoeSel.o === 'obr-l' ? ', левое' : '';
+      return hoe.color + ', ' + hoe.open[f.v.o] + side + ', ' +
+        hoe.edge[f.v.e] + ', высота ' + f.v.h + ' мм, ширина под проём';
+    };
 
     if (hoeBtn) {
       hoeBtn.addEventListener('click', function () {
@@ -729,6 +742,20 @@
       });
     });
 
+    /* Строка выбора для модалки расчёта — как у кнопки «В корзину»:
+       самый дешёвый вариант, подходящий под текущий выбор */
+    calcVariantText = function () {
+      var color = colorNow();
+      var scope = scopeVariants(color, activeGlass).filter(function (v) {
+        return v.sizes.indexOf(selSize) !== -1;
+      });
+      if (!scope.length || !selSize) { return ''; }
+      var v = scope.reduce(function (a, b) { return b.price < a.price ? b : a; });
+      var c = (color && v.colors.indexOf(color) !== -1) ? color : v.colors[0];
+      return colorLabel(c) + (v.label ? ', ' + v.label : '') + ', ' +
+        cartData.sizes[selSize] + ' мм';
+    };
+
     /* Полотно в корзину: цена и ключ — у самого дешёвого варианта,
        подходящего под выбор (без выбора цвета это цена «от», её
        покупатель и видит в блоке) */
@@ -773,6 +800,190 @@
         return false;
       });
     }
+  }
+
+  /* ---- Модалка «Рассчитать стоимость» (идея владельцев 14.08.2026,
+     по образцу mk-doors.ru). Нативный dialog: showModal() держит фокус
+     и делает фон inert, Esc закрывает сам (событие close). Подзаголовок
+     дополняется текущим выбором (calcVariantText — та же строка, что
+     уходит в корзину). Отправка — тем же механизмом, что заказ корзины
+     (cart-page.js): fetch POST на FormSubmit; при ошибке — честное
+     сообщение и фолбэк Telegram/mailto с готовым текстом. Кнопка
+     .calc-open видна только с JS (.no-js прячет); в браузерах без
+     <dialog> ведёт к форме #zayavka — прежний путь заявки. ---- */
+  var calcBtn = document.querySelector('.calc-open');
+  var calcDlg = document.getElementById('calc-modal');
+  if (calcBtn && calcDlg && typeof calcDlg.showModal !== 'function') {
+    calcBtn.addEventListener('click', function () {
+      window.location.hash = '#zayavka';
+    });
+  } else if (calcBtn && calcDlg) {
+    var CALC_TG = 'https://t.me/doors_fabrika';
+    var CALC_MAIL = 'fabrika.shopdoors@yandex.ru';
+    var CALC_FS = 'https://formsubmit.co/ajax/' + CALC_MAIL;
+    var calcForm = document.getElementById('calc-form');
+    var calcVariantEl = document.getElementById('calc-variant');
+    var calcStatus = calcDlg.querySelector('.calc-status');
+    var calcFallback = calcDlg.querySelector('.calc-fallback');
+    var calcSuccess = calcDlg.querySelector('.calc-success');
+    var calcSubmit = calcForm.querySelector('button[type="submit"]');
+    var calcHoney = calcForm.querySelector('[name="_honey"]');
+    var calcTgBtn = document.getElementById('calc-tg');
+    var calcMailLink = document.getElementById('calc-mail');
+    var calcLastText = '';
+
+    calcBtn.addEventListener('click', function () {
+      var t = calcVariantText ? calcVariantText() : '';
+      if (calcVariantEl) { calcVariantEl.textContent = t ? ' — ' + t : ''; }
+      calcDlg.showModal();
+      document.body.style.overflow = 'hidden';
+    });
+    /* Снятие скролл-лока и возврат фокуса на кнопку-триггер (a11y).
+       Идемпотентно: все пути закрытия зовут calcCloseDlg() напрямую,
+       а слушатели close/cancel подстраховывают нативные закрытия
+       (Esc в браузерах, где событие не перехватил наш keydown). */
+    var calcCleanup = function () {
+      document.body.style.overflow = '';
+      calcBtn.focus();
+    };
+    var calcCloseDlg = function () {
+      calcDlg.close();
+      calcCleanup();
+    };
+    calcDlg.addEventListener('close', calcCleanup);
+    calcDlg.addEventListener('cancel', calcCleanup);
+    calcDlg.querySelector('.calc-close').addEventListener('click', calcCloseDlg);
+    /* Клик по подложке: контент обёрнут в .calc-inner, «голый» dialog
+       в цели клика — это ::backdrop */
+    calcDlg.addEventListener('click', function (e) {
+      if (e.target === calcDlg) { calcCloseDlg(); }
+    });
+    /* Esc закрывает и нативно (cancel -> close), но не во всех сборках
+       Chromium событие доходит до диалога — дублируем явно, как у
+       лайтбокса; close() на уже закрытом диалоге безвреден */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && calcDlg.open) { calcCloseDlg(); }
+    });
+
+    /* Валидация — та же, что у форм заявки (main.js) */
+    var calcSetError = function (field, msg) {
+      var wrap = field.closest('.field') || field.closest('.consent');
+      if (!wrap) { return; }
+      wrap.classList.toggle('has-error', Boolean(msg));
+      field.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      var errEl = wrap.querySelector('.field-error');
+      if (errEl) { errEl.textContent = msg || ''; }
+    };
+
+    var calcValidate = function () {
+      var nameF = calcForm.querySelector('[name="name"]');
+      var phoneF = calcForm.querySelector('[name="phone"]');
+      var consentF = calcForm.querySelector('[name="consent"]');
+      var ok = true;
+      var firstInvalid = null;
+      if (!nameF.value.trim()) {
+        calcSetError(nameF, 'Укажите имя — так мы будем знать, как к вам обращаться.');
+        ok = false;
+        firstInvalid = firstInvalid || nameF;
+      } else { calcSetError(nameF, ''); }
+      var digits = phoneF.value.replace(/\D/g, '');
+      if (digits.length < 10) {
+        calcSetError(phoneF, 'Укажите телефон — мы перезвоним по нему.');
+        ok = false;
+        firstInvalid = firstInvalid || phoneF;
+      } else { calcSetError(phoneF, ''); }
+      if (!consentF.checked) {
+        calcSetError(consentF, 'Для отправки заявки нужно согласие на обработку данных.');
+        ok = false;
+        firstInvalid = firstInvalid || consentF;
+      } else { calcSetError(consentF, ''); }
+      if (!ok) {
+        if (firstInvalid) { firstInvalid.focus(); }
+        return null;
+      }
+      return { name: nameF.value.trim(), phone: phoneF.value.trim() };
+    };
+
+    /* Текст заявки: модель, вариант, галочки, способ связи, имя, телефон */
+    var calcText = function (f) {
+      var opts = [];
+      Array.prototype.forEach.call(
+        calcForm.querySelectorAll('input[name="calc-opt"]:checked'),
+        function (i) { opts.push(i.value); });
+      var contact = calcForm.querySelector('input[name="calc-contact"]:checked');
+      var lines = ['Заявка на расчёт с сайта «Магазин дверей»', ''];
+      lines.push('Модель: ' + (calcDlg.getAttribute('data-model') || ''));
+      var v = calcVariantText ? calcVariantText() : '';
+      if (v) { lines.push('Вариант: ' + v); }
+      lines.push('Включить в расчёт: ' +
+        (opts.length ? opts.join(', ') : 'только дверь'));
+      lines.push('Способ связи: ' + (contact ? contact.value : 'Телефон'));
+      lines.push('');
+      lines.push('Имя: ' + f.name);
+      lines.push('Телефон: ' + f.phone);
+      return lines.join('\n');
+    };
+
+    var calcDone = function (ok) {
+      calcSubmit.disabled = false;
+      calcSubmit.textContent = 'Получить расчёт';
+      if (ok) {
+        calcForm.hidden = true;
+        calcSuccess.hidden = false;
+        calcSuccess.setAttribute('tabindex', '-1');
+        calcSuccess.focus();
+      } else {
+        calcStatus.hidden = false;
+        calcStatus.textContent = 'Не получилось отправить автоматически: ' +
+          'нет сети или сервис отправки недоступен. Нажмите «Отправить ' +
+          'в Telegram» или «Отправить письмом» — текст заявки подставится сам.';
+        calcFallback.hidden = false;
+      }
+    };
+
+    calcForm.setAttribute('novalidate', 'novalidate');
+    calcForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (calcSubmit.disabled) { return; }
+      var f = calcValidate();
+      if (!f) { return; }
+      calcLastText = calcText(f);
+      if (!window.fetch) { calcDone(false); return; }
+      calcSubmit.disabled = true;
+      calcSubmit.textContent = 'Отправляем…';
+      fetch(CALC_FS, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+          'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'Заявка на расчёт с сайта',
+          _template: 'box',
+          _honey: calcHoney ? calcHoney.value : '',
+          'Имя': f.name,
+          'Телефон': f.phone,
+          'Заявка': calcLastText
+        })
+      }).then(function (res) {
+        /* FormSubmit и на ошибках отвечает JSON: success приходит
+           строкой "true"/"false" или булевым значением */
+        return res.json().then(function (data) {
+          calcDone(res.ok && data &&
+            (data.success === true || data.success === 'true'));
+        });
+      }).then(null, function () { calcDone(false); });
+    });
+
+    /* Фолбэк: Telegram deep-link / письмо с готовым текстом заявки */
+    calcTgBtn.addEventListener('click', function () {
+      var w = window.open(CALC_TG + '?text=' +
+        encodeURIComponent(calcLastText), '_blank');
+      if (w) { try { w.opener = null; } catch (err4) { /* ничего */ } }
+    });
+    calcMailLink.addEventListener('click', function () {
+      calcMailLink.href = 'mailto:' + CALC_MAIL + '?subject=' +
+        encodeURIComponent('Заявка на расчёт с сайта') +
+        '&body=' + encodeURIComponent(calcLastText);
+    });
   }
 
   updateNav();
