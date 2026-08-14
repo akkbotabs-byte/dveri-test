@@ -516,9 +516,11 @@
       return null;
     };
 
-    /* Комбинация выбрана всегда (в каждой группе есть активная
-       таблетка) — показываем точную цену варианта без «от», строку
-       «за полотно …» и подсвечиваем его строку в «Вариантах и ценах» */
+    /* Таблетки имеют дефолт уже в разметке, поэтому точную цену
+       варианта без «от», строку «за полотно …» и подсветку его строки
+       в «Вариантах и ценах» показываем только после реального клика
+       покупателя (таблетка или свотч) — до него наверху стартовая
+       «от N ₽», как у остальных моделей */
     var hoeUpdate = function () {
       var f = hoeVariant();
       if (!f) { return; }
@@ -545,10 +547,17 @@
         hoeUpdate();
       });
     });
-    /* Клик по свотчу цвета возвращает цену «от …» (базовый слушатель
-       выше) — восстанавливаем точную цену выбранной комбинации */
+    /* Свотч цвета: выбор — точная цена комбинации (базовый слушатель
+       выше уже поставил «от …»), сброс — стартовая «от N ₽» без строки
+       варианта (цену и подсветку строк вернул resetPrice) */
     chipList.forEach(function (chip) {
-      chip.addEventListener('click', hoeUpdate);
+      chip.addEventListener('click', function () {
+        if (chip.getAttribute('aria-pressed') === 'true') {
+          hoeUpdate();
+        } else if (priceVariant) {
+          priceVariant.hidden = true;
+        }
+      });
     });
 
     if (hoeBtn) {
@@ -568,8 +577,6 @@
         window.DSDCart.flash(hoeBtn);
       });
     }
-
-    hoeUpdate();
   } else if (cartData) {
     var sizeChips = Array.prototype.slice.call(
       document.querySelectorAll('.size-chip:not(.edge-chip)'));
@@ -613,6 +620,12 @@
 
     var capitalize = function (s) {
       return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+    };
+
+    /* Подпись цвета для показа — словарь cname из build.py («дуб
+       мадейра» → «Дуб Мадейра»); нет в словаре — просто с заглавной */
+    var colorLabel = function (s) {
+      return (cartData.cname || {})[s] || capitalize(s);
     };
 
     /* Варианты прайса под выбранные цвет, стекло и исполнение (пусто
@@ -758,7 +771,7 @@
           if (!c && cands.length === 1 && cands[0].colors.length === 1) {
             c = cands[0].colors[0];
           }
-          if (c) { parts.push((cartData.cname || {})[c] || capitalize(c)); }
+          if (c) { parts.push(colorLabel(c)); }
           if (cands.length === 1 && cands[0].label) {
             parts.push(cands[0].label);
           }
@@ -835,7 +848,7 @@
           id: 'd:' + cartData.slug + ':' + cartData.cslug[c] + ':' +
             v.gid + ':' + selSize,
           n: 'Полотно ' + cartData.name,
-          v: capitalize(c) + (v.label ? ', ' + v.label : '') + ', ' +
+          v: colorLabel(c) + (v.label ? ', ' + v.label : '') + ', ' +
             cartData.sizes[selSize] + ' мм',
           p: v.price, q: 1
         }]);
@@ -861,13 +874,13 @@
           ? kitColor : v.colors[0];
         var size = v.sizes.indexOf(selSize) !== -1 ? selSize
           : (v.sizes.indexOf('800') !== -1 ? '800' : v.sizes[0]);
-        var fin = ' · в цвет полотна: ' + capitalize(c);
+        var fin = ' · в цвет полотна: ' + colorLabel(c);
         window.DSDCart.add([
           {
             id: 'd:' + cartData.slug + ':' + cartData.cslug[c] + ':' +
               v.gid + ':' + size,
             n: 'Полотно ' + cartData.name,
-            v: capitalize(c) + (v.label ? ', ' + v.label : '') + ', ' +
+            v: colorLabel(c) + (v.label ? ', ' + v.label : '') + ', ' +
               cartData.sizes[size] + ' мм',
             p: v.price, q: 1, k: true
           },
