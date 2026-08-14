@@ -835,6 +835,13 @@
     calcBtn.addEventListener('click', function () {
       var t = calcVariantText ? calcVariantText() : '';
       if (calcVariantEl) { calcVariantEl.textContent = t ? ' — ' + t : ''; }
+      /* Сброс состояния прошлой отправки: после успеха можно запросить
+         второй расчёт (другой вариант), после ошибки сети не висит
+         устаревшее «нет сети» с фолбэком */
+      calcForm.hidden = false;
+      calcSuccess.hidden = true;
+      calcStatus.hidden = true;
+      calcFallback.hidden = true;
       calcDlg.showModal();
       document.body.style.overflow = 'hidden';
     });
