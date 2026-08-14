@@ -1,5 +1,10 @@
 /* Каталог: клиентские фильтры (ПГ/ПО, отделка, цвет), сортировка,
    счётчик, bottom sheet. Внутри группы — ИЛИ, между группами — И.
+   Отделка и цвет — связные фасеты: когда выбраны обе группы, карточка
+   видима только при паре «выбранная отделка : выбранный цвет» из
+   фактических вариантов модели (data-fc) — у моделей с двумя
+   покрытиями цвет принадлежит конкретному покрытию. При выборе
+   отделок список цветов сужается до встречающихся в их парах.
    При активном фильтре цвета карточка перекрашивается: картинка
    меняется на вариант первого выбранного пользователем цвета,
    который есть у модели (data-img-<slug цвета>), с коротким fade.
@@ -98,23 +103,72 @@
     }, 150));
   }
 
+  /* ---- Связные фасеты отделка × цвет ---- */
+  var colorInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="color"]'));
+
+  function cardPairs(card) {
+    return (card.dataset.fc || '').split(' ').filter(function (p) {
+      return p.indexOf(':') !== -1;
+    });
+  }
+
+  /* При выбранных отделках скрываем цвета, не встречающиеся в их парах;
+     выбор со скрытого цвета снимается. Без выбранных отделок — все цвета. */
+  function updateColorOptions(facing) {
+    var allowed = null;
+    if (facing.length) {
+      allowed = {};
+      cards.forEach(function (card) {
+        cardPairs(card).forEach(function (p) {
+          var i = p.indexOf(':');
+          if (facing.indexOf(p.slice(0, i)) !== -1) {
+            allowed[p.slice(i + 1)] = true;
+          }
+        });
+      });
+    }
+    colorInputs.forEach(function (input) {
+      var hide = !!allowed && !allowed[input.value];
+      var label = input.closest('label');
+      (label || input).hidden = hide;
+      if (hide && input.checked) { input.checked = false; }
+    });
+  }
+
+  function facetMatch(card, facing, colors) {
+    var f = (card.dataset.facing || '').split(' ');
+    var c = (card.dataset.colors || '').split(' ');
+    if (facing.length && colors.length) {
+      /* Обе группы выбраны: нужна пара «выбранная отделка : выбранный
+         цвет» из фактических вариантов модели, а не независимое
+         пересечение (у Аляски шампань — только эмаль). */
+      return cardPairs(card).some(function (p) {
+        var i = p.indexOf(':');
+        return facing.indexOf(p.slice(0, i)) !== -1 &&
+               colors.indexOf(p.slice(i + 1)) !== -1;
+      });
+    }
+    return (!facing.length || facing.some(function (v) { return f.indexOf(v) !== -1; })) &&
+           (!colors.length || colors.some(function (v) { return c.indexOf(v) !== -1; }));
+  }
+
   function apply() {
-    syncColorOrder();
     var glazing = checked('glazing').map(function (i) { return i.value; });
     var facing = checked('facing').map(function (i) { return i.value; });
+    /* Сужение списка цветов — до чтения выбранных цветов: снятый
+       вместе со скрытием цвет не должен участвовать в фильтрации */
+    updateColorOptions(facing);
+    syncColorOrder();
     var colors = checked('color').map(function (i) { return i.value; });
     var stockOnly = checked('stock').length > 0;
     var shown = 0;
 
     cards.forEach(function (card) {
       var g = (card.dataset.glazing || '').split(' ');
-      var f = (card.dataset.facing || '').split(' ');
-      var c = (card.dataset.colors || '').split(' ');
       var match =
         (!stockOnly || card.dataset.stock === '1') &&
         (!glazing.length || glazing.some(function (v) { return g.indexOf(v) !== -1; })) &&
-        (!facing.length || facing.some(function (v) { return f.indexOf(v) !== -1; })) &&
-        (!colors.length || colors.some(function (v) { return c.indexOf(v) !== -1; }));
+        facetMatch(card, facing, colors);
       card.hidden = !match;
       if (match) {
         shown += 1;
