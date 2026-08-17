@@ -679,6 +679,7 @@
       });
     };
 
+    var initialPriceText = priceLabel ? priceLabel.textContent.trim() : '';
     var updatePriceHeader = function () {
       var cands = anyPicked() ? pickedVariants() : [];
       var exact = cands.length && cands.every(function (v) {
@@ -700,8 +701,21 @@
           priceVariant.hidden = false;
           fadeSwap(priceVariant, 'за полотно ' + parts.join(', '));
         }
-      } else if (priceVariant) {
-        priceVariant.hidden = true;
+      } else if (cands.length) {
+        /* Выбор сузил варианты, но цены разные (например, только цвет
+           у Альбы: ПГ/2300/решётка) — показываем «от минимума» по
+           выбранному подмножеству, чтобы цена реагировала на клик
+           (замечание владельца 17.08.2026) */
+        var min = cands[0];
+        cands.forEach(function (v) { if (v.price < min.price) { min = v; } });
+        fadeSwap(priceLabel, 'от ' + min.pricef);
+        if (priceVariant) { priceVariant.hidden = true; }
+      } else {
+        /* Полный сброс — вернуть стартовую «от N ₽» страницы */
+        if (priceLabel && priceLabel.textContent.trim() !== initialPriceText) {
+          fadeSwap(priceLabel, initialPriceText);
+        }
+        if (priceVariant) { priceVariant.hidden = true; }
       }
     };
 
