@@ -123,8 +123,32 @@
   <p class="muted swatch-nophoto-note glass-nophoto-note" hidden>Фото варианта с этим остеклением уточняется — показано ближайшее.</p>
 </div>
 <div class="model-price">
-          <p class="price-label">от 3 619 ₽</p>
-          <p class="price-variant" hidden></p>
+          <div class="price-tiles">
+            <div class="price-tile">
+              <p class="price-tile-name">Полотно</p>
+              <p class="price-label">от 3 619 ₽</p>
+              <p class="price-variant" hidden></p>
+            </div>
+            <div class="price-tile price-tile--kit">
+              <p class="price-tile-name">Комплект</p>
+              <p class="kit-price">от 6 124 ₽</p>
+              <button type="button" class="kit-toggle" aria-expanded="false" aria-controls="kit-pop">Состав<span class="kit-caret" aria-hidden="true">▾</span></button>
+            </div>
+            <div class="kit-pop" id="kit-pop" hidden>
+              <div class="kit-pop-head">
+                <p class="kit-pop-title">Состав комплекта</p>
+                <button type="button" class="kit-close" aria-label="Закрыть состав комплекта">✕</button>
+              </div>
+              <ul class="kit-rows">
+                <li class="kit-row"><span class="kit-row-name">1 шт · Полотно</span><span class="kit-row-math"></span><span class="kit-row-sum kit-pol-sum">3 619 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">3 шт · <span class="kit-kor-name">Коробка простая</span></span><span class="kit-row-math kit-kor-math">3 × 475 ₽</span><span class="kit-row-sum kit-kor-sum">1 425 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">5 шт · <span class="kit-nal-name">Наличник гладкий</span></span><span class="kit-row-math kit-nal-math">5 × 216 ₽</span><span class="kit-row-sum kit-nal-sum">1 080 ₽</span></li>
+              </ul>
+              <p class="kit-total"><span>Итого</span><strong class="kit-total-sum">6 124 ₽</strong></p>
+              <p class="kit-formula">Комплект = полотно + коробка 3 шт + наличники 5 шт (обе стороны).</p>
+              <button type="button" class="btn btn--primary btn--wide cart-add-kit">Комплект в корзину</button>
+            </div>
+          </div>
           <p class="price-dims">Размеры: 600–900 × 2000; укороченные 550/600 × 1900 (ПГ).</p>
           <div class="model-size">
           <h2 class="model-size-title">Размер полотна, мм</h2>
@@ -421,6 +445,7 @@
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/orion/01-orion-beton-po.jpg", "alt": "Дверь Орион в отделке Бетон с декоративной вставкой (имитация стекла), общий вид полотна", "w": 757, "h": 1600, "c": "бетон", "g": "po"}, {"src": "../assets/img/orion/02-orion-beton-pg.jpg", "alt": "Дверь Орион в отделке Бетон, глухое полотно (ПГ) — общий вид", "w": 757, "h": 1600, "c": "бетон", "g": "pg"}, {"src": "../assets/img/orion/03-skinnewmaps0004.jpg", "alt": "Межкомнатная дверь Орион в отделке Капучино, общий вид", "w": 757, "h": 1600, "c": "капучино"}, {"src": "../assets/img/orion/04-skinnewmaps0005.jpg", "alt": "Дверь Орион в отделке Капучино, вид полотна под другим ракурсом", "w": 757, "h": 1600, "c": "капучино"}, {"src": "../assets/img/orion/05-skinnewmaps0000.jpg", "alt": "Межкомнатная дверь Орион в отделке Перламутр, общий вид", "w": 757, "h": 1600, "c": "перламутр"}, {"src": "../assets/img/orion/06-skinnewmaps0001.jpg", "alt": "Дверь Орион в отделке Перламутр, вид полотна под другим ракурсом", "w": 757, "h": 1600, "c": "перламутр"}, {"src": "../assets/img/orion/07-id-stsena1-orion5.jpg", "alt": "Межкомнатная дверь Орион в интерьере, сцена 1 — вариант 2", "w": 1600, "h": 1280, "c": "капучино"}, {"src": "../assets/img/orion/08-id-stsena3-orion5.jpg", "alt": "Дверь Орион в интерьере комнаты, сцена 3 — вариант 1", "w": 1600, "h": 1359, "c": "капучино"}, {"src": "../assets/img/orion/09-id-stsena4-1.jpg", "alt": "Дверь Орион в интерьере, сцена 4 — общий вид", "w": 1600, "h": 1000, "c": "капучино"}, {"src": "../assets/img/orion/10-id-stsena6-3.jpg", "alt": "Дверь Орион в интерьере, сцена 6 — вид 3", "w": 1600, "h": 800, "c": "капучино"}, {"src": "../assets/img/orion/11-id-stsena6-4-2.jpg", "alt": "Дверь Орион в интерьере, сцена 6 — вид 4", "w": 1600, "h": 800, "c": "капучино"}, {"src": "../assets/img/orion/12-id-stsena7-1-1.jpg", "alt": "Дверь Орион в интерьере, сцена 7 — общий вид", "w": 1600, "h": 800, "c": "капучино"}, {"src": "../assets/img/orion/13-id-stsena1-orion1.jpg", "alt": "Межкомнатная дверь Орион в интерьере, сцена 1 — вариант 1", "w": 1600, "h": 1280, "c": "перламутр"}, {"src": "../assets/img/orion/14-id-stsena6-1.jpg", "alt": "Дверь Орион в интерьере, сцена 6 — вид 1", "w": 1600, "h": 800, "c": "перламутр"}, {"src": "../assets/img/orion/15-id-stsena7-2-1.jpg", "alt": "Дверь Орион в интерьере, сцена 7 — другой ракурс", "w": 1600, "h": 800, "c": "перламутр"}]</script>
 <script type="application/json" id="variants-data">{"variants": [{"colors": ["белый", "бетон", "капучино", "перламутр"], "g": "pg", "price": 3619, "pricef": "3 619 ₽"}, {"colors": ["белый", "бетон", "капучино", "перламутр"], "g": "po", "price": 3843, "pricef": "3 843 ₽"}]}</script>
 <script type="application/json" id="cart-data">{"slug": "orion", "name": "Орион", "variants": [{"colors": ["белый", "бетон", "капучино", "перламутр"], "g": "pg", "gid": "pg", "price": 3619, "pricef": "3 619 ₽", "label": "ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}, {"colors": ["белый", "бетон", "капучино", "перламутр"], "g": "po", "gid": "po", "price": 3843, "pricef": "3 843 ₽", "label": "ПО", "sizes": ["600", "700", "800", "900"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000", "550u": "550 × 1900", "600u": "600 × 1900"}, "cslug": {"белый": "bely", "бетон": "beton", "капучино": "kapuchino", "перламутр": "perlamutr"}, "cname": {"белый": "Белый", "бетон": "Бетон", "капучино": "Капучино", "перламутр": "Перламутр"}, "stock": {"бетон|pg": [], "капучино|pg": [], "перламутр|pg": [], "белый|pg": [], "бетон|po": ["600", "700", "800"], "капучино|po": ["600", "700", "800", "550u"], "перламутр|po": ["600", "700", "800"], "белый|po": []}}</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый", "бетон", "капучино", "перламутр"], "g": "pg", "vi": 0, "pol": 3619, "polf": "3 619 ₽", "kor": 475, "korf": "475 ₽", "kortf": "1 425 ₽", "korn": "Коробка простая", "nal": 216, "nalf": "216 ₽", "naltf": "1 080 ₽", "naln": "Наличник гладкий", "total": 6124, "totalf": "6 124 ₽", "korItem": {"id": "p:korobka:prostoy:70x2060", "n": "Коробка", "v": "70×26×2060 мм · Простой", "p": 475}, "nalItem": {"id": "p:nalichnik:prostoy:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 мм · Простой", "p": 216}}, {"colors": ["белый", "бетон", "капучино", "перламутр"], "g": "po", "vi": 1, "pol": 3843, "polf": "3 843 ₽", "kor": 475, "korf": "475 ₽", "kortf": "1 425 ₽", "korn": "Коробка простая", "nal": 216, "nalf": "216 ₽", "naltf": "1 080 ₽", "naln": "Наличник гладкий", "total": 6348, "totalf": "6 348 ₽", "korItem": {"id": "p:korobka:prostoy:70x2060", "n": "Коробка", "v": "70×26×2060 мм · Простой", "p": 475}, "nalItem": {"id": "p:nalichnik:prostoy:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 мм · Простой", "p": 216}}]</script>
 
 </main>
 <footer class="site-footer">

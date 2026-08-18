@@ -160,6 +160,137 @@
   var activeColor = null;
   var activeGlass = null;
 
+  /* ---- Плитка «Комплект» и раскрывающийся «Состав» (референс
+     владельцев 18.08.2026). #kit-data (build.py) — строки комплекта:
+     цены полотна/коробки/наличника, итог и готовые строки корзины
+     погонажа. Плитка пересчитывается под текущий выбор (цвет × стекло ×
+     исполнение × размер) синхронно с ценой полотна (updatePriceHeader);
+     у отделок без погонажа в прайсе — «по запросу». У Секрета комплекта
+     нет (плитки нет в разметке), у моделей без строк #kit-data
+     не встраивается. ---- */
+  var kitEl = document.getElementById('kit-data');
+  var kitData = null;
+  if (kitEl) {
+    try { kitData = JSON.parse(kitEl.textContent); } catch (errK) { kitData = null; }
+  }
+  if (kitData && !kitData.length) { kitData = null; }
+  var kitPriceEl = document.querySelector('.kit-price');
+  var kitToggle = document.querySelector('.kit-toggle');
+  var kitPop = document.querySelector('.kit-pop');
+  var kitColor = null;
+  /* Показанная строка комплекта (её кладёт «Комплект в корзину»);
+     старт — минимальный комплект модели, как в статичной разметке */
+  var kitBest = null;
+  if (kitData) {
+    kitBest = kitData[0];
+    kitData.forEach(function (k) {
+      if (k.total < kitBest.total) { kitBest = k; }
+    });
+  }
+
+  function kitPopClose(focusBack) {
+    if (!kitPop || kitPop.hidden) { return; }
+    kitPop.hidden = true;
+    if (kitToggle) {
+      kitToggle.setAttribute('aria-expanded', 'false');
+      if (focusBack) { kitToggle.focus(); }
+    }
+  }
+
+  if (kitToggle && kitPop) {
+    kitToggle.addEventListener('click', function () {
+      if (kitPop.hidden) {
+        kitPop.hidden = false;
+        kitToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        kitPopClose();
+      }
+    });
+    kitPop.querySelector('.kit-close').addEventListener('click', function () {
+      kitPopClose(true);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !kitPop.hidden) { kitPopClose(true); }
+    });
+    /* Клик мимо попапа закрывает его; клики по тогглу и внутри попапа
+       (включая «Комплект в корзину») не считаются «мимо» */
+    document.addEventListener('click', function (e) {
+      if (kitPop.hidden || !e.target || !kitPop.contains) { return; }
+      if (kitPop.contains(e.target) || kitToggle.contains(e.target)) { return; }
+      kitPopClose();
+    });
+  }
+
+  /* Строка комплекта подходит выбранным размеру и исполнению
+     (selSize/selEdge из блока корзины ниже — var в общей области IIFE):
+     высота 2300 у Альбы — отдельный вариант прайса с погонажем своей
+     высоты, кромка Прайма — отдельный gid. */
+  function kitVariantOk(k) {
+    if (!cartData) { return true; }
+    var v = cartData.variants[k.vi];
+    if (!v) { return true; }
+    if (selEdge && v.gid !== selEdge) { return false; }
+    if (selSize && v.sizes.indexOf(selSize) === -1) { return false; }
+    return true;
+  }
+
+  function kitMatches() {
+    var out = [];
+    (kitData || []).forEach(function (k) {
+      if (kitColor && k.colors.indexOf(kitColor) === -1) { return; }
+      if (activeGlass && k.g !== activeGlass) { return; }
+      if (!kitVariantOk(k)) { return; }
+      out.push(k);
+    });
+    return out;
+  }
+
+  /* Перерисовка «Состава» под показанную строку комплекта.
+     Только textContent — XSS через localStorage/данные исключён. */
+  function renderKitPop(k) {
+    if (!kitPop) { return; }
+    var set = function (sel, text) {
+      var el = kitPop.querySelector(sel);
+      if (el) { el.textContent = text; }
+    };
+    set('.kit-pol-sum', k.polf);
+    set('.kit-kor-name', k.korn);
+    set('.kit-kor-math', '3 × ' + k.korf);
+    set('.kit-kor-sum', k.kortf);
+    set('.kit-nal-name', k.naln);
+    set('.kit-nal-math', '5 × ' + k.nalf);
+    set('.kit-nal-sum', k.naltf);
+    set('.kit-total-sum', k.totalf);
+  }
+
+  /* Пересчёт плитки «Комплект»: минимальная строка под текущий выбор.
+     Точная цена (без «от») — когда цена полотна наверху точная и все
+     подходящие строки сходятся к одному итогу; иначе «от минимума».
+     Для выбора без погонажа в прайсе — честное «по запросу». */
+  function updateKit(doorExact) {
+    if (!kitData || !kitPriceEl) { return; }
+    var rows = kitMatches();
+    if (!rows.length) {
+      kitBest = null;
+      kitPriceEl.classList.add('kit-price--na');
+      fadeSwap(kitPriceEl, 'по запросу');
+      if (kitToggle) { kitToggle.hidden = true; }
+      kitPopClose();
+      return;
+    }
+    var best = rows[0];
+    var same = true;
+    rows.forEach(function (k) {
+      if (k.total < best.total) { best = k; }
+      if (k.total !== rows[0].total) { same = false; }
+    });
+    kitBest = best;
+    kitPriceEl.classList.remove('kit-price--na');
+    fadeSwap(kitPriceEl, (doorExact && same ? '' : 'от ') + best.totalf);
+    if (kitToggle) { kitToggle.hidden = false; }
+    renderKitPop(best);
+  }
+
   /* Исходная цена — для сброса при повторном клике по активному свотчу */
   var initialPrice = priceLabel ? priceLabel.textContent : '';
 
@@ -247,6 +378,9 @@
          data-nophoto — дефолтный набор (пометка «фото уточняется») */
       applyFilter((wasActive || chip.hasAttribute('data-nophoto'))
         ? null : chip.dataset.color);
+      /* Выбранный цвет для фильтра строк комплекта (плитка «Комплект»
+         пересчитается в updatePriceHeader -> updateKit) */
+      kitColor = wasActive ? null : (chip.dataset.color || null);
       if (combo) {
         activeColor = wasActive ? null : (chip.dataset.color || null);
         updateCombo(wasActive ? null : chip);
@@ -717,6 +851,8 @@
         }
         if (priceVariant) { priceVariant.hidden = true; }
       }
+      /* Плитка «Комплект» — под ту же комбинацию, что и цена полотна */
+      updateKit(Boolean(exact));
     };
 
     /* Слушатели ставятся последними: состояние выбора уже обновлено
@@ -791,6 +927,41 @@
           p: v.price, q: 1
         }]);
         window.DSDCart.flash(doorBtn);
+      });
+    }
+
+    /* «Комплект в корзину» (кнопка в «Составе»): три позиции с пометкой
+       «комплект» (k) — полотно показанной строки комплекта (kitBest),
+       коробка × 3 и наличники × 5 в цвет полотна. Размер полотна — из
+       селектора; если строка комплекта его не содержит (например, после
+       сброса) — 800 или первый размер варианта. */
+    var kitBtn = document.querySelector('.cart-add-kit');
+    if (kitBtn && kitData && window.DSDCart) {
+      kitBtn.addEventListener('click', function () {
+        var best = kitBest;
+        if (!best) { return; }
+        var v = cartData.variants[best.vi];
+        if (!v) { return; }
+        var c = (kitColor && v.colors.indexOf(kitColor) !== -1)
+          ? kitColor : v.colors[0];
+        var size = (selSize && v.sizes.indexOf(selSize) !== -1) ? selSize
+          : (v.sizes.indexOf('800') !== -1 ? '800' : v.sizes[0]);
+        var fin = ' · в цвет полотна: ' + colorLabel(c);
+        window.DSDCart.add([
+          {
+            id: 'd:' + cartData.slug + ':' + cartData.cslug[c] + ':' +
+              v.gid + ':' + size,
+            n: 'Полотно ' + cartData.name,
+            v: colorLabel(c) + (v.label ? ', ' + v.label : '') + ', ' +
+              cartData.sizes[size] + ' мм',
+            p: v.price, q: 1, k: true
+          },
+          { id: best.korItem.id, n: best.korItem.n,
+            v: best.korItem.v + fin, p: best.korItem.p, q: 3, k: true },
+          { id: best.nalItem.id, n: best.nalItem.n,
+            v: best.nalItem.v + fin, p: best.nalItem.p, q: 5, k: true }
+        ]);
+        window.DSDCart.flash(kitBtn);
       });
     }
 

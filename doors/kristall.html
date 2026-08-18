@@ -103,8 +103,32 @@
 </div>
 
 <div class="model-price">
-          <p class="price-label">от 8 337 ₽</p>
-          <p class="price-variant" hidden></p>
+          <div class="price-tiles">
+            <div class="price-tile">
+              <p class="price-tile-name">Полотно</p>
+              <p class="price-label">от 8 337 ₽</p>
+              <p class="price-variant" hidden></p>
+            </div>
+            <div class="price-tile price-tile--kit">
+              <p class="price-tile-name">Комплект</p>
+              <p class="kit-price">от 15 352 ₽</p>
+              <button type="button" class="kit-toggle" aria-expanded="false" aria-controls="kit-pop">Состав<span class="kit-caret" aria-hidden="true">▾</span></button>
+            </div>
+            <div class="kit-pop" id="kit-pop" hidden>
+              <div class="kit-pop-head">
+                <p class="kit-pop-title">Состав комплекта</p>
+                <button type="button" class="kit-close" aria-label="Закрыть состав комплекта">✕</button>
+              </div>
+              <ul class="kit-rows">
+                <li class="kit-row"><span class="kit-row-name">1 шт · Полотно</span><span class="kit-row-math"></span><span class="kit-row-sum kit-pol-sum">8 337 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">3 шт · <span class="kit-kor-name">Коробка телескоп, эмаль</span></span><span class="kit-row-math kit-kor-math">3 × 1 130 ₽</span><span class="kit-row-sum kit-kor-sum">3 390 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">5 шт · <span class="kit-nal-name">Наличник телескоп, эмаль</span></span><span class="kit-row-math kit-nal-math">5 × 725 ₽</span><span class="kit-row-sum kit-nal-sum">3 625 ₽</span></li>
+              </ul>
+              <p class="kit-total"><span>Итого</span><strong class="kit-total-sum">15 352 ₽</strong></p>
+              <p class="kit-formula">Комплект = полотно + коробка 3 шт + наличники 5 шт (обе стороны).</p>
+              <button type="button" class="btn btn--primary btn--wide cart-add-kit">Комплект в корзину</button>
+            </div>
+          </div>
           <p class="price-dims">Размеры: 600–900 × 2000; укороченные 550/600 × 1900.</p>
           <div class="model-size">
           <h2 class="model-size-title">Размер полотна, мм</h2>
@@ -399,6 +423,7 @@
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/kristall/01-kristall-pg-belyy.jpg", "alt": "Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Белый цвет", "w": 760, "h": 1600, "c": "белый"}, {"src": "../assets/img/kristall/02-kristall-pg-seryy.jpg", "alt": "Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, Серый цвет", "w": 760, "h": 1600, "c": "серый"}, {"src": "../assets/img/kristall/03-kristall-pg-shampan.jpg", "alt": "Межкомнатная дверь Кристалл, глухое полотно с двумя филёнками, цвет Шампань", "w": 760, "h": 1600, "c": "шампань"}]</script>
 
 <script type="application/json" id="cart-data">{"slug": "kristall", "name": "Кристалл", "variants": [{"colors": ["белый", "серый", "шампань"], "g": "pg", "gid": "pg", "price": 8337, "pricef": "8 337 ₽", "label": "ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000", "550u": "550 × 1900", "600u": "600 × 1900"}, "cslug": {"белый": "bely", "серый": "sery", "шампань": "shampan"}, "cname": {"белый": "Белый", "серый": "Серый", "шампань": "Шампань"}, "stock": {"белый|pg": ["600", "700", "800"], "серый|pg": ["600", "700", "800"], "шампань|pg": ["600", "700", "800"]}}</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый", "серый", "шампань"], "g": "pg", "vi": 0, "pol": 8337, "polf": "8 337 ₽", "kor": 1130, "korf": "1 130 ₽", "kortf": "3 390 ₽", "korn": "Коробка телескоп, эмаль", "nal": 725, "nalf": "725 ₽", "naltf": "3 625 ₽", "naln": "Наличник телескоп, эмаль", "total": 15352, "totalf": "15 352 ₽", "korItem": {"id": "p:korobka:emal:70x2060", "n": "Коробка", "v": "70×32×2060 мм · Телескопический эмаль (окраш.)", "p": 1130}, "nalItem": {"id": "p:nalichnik:emal:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический эмаль (окраш.)", "p": 725}}]</script>
 
 </main>
 <footer class="site-footer">

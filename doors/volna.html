@@ -100,8 +100,32 @@
 </div>
 
 <div class="model-price">
-          <p class="price-label">от 3 965 ₽</p>
-          <p class="price-variant" hidden></p>
+          <div class="price-tiles">
+            <div class="price-tile">
+              <p class="price-tile-name">Полотно</p>
+              <p class="price-label">от 3 965 ₽</p>
+              <p class="price-variant" hidden></p>
+            </div>
+            <div class="price-tile price-tile--kit">
+              <p class="price-tile-name">Комплект</p>
+              <p class="kit-price">от 6 470 ₽</p>
+              <button type="button" class="kit-toggle" aria-expanded="false" aria-controls="kit-pop">Состав<span class="kit-caret" aria-hidden="true">▾</span></button>
+            </div>
+            <div class="kit-pop" id="kit-pop" hidden>
+              <div class="kit-pop-head">
+                <p class="kit-pop-title">Состав комплекта</p>
+                <button type="button" class="kit-close" aria-label="Закрыть состав комплекта">✕</button>
+              </div>
+              <ul class="kit-rows">
+                <li class="kit-row"><span class="kit-row-name">1 шт · Полотно</span><span class="kit-row-math"></span><span class="kit-row-sum kit-pol-sum">3 965 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">3 шт · <span class="kit-kor-name">Коробка простая</span></span><span class="kit-row-math kit-kor-math">3 × 475 ₽</span><span class="kit-row-sum kit-kor-sum">1 425 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">5 шт · <span class="kit-nal-name">Наличник гладкий</span></span><span class="kit-row-math kit-nal-math">5 × 216 ₽</span><span class="kit-row-sum kit-nal-sum">1 080 ₽</span></li>
+              </ul>
+              <p class="kit-total"><span>Итого</span><strong class="kit-total-sum">6 470 ₽</strong></p>
+              <p class="kit-formula">Комплект = полотно + коробка 3 шт + наличники 5 шт (обе стороны).</p>
+              <button type="button" class="btn btn--primary btn--wide cart-add-kit">Комплект в корзину</button>
+            </div>
+          </div>
           <p class="price-dims">Размеры: 600–900 × 2000 (укороченных нет).</p>
           <div class="model-size">
           <h2 class="model-size-title">Размер полотна, мм</h2>
@@ -393,6 +417,7 @@
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/volna/01-volna-zhasmin-belyy-po-1.jpg", "alt": "Межкомнатная дверь Волна в цвете Белый, остеклённое полотно (ПО)", "w": 757, "h": 1600, "c": "белый"}, {"src": "../assets/img/volna/02-volna-zhasmin-belyy-po-2.jpg", "alt": "Дверь Волна, отделка Белый, вариант со стеклом — второй ракурс", "w": 629, "h": 1600, "c": "белый"}]</script>
 
 <script type="application/json" id="cart-data">{"slug": "volna", "name": "Волна", "variants": [{"colors": ["белый"], "g": "po", "gid": "po", "price": 3965, "pricef": "3 965 ₽", "label": "ПО", "sizes": ["600", "700", "800", "900"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000"}, "cslug": {"белый": "bely"}, "cname": {"белый": "Белый"}, "stock": {"белый|po": []}}</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый"], "g": "po", "vi": 0, "pol": 3965, "polf": "3 965 ₽", "kor": 475, "korf": "475 ₽", "kortf": "1 425 ₽", "korn": "Коробка простая", "nal": 216, "nalf": "216 ₽", "naltf": "1 080 ₽", "naln": "Наличник гладкий", "total": 6470, "totalf": "6 470 ₽", "korItem": {"id": "p:korobka:prostoy:70x2060", "n": "Коробка", "v": "70×26×2060 мм · Простой", "p": 475}, "nalItem": {"id": "p:nalichnik:prostoy:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 мм · Простой", "p": 216}}]</script>
 
 </main>
 <footer class="site-footer">

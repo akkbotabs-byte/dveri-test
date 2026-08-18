@@ -114,8 +114,32 @@
   <p class="muted swatch-nophoto-note glass-nophoto-note" hidden>Фото варианта с этим остеклением уточняется — показано ближайшее.</p>
 </div>
 <div class="model-price">
-          <p class="price-label">от 3 619 ₽</p>
-          <p class="price-variant" hidden></p>
+          <div class="price-tiles">
+            <div class="price-tile">
+              <p class="price-tile-name">Полотно</p>
+              <p class="price-label">от 3 619 ₽</p>
+              <p class="price-variant" hidden></p>
+            </div>
+            <div class="price-tile price-tile--kit">
+              <p class="price-tile-name">Комплект</p>
+              <p class="kit-price">от 6 124 ₽</p>
+              <button type="button" class="kit-toggle" aria-expanded="false" aria-controls="kit-pop">Состав<span class="kit-caret" aria-hidden="true">▾</span></button>
+            </div>
+            <div class="kit-pop" id="kit-pop" hidden>
+              <div class="kit-pop-head">
+                <p class="kit-pop-title">Состав комплекта</p>
+                <button type="button" class="kit-close" aria-label="Закрыть состав комплекта">✕</button>
+              </div>
+              <ul class="kit-rows">
+                <li class="kit-row"><span class="kit-row-name">1 шт · Полотно</span><span class="kit-row-math"></span><span class="kit-row-sum kit-pol-sum">3 619 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">3 шт · <span class="kit-kor-name">Коробка простая</span></span><span class="kit-row-math kit-kor-math">3 × 475 ₽</span><span class="kit-row-sum kit-kor-sum">1 425 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">5 шт · <span class="kit-nal-name">Наличник гладкий</span></span><span class="kit-row-math kit-nal-math">5 × 216 ₽</span><span class="kit-row-sum kit-nal-sum">1 080 ₽</span></li>
+              </ul>
+              <p class="kit-total"><span>Итого</span><strong class="kit-total-sum">6 124 ₽</strong></p>
+              <p class="kit-formula">Комплект = полотно + коробка 3 шт + наличники 5 шт (обе стороны).</p>
+              <button type="button" class="btn btn--primary btn--wide cart-add-kit">Комплект в корзину</button>
+            </div>
+          </div>
           <p class="price-dims">Размеры: 600–900 × 2000; укороченные 550/600 × 1900 (ПГ).</p>
           <div class="model-size">
           <h2 class="model-size-title">Размер полотна, мм</h2>
@@ -412,6 +436,7 @@
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/saturn/01-saturnfront0.jpg", "alt": "Межкомнатная дверь Сатурн в белом цвете, глухое полотно, вид спереди", "w": 1600, "h": 1600, "c": "белый", "g": "pg"}, {"src": "../assets/img/saturn/02-saturnside0.jpg", "alt": "Белая дверь Сатурн, глухое полотно, вид сбоку", "w": 1600, "h": 1600, "c": "белый", "g": "pg"}, {"src": "../assets/img/saturn/03-saturnfrontpo0.jpg", "alt": "Межкомнатная дверь Сатурн в белом цвете с остеклением, вид спереди", "w": 1600, "h": 1600, "c": "белый", "g": "po"}, {"src": "../assets/img/saturn/04-saturnsidepo0000.jpg", "alt": "Белая остеклённая дверь Сатурн, вид сбоку", "w": 1600, "h": 1600, "c": "белый", "g": "po"}, {"src": "../assets/img/saturn/05-saturnfront2.jpg", "alt": "Межкомнатная дверь Сатурн в цвете Капучино, глухое полотно, вид спереди", "w": 1600, "h": 1600, "c": "капучино", "g": "pg"}, {"src": "../assets/img/saturn/06-saturnside2.jpg", "alt": "Дверь Сатурн в цвете Капучино, глухое полотно, вид сбоку", "w": 1600, "h": 1600, "c": "капучино", "g": "pg"}, {"src": "../assets/img/saturn/07-saturnfrontpo2.jpg", "alt": "Межкомнатная дверь Сатурн в цвете Капучино с остеклением, вид спереди", "w": 1600, "h": 1600, "c": "капучино", "g": "po"}, {"src": "../assets/img/saturn/08-saturnsidepo0002.jpg", "alt": "Остеклённая дверь Сатурн в цвете Капучино, вид сбоку", "w": 1600, "h": 1600, "c": "капучино", "g": "po"}]</script>
 <script type="application/json" id="variants-data">{"variants": [{"colors": ["белый", "капучино"], "g": "pg", "price": 3619, "pricef": "3 619 ₽"}, {"colors": ["белый", "капучино"], "g": "po", "price": 3843, "pricef": "3 843 ₽"}]}</script>
 <script type="application/json" id="cart-data">{"slug": "saturn", "name": "Сатурн", "variants": [{"colors": ["белый", "капучино"], "g": "pg", "gid": "pg", "price": 3619, "pricef": "3 619 ₽", "label": "ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}, {"colors": ["белый", "капучино"], "g": "po", "gid": "po", "price": 3843, "pricef": "3 843 ₽", "label": "ПО", "sizes": ["600", "700", "800", "900"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000", "550u": "550 × 1900", "600u": "600 × 1900"}, "cslug": {"белый": "bely", "капучино": "kapuchino"}, "cname": {"белый": "Белый", "капучино": "Капучино"}, "stock": {"белый|pg": [], "капучино|pg": [], "белый|po": [], "капучино|po": []}}</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый", "капучино"], "g": "pg", "vi": 0, "pol": 3619, "polf": "3 619 ₽", "kor": 475, "korf": "475 ₽", "kortf": "1 425 ₽", "korn": "Коробка простая", "nal": 216, "nalf": "216 ₽", "naltf": "1 080 ₽", "naln": "Наличник гладкий", "total": 6124, "totalf": "6 124 ₽", "korItem": {"id": "p:korobka:prostoy:70x2060", "n": "Коробка", "v": "70×26×2060 мм · Простой", "p": 475}, "nalItem": {"id": "p:nalichnik:prostoy:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 мм · Простой", "p": 216}}, {"colors": ["белый", "капучино"], "g": "po", "vi": 1, "pol": 3843, "polf": "3 843 ₽", "kor": 475, "korf": "475 ₽", "kortf": "1 425 ₽", "korn": "Коробка простая", "nal": 216, "nalf": "216 ₽", "naltf": "1 080 ₽", "naln": "Наличник гладкий", "total": 6348, "totalf": "6 348 ₽", "korItem": {"id": "p:korobka:prostoy:70x2060", "n": "Коробка", "v": "70×26×2060 мм · Простой", "p": 475}, "nalItem": {"id": "p:nalichnik:prostoy:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 мм · Простой", "p": 216}}]</script>
 
 </main>
 <footer class="site-footer">

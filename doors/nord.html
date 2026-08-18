@@ -117,8 +117,32 @@
   <p class="muted swatch-nophoto-note glass-nophoto-note" hidden>Фото варианта с этим остеклением уточняется — показано ближайшее.</p>
 </div>
 <div class="model-price">
-          <p class="price-label">от 5 490 ₽</p>
-          <p class="price-variant" hidden></p>
+          <div class="price-tiles">
+            <div class="price-tile">
+              <p class="price-tile-name">Полотно</p>
+              <p class="price-label">от 5 490 ₽</p>
+              <p class="price-variant" hidden></p>
+            </div>
+            <div class="price-tile price-tile--kit">
+              <p class="price-tile-name">Комплект</p>
+              <p class="kit-price">от 8 522 ₽</p>
+              <button type="button" class="kit-toggle" aria-expanded="false" aria-controls="kit-pop">Состав<span class="kit-caret" aria-hidden="true">▾</span></button>
+            </div>
+            <div class="kit-pop" id="kit-pop" hidden>
+              <div class="kit-pop-head">
+                <p class="kit-pop-title">Состав комплекта</p>
+                <button type="button" class="kit-close" aria-label="Закрыть состав комплекта">✕</button>
+              </div>
+              <ul class="kit-rows">
+                <li class="kit-row"><span class="kit-row-name">1 шт · Полотно</span><span class="kit-row-math"></span><span class="kit-row-sum kit-pol-sum">5 490 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">3 шт · <span class="kit-kor-name">Коробка телескопическая</span></span><span class="kit-row-math kit-kor-math">3 × 579 ₽</span><span class="kit-row-sum kit-kor-sum">1 737 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">5 шт · <span class="kit-nal-name">Наличник телескоп гладкий</span></span><span class="kit-row-math kit-nal-math">5 × 259 ₽</span><span class="kit-row-sum kit-nal-sum">1 295 ₽</span></li>
+              </ul>
+              <p class="kit-total"><span>Итого</span><strong class="kit-total-sum">8 522 ₽</strong></p>
+              <p class="kit-formula">Комплект = полотно + коробка 3 шт + наличники 5 шт (обе стороны).</p>
+              <button type="button" class="btn btn--primary btn--wide cart-add-kit">Комплект в корзину</button>
+            </div>
+          </div>
           <p class="price-dims">Размеры: 600–900 × 2000; укороченные 550/600 × 1900 (ПГ).</p>
           <div class="model-size">
           <h2 class="model-size-title">Размер полотна, мм</h2>
@@ -419,6 +443,7 @@
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/nord/01-nord-belyy-shelk-pg-upd.jpg", "alt": "Межкомнатная дверь Норд, глухое полотно (ПГ), отделка Белый шёлк — рендер", "w": 757, "h": 1600, "c": "белый шёлк", "g": "pg"}, {"src": "../assets/img/nord/02-nord-belyy-shelk-po-upd.jpg", "alt": "Межкомнатная дверь Норд, остеклённое полотно (ПО), отделка Белый шёлк — рендер", "w": 757, "h": 1600, "c": "белый шёлк", "g": "reshetka"}, {"src": "../assets/img/nord/03-nord-pg-belyy-shelk-profilnyy-nalichnik.jpg", "alt": "Дверь Норд ПГ в отделке Белый шёлк с профильным наличником — рендер", "w": 760, "h": 1600, "c": "белый шёлк", "g": "pg"}, {"src": "../assets/img/nord/04-nord-belyy-shelk-1.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 1", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/05-nord-belyy-shelk-2.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 2", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/06-nord-belyy-shelk-3.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 3", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/07-nord-belyy-shelk-4.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 4", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/08-nord-belyy-shelk-5.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 5", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/nord/09-nord-belyy-shelk-6.jpg", "alt": "Дверь Норд в отделке Белый шёлк в интерьере, фото 6", "w": 1600, "h": 1600, "c": "белый шёлк"}]</script>
 <script type="application/json" id="variants-data">{"variants": [{"colors": ["белый шёлк"], "g": "pg", "price": 5490, "pricef": "5 490 ₽"}, {"colors": ["белый шёлк"], "g": "reshetka", "price": 7707, "pricef": "7 707 ₽"}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "price": 8337, "pricef": "8 337 ₽"}, {"colors": ["белый"], "g": "reshetka", "price": 11387, "pricef": "11 387 ₽"}]}</script>
 <script type="application/json" id="cart-data">{"slug": "nord", "name": "Норд", "variants": [{"colors": ["белый шёлк"], "g": "pg", "gid": "pg", "price": 5490, "pricef": "5 490 ₽", "label": "ламинированное покрытие, ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}, {"colors": ["белый шёлк"], "g": "reshetka", "gid": "reshetka", "price": 7707, "pricef": "7 707 ₽", "label": "ламинированное покрытие, ПО", "sizes": ["600", "700", "800", "900"]}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "gid": "pg", "price": 8337, "pricef": "8 337 ₽", "label": "эмаль, ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}, {"colors": ["белый"], "g": "reshetka", "gid": "reshetka", "price": 11387, "pricef": "11 387 ₽", "label": "эмаль, ПО, стекло английская решётка", "sizes": ["600", "700", "800", "900"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000", "550u": "550 × 1900", "600u": "600 × 1900"}, "cslug": {"белый": "bely", "белый шёлк": "bely-shelk", "серый": "sery", "шампань": "shampan"}, "cname": {"белый": "Белый", "белый шёлк": "Белый шёлк", "серый": "Серый", "шампань": "Шампань"}, "stock": {"белый шёлк|pg": ["600", "700", "800"], "белый шёлк|reshetka": ["600"], "белый|pg": ["600", "700"], "серый|pg": ["600", "700", "800"], "шампань|pg": ["600", "700", "800"], "белый|reshetka": []}}</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый шёлк"], "g": "pg", "vi": 0, "pol": 5490, "polf": "5 490 ₽", "kor": 579, "korf": "579 ₽", "kortf": "1 737 ₽", "korn": "Коробка телескопическая", "nal": 259, "nalf": "259 ₽", "naltf": "1 295 ₽", "naln": "Наличник телескоп гладкий", "total": 8522, "totalf": "8 522 ₽", "korItem": {"id": "p:korobka:teleskop:70x2060", "n": "Коробка", "v": "70×32×2060 мм · Телескопический", "p": 579}, "nalItem": {"id": "p:nalichnik:teleskop:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический", "p": 259}}, {"colors": ["белый шёлк"], "g": "reshetka", "vi": 1, "pol": 7707, "polf": "7 707 ₽", "kor": 579, "korf": "579 ₽", "kortf": "1 737 ₽", "korn": "Коробка телескопическая", "nal": 259, "nalf": "259 ₽", "naltf": "1 295 ₽", "naln": "Наличник телескоп гладкий", "total": 10739, "totalf": "10 739 ₽", "korItem": {"id": "p:korobka:teleskop:70x2060", "n": "Коробка", "v": "70×32×2060 мм · Телескопический", "p": 579}, "nalItem": {"id": "p:nalichnik:teleskop:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический", "p": 259}}, {"colors": ["белый", "серый", "шампань"], "g": "pg", "vi": 2, "pol": 8337, "polf": "8 337 ₽", "kor": 1130, "korf": "1 130 ₽", "kortf": "3 390 ₽", "korn": "Коробка телескоп, эмаль", "nal": 725, "nalf": "725 ₽", "naltf": "3 625 ₽", "naln": "Наличник телескоп, эмаль", "total": 15352, "totalf": "15 352 ₽", "korItem": {"id": "p:korobka:emal:70x2060", "n": "Коробка", "v": "70×32×2060 мм · Телескопический эмаль (окраш.)", "p": 1130}, "nalItem": {"id": "p:nalichnik:emal:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический эмаль (окраш.)", "p": 725}}, {"colors": ["белый"], "g": "reshetka", "vi": 3, "pol": 11387, "polf": "11 387 ₽", "kor": 1130, "korf": "1 130 ₽", "kortf": "3 390 ₽", "korn": "Коробка телескоп, эмаль", "nal": 725, "nalf": "725 ₽", "naltf": "3 625 ₽", "naln": "Наличник телескоп, эмаль", "total": 18402, "totalf": "18 402 ₽", "korItem": {"id": "p:korobka:emal:70x2060", "n": "Коробка", "v": "70×32×2060 мм · Телескопический эмаль (окраш.)", "p": 1130}, "nalItem": {"id": "p:nalichnik:emal:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический эмаль (окраш.)", "p": 725}}]</script>
 
 </main>
 <footer class="site-footer">

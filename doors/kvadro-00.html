@@ -107,8 +107,32 @@
 </div>
 
 <div class="model-price">
-          <p class="price-label">от 4 433 ₽</p>
-          <p class="price-variant" hidden></p>
+          <div class="price-tiles">
+            <div class="price-tile">
+              <p class="price-tile-name">Полотно</p>
+              <p class="price-label">от 4 433 ₽</p>
+              <p class="price-variant" hidden></p>
+            </div>
+            <div class="price-tile price-tile--kit">
+              <p class="price-tile-name">Комплект</p>
+              <p class="kit-price">от 7 465 ₽</p>
+              <button type="button" class="kit-toggle" aria-expanded="false" aria-controls="kit-pop">Состав<span class="kit-caret" aria-hidden="true">▾</span></button>
+            </div>
+            <div class="kit-pop" id="kit-pop" hidden>
+              <div class="kit-pop-head">
+                <p class="kit-pop-title">Состав комплекта</p>
+                <button type="button" class="kit-close" aria-label="Закрыть состав комплекта">✕</button>
+              </div>
+              <ul class="kit-rows">
+                <li class="kit-row"><span class="kit-row-name">1 шт · Полотно</span><span class="kit-row-math"></span><span class="kit-row-sum kit-pol-sum">4 433 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">3 шт · <span class="kit-kor-name">Коробка телескопическая</span></span><span class="kit-row-math kit-kor-math">3 × 579 ₽</span><span class="kit-row-sum kit-kor-sum">1 737 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">5 шт · <span class="kit-nal-name">Наличник телескоп гладкий</span></span><span class="kit-row-math kit-nal-math">5 × 259 ₽</span><span class="kit-row-sum kit-nal-sum">1 295 ₽</span></li>
+              </ul>
+              <p class="kit-total"><span>Итого</span><strong class="kit-total-sum">7 465 ₽</strong></p>
+              <p class="kit-formula">Комплект = полотно + коробка 3 шт + наличники 5 шт (обе стороны).</p>
+              <button type="button" class="btn btn--primary btn--wide cart-add-kit">Комплект в корзину</button>
+            </div>
+          </div>
           <p class="price-dims">Размеры: 600–900 × 2000; укороченные 550/600 × 1900.</p>
           <div class="model-size">
           <h2 class="model-size-title">Размер полотна, мм</h2>
@@ -404,6 +428,7 @@
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/kvadro-00/01-kvadro-0-arktik.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Ясень арктический, глухое полотно", "w": 762, "h": 1600, "c": "ясень арктический"}, {"src": "../assets/img/kvadro-00/02-kvadro-0-beton.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Бетон, глухое полотно", "w": 762, "h": 1600, "c": "бетон"}, {"src": "../assets/img/kvadro-00/03-kvadro-0-dub-dymchatyy.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Дуб дымчатый, глухое полотно", "w": 762, "h": 1600, "c": "дуб дымчатый"}, {"src": "../assets/img/kvadro-00/04-kvadro-0-kapuchino.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Капучино, глухое полотно", "w": 762, "h": 1600, "c": "капучино"}, {"src": "../assets/img/kvadro-00/05-kvadro-0-perlamutr.jpg", "alt": "Межкомнатная дверь Квадро 00 в отделке Перламутр, глухое полотно", "w": 762, "h": 1600, "c": "перламутр"}]</script>
 
 <script type="application/json" id="cart-data">{"slug": "kvadro-00", "name": "Квадро 00", "variants": [{"colors": ["бетон", "капучино", "перламутр"], "g": "pg", "gid": "pg", "price": 4433, "pricef": "4 433 ₽", "label": "ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "pg", "gid": "pg", "price": 4717, "pricef": "4 717 ₽", "label": "ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000", "550u": "550 × 1900", "600u": "600 × 1900"}, "cslug": {"бетон": "beton", "дуб дымчатый": "dub-dymchaty", "капучино": "kapuchino", "перламутр": "perlamutr", "ясень арктический": "yasen-arkticheskiy"}, "cname": {"бетон": "Бетон", "дуб дымчатый": "Дуб дымчатый", "капучино": "Капучино", "перламутр": "Перламутр", "ясень арктический": "Ясень арктический"}, "stock": {"капучино|pg": ["800"], "перламутр|pg": ["700"], "бетон|pg": [], "дуб дымчатый|pg": [], "ясень арктический|pg": []}}</script>
+<script type="application/json" id="kit-data">[{"colors": ["бетон", "капучино", "перламутр"], "g": "pg", "vi": 0, "pol": 4433, "polf": "4 433 ₽", "kor": 579, "korf": "579 ₽", "kortf": "1 737 ₽", "korn": "Коробка телескопическая", "nal": 259, "nalf": "259 ₽", "naltf": "1 295 ₽", "naln": "Наличник телескоп гладкий", "total": 7465, "totalf": "7 465 ₽", "korItem": {"id": "p:korobka:teleskop:70x2060", "n": "Коробка", "v": "70×32×2060 мм · Телескопический", "p": 579}, "nalItem": {"id": "p:nalichnik:teleskop:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический", "p": 259}}, {"colors": ["дуб дымчатый", "ясень арктический"], "g": "pg", "vi": 1, "pol": 4717, "polf": "4 717 ₽", "kor": 579, "korf": "579 ₽", "kortf": "1 737 ₽", "korn": "Коробка телескопическая", "nal": 259, "nalf": "259 ₽", "naltf": "1 295 ₽", "naln": "Наличник телескоп гладкий", "total": 7749, "totalf": "7 749 ₽", "korItem": {"id": "p:korobka:teleskop:70x2060:2", "n": "Коробка", "v": "70×32×2060 мм · Телескопический", "p": 579}, "nalItem": {"id": "p:nalichnik:teleskop:70x2140:2", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический", "p": 259}}]</script>
 
 </main>
 <footer class="site-footer">

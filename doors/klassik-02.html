@@ -111,8 +111,32 @@
 </div>
 
 <div class="model-price">
-          <p class="price-label">от 6 609 ₽</p>
-          <p class="price-variant" hidden></p>
+          <div class="price-tiles">
+            <div class="price-tile">
+              <p class="price-tile-name">Полотно</p>
+              <p class="price-label">от 6 609 ₽</p>
+              <p class="price-variant" hidden></p>
+            </div>
+            <div class="price-tile price-tile--kit">
+              <p class="price-tile-name">Комплект</p>
+              <p class="kit-price">от 9 641 ₽</p>
+              <button type="button" class="kit-toggle" aria-expanded="false" aria-controls="kit-pop">Состав<span class="kit-caret" aria-hidden="true">▾</span></button>
+            </div>
+            <div class="kit-pop" id="kit-pop" hidden>
+              <div class="kit-pop-head">
+                <p class="kit-pop-title">Состав комплекта</p>
+                <button type="button" class="kit-close" aria-label="Закрыть состав комплекта">✕</button>
+              </div>
+              <ul class="kit-rows">
+                <li class="kit-row"><span class="kit-row-name">1 шт · Полотно</span><span class="kit-row-math"></span><span class="kit-row-sum kit-pol-sum">6 609 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">3 шт · <span class="kit-kor-name">Коробка телескопическая</span></span><span class="kit-row-math kit-kor-math">3 × 579 ₽</span><span class="kit-row-sum kit-kor-sum">1 737 ₽</span></li>
+                <li class="kit-row"><span class="kit-row-name">5 шт · <span class="kit-nal-name">Наличник телескоп гладкий</span></span><span class="kit-row-math kit-nal-math">5 × 259 ₽</span><span class="kit-row-sum kit-nal-sum">1 295 ₽</span></li>
+              </ul>
+              <p class="kit-total"><span>Итого</span><strong class="kit-total-sum">9 641 ₽</strong></p>
+              <p class="kit-formula">Комплект = полотно + коробка 3 шт + наличники 5 шт (обе стороны).</p>
+              <button type="button" class="btn btn--primary btn--wide cart-add-kit">Комплект в корзину</button>
+            </div>
+          </div>
           <p class="price-dims">Размеры: 600–900 × 2000; укороченные 550/600 × 1900.</p>
           <div class="model-size">
           <h2 class="model-size-title">Размер полотна, мм</h2>
@@ -407,6 +431,7 @@
 <script type="application/json" id="gallery-data">[{"src": "../assets/img/klassik-02/01-klassik-2-pg-belyy.jpg", "alt": "Межкомнатная дверь Классик 02, глухое полотно, цвет Белый шёлк", "w": 760, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/klassik-02/02-klassik-02-pg-dub-dymchatyy.jpg", "alt": "Межкомнатная дверь Классик 02, глухое полотно, цвет Дуб дымчатый", "w": 760, "h": 1600, "c": "дуб дымчатый"}, {"src": "../assets/img/klassik-02/03-klassik-02-pg-yasen-arkticheskiy.jpg", "alt": "Межкомнатная дверь Классик 02, глухое полотно, цвет Ясень арктический", "w": 760, "h": 1600, "c": "ясень арктический"}, {"src": "../assets/img/klassik-02/04-1.jpg", "alt": "Дверь Классик 02 в цвете Белый шёлк в интерьере, фото 1", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/klassik-02/05-2.jpg", "alt": "Дверь Классик 02 в цвете Белый шёлк в интерьере, фото 2", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/klassik-02/06-3.jpg", "alt": "Дверь Классик 02 в цвете Белый шёлк в интерьере, фото 3", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/klassik-02/07-4.jpg", "alt": "Дверь Классик 02 в цвете Белый шёлк в интерьере, фото 4", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/klassik-02/08-5.jpg", "alt": "Дверь Классик 02 в цвете Белый шёлк в интерьере, фото 5", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/klassik-02/09-6.jpg", "alt": "Дверь Классик 02 в цвете Белый шёлк в интерьере, фото 6", "w": 1600, "h": 1600, "c": "белый шёлк"}, {"src": "../assets/img/klassik-02/10-vizualizatsiya-dveri-klassik-02-dub-dymchatyy.jpg", "alt": "Дверь Классик 02 в цвете Дуб дымчатый в интерьере", "w": 1600, "h": 1600, "c": "дуб дымчатый"}, {"src": "../assets/img/klassik-02/11-vizualizatsiya-dveri-klassik-02-yasen-arkticheskiy.jpg", "alt": "Дверь Классик 02 в цвете Ясень арктический в интерьере", "w": 1600, "h": 1600, "c": "ясень арктический"}]</script>
 
 <script type="application/json" id="cart-data">{"slug": "klassik-02", "name": "Классик 02", "variants": [{"colors": ["белый шёлк", "дуб дымчатый", "ясень арктический"], "g": "pg", "gid": "pg", "price": 6609, "pricef": "6 609 ₽", "label": "ПГ", "sizes": ["600", "700", "800", "900", "550u", "600u"]}], "sizes": {"600": "600 × 2000", "700": "700 × 2000", "800": "800 × 2000", "900": "900 × 2000", "550u": "550 × 1900", "600u": "600 × 1900"}, "cslug": {"белый шёлк": "bely-shelk", "дуб дымчатый": "dub-dymchaty", "ясень арктический": "yasen-arkticheskiy"}, "cname": {"белый шёлк": "Белый шёлк", "дуб дымчатый": "Дуб дымчатый", "ясень арктический": "Ясень арктический"}, "stock": {"белый шёлк|pg": ["600", "700", "800"], "ясень арктический|pg": ["600", "700", "900"], "дуб дымчатый|pg": ["600", "700", "800"]}}</script>
+<script type="application/json" id="kit-data">[{"colors": ["белый шёлк", "дуб дымчатый", "ясень арктический"], "g": "pg", "vi": 0, "pol": 6609, "polf": "6 609 ₽", "kor": 579, "korf": "579 ₽", "kortf": "1 737 ₽", "korn": "Коробка телескопическая", "nal": 259, "nalf": "259 ₽", "naltf": "1 295 ₽", "naln": "Наличник телескоп гладкий", "total": 9641, "totalf": "9 641 ₽", "korItem": {"id": "p:korobka:teleskop:70x2060", "n": "Коробка", "v": "70×32×2060 мм · Телескопический", "p": 579}, "nalItem": {"id": "p:nalichnik:teleskop:70x2140", "n": "Наличник гладкий", "v": "70×8×2140 (22×3) мм · Телескопический", "p": 259}}]</script>
 
 </main>
 <footer class="site-footer">

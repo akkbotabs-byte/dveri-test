@@ -570,6 +570,89 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 /* Телефон рядом с primary-кнопкой блока цены (DESIGN.md §2) */
 .price-phone { margin-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--fs-small); }
 .price-phone a { color: var(--color-ink); font-weight: var(--fw-semibold); }
+
+/* ---------- Плитки «Полотно | Комплект» (референс владельцев 18.08.2026)
+   Одна сравнительная полоса внутри карточки цены: две цены рядом,
+   разделённые волосяной линией (не «коробка в коробке»). Обе цены —
+   акцентным зелёным (цены — единственный акцент системы). ---------- */
+.price-tiles {
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  margin-bottom: var(--space-2);
+}
+.price-tile { min-width: 0; padding-right: var(--space-3); }
+.price-tile--kit {
+  border-left: 1px solid var(--color-line);
+  padding-left: var(--space-4); padding-right: 0;
+}
+/* Надпись-ярлык плитки: тихий верхний регистр, как у бейджей */
+.price-tile-name {
+  color: var(--color-ink-soft); font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold); letter-spacing: var(--ls-caption);
+  text-transform: uppercase; margin-bottom: 2px;
+}
+/* Цена комплекта — та же типографика, что у цены полотна (.price-label) */
+.kit-price {
+  color: var(--color-accent); font-size: var(--fs-h2);
+  font-weight: var(--fw-bold); line-height: var(--lh-heading);
+  margin-bottom: var(--space-1); transition: opacity .15s ease;
+}
+/* «по запросу»: у выбранной отделки нет погонажа в прайсе — не выдумываем */
+.kit-price--na { color: var(--color-ink-soft); font-size: var(--fs-body); font-weight: var(--fw-semibold); padding-block: var(--space-1); }
+/* «Состав ▾» — тихая текстовая кнопка-раскрывашка (работает только с JS) */
+.kit-toggle {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: none; border: 0; padding: var(--space-1) 0; margin: 0;
+  color: var(--color-ink); font: inherit; font-size: var(--fs-small);
+  font-weight: var(--fw-semibold); cursor: pointer;
+  text-decoration: underline; text-decoration-style: dotted;
+  text-decoration-color: var(--color-line-input);
+  text-underline-offset: 3px; min-height: 2rem;
+}
+.kit-toggle:hover { color: var(--color-accent); text-decoration-color: var(--color-accent); }
+.kit-caret { transition: transform .15s ease; }
+.kit-toggle[aria-expanded="true"] .kit-caret { transform: rotate(180deg); }
+/* Раскрывающийся «Состав» — компактный чек под плитками: строки
+   «N шт · позиция», выравненные табличные суммы, линия перед итогом */
+.kit-pop {
+  position: absolute; top: calc(100% + var(--space-2)); left: 0; right: 0;
+  z-index: 30; background: var(--color-surface);
+  border: 1px solid var(--color-line); border-radius: var(--radius-m);
+  padding: var(--space-4); box-shadow: 0 10px 28px rgba(17, 17, 17, .14);
+}
+.kit-pop-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin-bottom: var(--space-3); }
+.kit-pop-title { font-weight: var(--fw-bold); }
+.kit-close {
+  background: none; border: 0; cursor: pointer; color: var(--color-ink-soft);
+  font-size: 1rem; line-height: 1; padding: var(--space-2);
+  margin: calc(-1 * var(--space-2)); border-radius: var(--radius-s);
+}
+.kit-close:hover { color: var(--color-ink); }
+.kit-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); font-size: var(--fs-small); }
+.kit-row { display: flex; align-items: baseline; gap: var(--space-2); }
+.kit-row-math { margin-left: auto; color: var(--color-ink-soft); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.kit-row-sum { min-width: 4.75rem; text-align: right; font-weight: var(--fw-semibold); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.kit-total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-top: 1px solid var(--color-line);
+  margin-top: var(--space-2); padding-top: var(--space-2);
+  font-weight: var(--fw-bold);
+}
+.kit-total-sum { color: var(--color-accent); font-variant-numeric: tabular-nums; }
+.kit-formula { color: var(--color-ink-soft); font-size: var(--fs-caption); margin: var(--space-2) 0 var(--space-3); }
+/* Мобильный столбик: плитки одна под другой, линия — горизонтальная */
+@media (max-width: 479px) {
+  .price-tiles { grid-template-columns: 1fr; }
+  .price-tile { padding-right: 0; }
+  .price-tile--kit {
+    border-left: 0; padding-left: 0;
+    border-top: 1px solid var(--color-line);
+    margin-top: var(--space-3); padding-top: var(--space-3);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kit-price, .kit-caret { transition: none; }
+}
 /* «Особенности» — самостоятельный блок под секцией допродажи (#furnitura):
    заголовок как у соседних секций, на широком экране список в две колонки,
    чтобы короткие пункты не растягивались на всю ширину контейнера */
@@ -802,7 +885,7 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
    (Telegram / письмо). Прогрессивная деградация: без JS кнопки корзины,
    ссылка в шапке и селектор размера скрыты — работают формы заявки. */
 .no-js .cart-link, .no-js .cart-add, .no-js .model-size,
-.no-js .calc-open { display: none !important; }
+.no-js .calc-open, .no-js .kit-toggle { display: none !important; }
 
 /* Иконка в шапке со счётчиком позиций (badge прячется при пустой корзине) */
 .cart-link {
