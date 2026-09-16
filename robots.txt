@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /privacy.html
 
-Sitemap: https://dveri-sd.example/sitemap.xml
+Sitemap: https://fabrika-dveri.ru/sitemap.xml
