@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-09-18 12:00">
+<shop>
+  <name>Магазин дверей</name>
+  <company>ИП Поветкин Илья Андреевич</company>
+  <url>https://www.fabrika-dveri.ru/</url>
+  <currencies><currency id="RUB" rate="1"/></currencies>
+  <categories>
+    <category id="1">Межкомнатные двери</category>
+    <category id="2">Дверная фурнитура</category>
+  </categories>
+  <offers>
+<offer id="alba" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/alba.html</url>
+  <price>5490</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/alba/01-emal-2-alba-pg-emalit-belyy.jpg</picture>
+  <name>Межкомнатная дверь Альба</name>
+  <description>Лаконичная модель в эмали или ламинированном покрытии «Белый шёлк». Доступна в глухом исполнении и со стеклом «Английская решётка».</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый, Белый шёлк</param>
+  <param name="Покрытие">Ламинированное покрытие, Эмаль</param>
+</offer>
+<offer id="alyaska" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/alyaska.html</url>
+  <price>5490</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/alyaska/01-alyaska-pg-belyi.jpg</picture>
+  <name>Межкомнатная дверь Аляска</name>
+  <description>Аляска — глухая модель с ровным полотном без остекления. Эмаль в трёх цветах или ламинированное покрытие «Белый шёлк».</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый, Белый шёлк, Серый, Шампань</param>
+  <param name="Покрытие">Ламинированное покрытие, Эмаль</param>
+</offer>
+<offer id="vesna" available="false">
+  <url>https://www.fabrika-dveri.ru/doors/vesna.html</url>
+  <price>3619</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/vesna/01-columnside0000.jpg</picture>
+  <name>Межкомнатная дверь Весна</name>
+  <description>Модель с фигурной фрезеровкой в центральной части полотна, в ламинированном покрытии белого молочного оттенка. Выпускается глухой или с декоративными вставками, имитирующими стекло, — в сером и чёрном цветах.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="volna" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/volna.html</url>
+  <price>3965</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/volna/01-volna-zhasmin-belyy-po-1.jpg</picture>
+  <name>Межкомнатная дверь Волна</name>
+  <description>Остеклённая дверь скиновой конструкции в ламинированном покрытии. Выпускается в одном исполнении — со стеклом (ПО), в цвете Белый.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="dpg" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/dpg.html</url>
+  <price>3152</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/dpg/01-dpg-beloe.jpg</picture>
+  <name>Межкомнатная дверь ДПГ</name>
+  <description>Гладкое глухое полотно без филёнок и фрезеровки. Ламинированное покрытие в Белом цвете, поверхность текстурная.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="kvadro-00" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/kvadro-00.html</url>
+  <price>4433</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/kvadro-00/01-kvadro-0-arktik.jpg</picture>
+  <name>Межкомнатная дверь Квадро 00</name>
+  <description>Глухая межкомнатная дверь с царговым полотном. Ламинированное покрытие, пять цветов от светлых до тёмных.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Ясень арктический, Бетон, Дуб дымчатый, Капучино, Перламутр</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="kvadro-05" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/kvadro-05.html</url>
+  <price>4433</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/kvadro-05/01-kvadro-05-po-beton.jpg</picture>
+  <name>Межкомнатная дверь Квадро 05</name>
+  <description>Остеклённая модель серии «Квадро» со строгим прямоугольным рисунком полотна. Ламинированное покрытие в пяти цветах, стекло — Сатинато или Лакобель чёрный.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Бетон, Дуб дымчатый, Капучино, Перламутр, Ясень арктический</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="kvadro-07" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/kvadro-07.html</url>
+  <price>4697</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/kvadro-07/01-kvadro-07-arktik-matelyuks-dveri.jpg</picture>
+  <name>Межкомнатная дверь Квадро 07</name>
+  <description>Остеклённая дверь царговой конструкции в ламинированном покрытии. Пять цветов, стекло на выбор — Сатинато или Лакобель чёрный.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Ясень арктический, Бетон, Дуб дымчатый, Капучино, Перламутр</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="kvadro-11" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/kvadro-11.html</url>
+  <price>5267</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/kvadro-11/01-kvadro-11-po-beton.jpg</picture>
+  <name>Межкомнатная дверь Квадро 11</name>
+  <description>Квадро 11 — остеклённая модель для современного интерьера. Пять цветов ламинированного покрытия, стекло — Сатинато или Лакобель чёрный.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Бетон, Дуб дымчатый, Капучино, Перламутр, Ясень арктический</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="kvadro-20" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/kvadro-20.html</url>
+  <price>4982</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/kvadro-20/01-kvadro-20-po-beton.jpg</picture>
+  <name>Межкомнатная дверь Квадро 20</name>
+  <description>Остеклённая модель в ламинированном покрытии. Пять цветов, стекло на выбор — Сатинато или Лакобель чёрный.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Бетон, Дуб дымчатый, Капучино, Перламутр, Ясень арктический</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="klassik-02" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/klassik-02.html</url>
+  <price>6609</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/klassik-02/01-klassik-2-pg-belyy.jpg</picture>
+  <name>Межкомнатная дверь Классик 02</name>
+  <description>Классическая глухая дверь в ламинированном покрытии. Три цвета: Белый шёлк, Дуб дымчатый и Ясень арктический.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый шёлк, Дуб дымчатый, Ясень арктический</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="kristall" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/kristall.html</url>
+  <price>8337</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/kristall/01-kristall-pg-belyy.jpg</picture>
+  <name>Межкомнатная дверь Кристалл</name>
+  <description>Глухая дверь с классическим двухфилёнчатым рисунком полотна. Покрытие — эмаль в трёх оттенках: Белый, Серый и Шампань.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый, Серый, Шампань</param>
+  <param name="Покрытие">Эмаль</param>
+</offer>
+<offer id="mono" available="false">
+  <url>https://www.fabrika-dveri.ru/doors/mono.html</url>
+  <price>8337</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/mono/01-mono-pg-belyy.jpg</picture>
+  <name>Межкомнатная дверь Моно</name>
+  <description>Гладкое глухое полотно с тонким алюминиевым кантом по кромке. Эмаль в трёх оттенках: Белый, Серый и Шампань.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый, Серый, Шампань</param>
+  <param name="Покрытие">Эмаль</param>
+</offer>
+<offer id="nord" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/nord.html</url>
+  <price>5490</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/nord/01-nord-belyy-shelk-pg-upd.jpg</picture>
+  <name>Межкомнатная дверь Норд</name>
+  <description>Лаконичная модель в ламинированном покрытии «Белый шёлк» или эмали. Выпускается глухой и остеклённой, в эмали — со стеклом «Английская решётка».</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый шёлк, Белый</param>
+  <param name="Покрытие">Ламинированное покрытие, Эмаль</param>
+</offer>
+<offer id="oktava" available="false">
+  <url>https://www.fabrika-dveri.ru/doors/oktava.html</url>
+  <price>3843</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/oktava/01-oktava-kapuchino.jpg</picture>
+  <name>Межкомнатная дверь Октава</name>
+  <description>Октава — модель с чёрными декоративными вставками в ламинированном покрытии. Два цвета: Капучино и Белый. Изготавливается под заказ.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Капучино, Белый</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="orion" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/orion.html</url>
+  <price>3619</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/orion/01-orion-beton-po.jpg</picture>
+  <name>Межкомнатная дверь Орион</name>
+  <description>Модель в ламинированном покрытии четырёх цветов — Бетон, Капучино, Перламутр и Белый. Выпускается в глухом исполнении (ПГ) и с декоративной вставкой — имитацией стекла (ПО).</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Бетон, Капучино, Перламутр, Белый</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="palitra-11-4" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/palitra-11-4.html</url>
+  <price>3477</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/palitra-11-4/01-palitra-11-4-belaya-po.jpg</picture>
+  <name>Межкомнатная дверь Палитра 11-4</name>
+  <description>Скиновая дверь с ламинированным покрытием в четырёх цветах — от Белого до Миланского ореха. Выпускается глухой (ПГ) и со стеклом «Сатинато» (ПО).</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый, Дуб паллада, Итальянский орех, Миланский орех</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="prime" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/prime.html</url>
+  <price>8600</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/prime/01-prai-m-belyy-kromka-4al.jpg</picture>
+  <name>Межкомнатная дверь Прайм</name>
+  <description>Гладкая глухая дверь в покрытии ПЭТ с алюминиевой или ПВХ кромкой. Цвета — Белый, Серый, Шампань.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый, Серый, Шампань</param>
+  <param name="Покрытие">ПЭТ</param>
+</offer>
+<offer id="rein" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/rein.html</url>
+  <price>3619</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/rein/01-reyn-zhasmin-belyy-front.jpg</picture>
+  <name>Межкомнатная дверь Рейн</name>
+  <description>Глухая модель в ламинированном покрытии, цвета Белый и Перламутр. Есть укороченные полотна для невысоких проёмов.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый, Перламутр</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="saturn" available="false">
+  <url>https://www.fabrika-dveri.ru/doors/saturn.html</url>
+  <price>3619</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/saturn/01-saturnfront0.jpg</picture>
+  <name>Межкомнатная дверь Сатурн</name>
+  <description>Лаконичная модель в ламинированном покрытии, цвета — Белый и Капучино. Доступна в глухом (ПГ) и остеклённом (ПО) исполнении.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый, Капучино</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="safari" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/safari.html</url>
+  <price>3843</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/safari/01-safarifront0007.jpg</picture>
+  <name>Межкомнатная дверь Сафари</name>
+  <description>Остеклённая модель со скиновым полотном в ламинированном покрытии. Два цвета — Белый и Капучино.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Капучино, Белый</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="sekret" available="false">
+  <url>https://www.fabrika-dveri.ru/doors/sekret.html</url>
+  <price>10556</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/sekret/01-sekret-belyy-pod-pokrasku-1.jpg</picture>
+  <name>Скрытая дверь Секрет (Инвизибл)</name>
+  <description>Скрытая дверь-невидимка: полотно ставится в алюминиевый короб скрытого монтажа заподлицо со стеной, наличников нет. Загрунтованное полотно готово к любой финишной отделке: его красят в цвет стен или оклеивают обоями — дверь сливается со стеной.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый (загрунтованное полотно)</param>
+  <param name="Покрытие">Под покраску</param>
+</offer>
+<offer id="skandia" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/skandia.html</url>
+  <price>5490</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/skandia/01-skandiya-belyy-shelk-pg.jpg</picture>
+  <name>Межкомнатная дверь Скандия</name>
+  <description>Модель с глухим полотном, исполнений со стеклом нет. Выпускается в ламинированном покрытии «Белый шёлк» или в эмали трёх цветов — Белый, Серый, Шампань.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый шёлк, Белый</param>
+  <param name="Покрытие">Ламинированное покрытие, Эмаль</param>
+</offer>
+<offer id="solo" available="true">
+  <url>https://www.fabrika-dveri.ru/doors/solo.html</url>
+  <price>3843</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/solo/01-solofront0000.jpg</picture>
+  <name>Межкомнатная дверь Соло</name>
+  <description>Соло — модель с декоративной вставкой, имитирующей стекло, в ламинированном покрытии. Два цвета: Белый и Бетон.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Белый, Бетон</param>
+  <param name="Покрытие">Ламинированное покрытие</param>
+</offer>
+<offer id="uno" available="false">
+  <url>https://www.fabrika-dveri.ru/doors/uno.html</url>
+  <price>9943</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>1</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/uno/01-uno-dub-madeyra-po-3.jpg</picture>
+  <name>Межкомнатная дверь Уно</name>
+  <description>Гладкое полотно в минималистичном стиле, плёнка ПВХ цвета Дуб Мадейра. Выпускается глухим (ПГ) и остеклённым (ПО) — с узкой вертикальной вставкой из чёрного стекла «Лакобель». Торцы облицованы чёрной кромкой ПВХ.</description>
+  <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
+  <param name="Цвет">Дуб Мадейра</param>
+  <param name="Покрытие">ПВХ</param>
+</offer>
+<offer id="furn-ruchka-33063" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>1070</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/ruchka-33063.jpg</picture>
+  <name>Ручка Punto BLADE, матовый никель/хром</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка раздельная K.QL52.BLADE (BLADE QL) SN/CP-3 матовый никель/хром (33063) (PUNTO)</description>
+</offer>
+<offer id="furn-ruchka-44325" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>1050</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/ruchka-44325.jpg</picture>
+  <name>Ручка Ajax LEVEL, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка раздельная K.JK51.LEVEL (LEVEL JK) BL-24 черный (44325) (AJAX)</description>
+</offer>
+<offer id="furn-ruchka-41355" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>860</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/ruchka-41355.jpg</picture>
+  <name>Ручка Ajax POLO JK, матовый никель/хром</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка раздельная K.JK51.POLO (POLO JK) SN/CP-3 матовый никель/хром (41355) (AJAX)</description>
+</offer>
+<offer id="furn-ruchka-43183" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>750</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/ruchka-43183.jpg</picture>
+  <name>Ручка Ajax SIGMA, матовый никель/хром</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка раздельная R.JR54.SIGMA (SIGMA JR) SN/CP-3 матовый никель/хром 105мм (43183) (AJAX)</description>
+</offer>
+<offer id="furn-ruchka-41745" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>1070</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/ruchka-41745.jpg</picture>
+  <name>Ручка Punto BLADE, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка раздельная K.QL52.BLADE (BLADE QL) BL-24 черный (41745) (PUNTO)</description>
+</offer>
+<offer id="furn-ruchka-41743" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>1070</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/ruchka-41743.jpg</picture>
+  <name>Ручка Punto STYLE, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка раздельная K.QL52.STYLE (STYLE QL) BL-24 черный (41743) (PUNTO)</description>
+</offer>
+<offer id="furn-ruchka-43387" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>860</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/ruchka-43387.jpg</picture>
+  <name>Ручка Ajax POLO JR, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка раздельная R.JR54.POLO (POLO JR) BL-24 черный (43387) (AJAX)</description>
+</offer>
+<offer id="furn-ruchka-47099" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>985</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/ruchka-47099.jpg</picture>
+  <name>Ручка Punto ARC MAIN, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка раздельная K.ARC.Q52.MAIN BL-24 черный (47099) (PUNTO)</description>
+</offer>
+<offer id="furn-ruchka-47109" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>965</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/ruchka-47109.jpg</picture>
+  <name>Ручка Punto ARC MAIN, сатиновое золото</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка раздельная K.ARC.Q52.MAIN SSG-39 сатин.золото (47109) (PUNTO)</description>
+</offer>
+<offer id="furn-zavertka-33229" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>645</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zavertka-33229.jpg</picture>
+  <name>Завёртка Punto BK6 QL, матовый никель/хром</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка поворотная BK6.K.QL52 (BK6 QL) SN/CP-3 матовый никель/хром, (33229) (Punto)</description>
+</offer>
+<offer id="furn-zavertka-41383" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>540</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zavertka-41383.jpg</picture>
+  <name>Завёртка Ajax BK6 JK, матовый никель/хром</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка поворотная BK6.K.JK51 (BK6 JK) SN/CP-3 матовый никель/хром (41383) (AJAX)</description>
+</offer>
+<offer id="furn-zavertka-41393" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>470</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zavertka-41393.jpg</picture>
+  <name>Завёртка Ajax BK6 JR, матовый никель/хром</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка поворотная BK6.R.JR54 (BK6 JR) SN/CP-3 матовый никель/хром (41393) (AJAX)</description>
+</offer>
+<offer id="furn-zavertka-43389" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>540</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zavertka-43389.jpg</picture>
+  <name>Завёртка Ajax BK6 JK, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка поворотная BK6.K.JK51 (BK6 JK) BL-24 черный (43389) (AJAX)</description>
+</offer>
+<offer id="furn-zavertka-43397" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>470</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zavertka-43397.jpg</picture>
+  <name>Завёртка Ajax BK6 JR, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка поворотная BK6.R.JR54 (BK6 JR) BL-24 черный (43397) (AJAX)</description>
+</offer>
+<offer id="furn-zavertka-41749" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>680</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zavertka-41749.jpg</picture>
+  <name>Завёртка Punto BK6 QL, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка поворотная BK6.K.QL52 (BK6 QL) BL-24 черный (41749) (PUNTO)</description>
+</offer>
+<offer id="furn-zavertka-47177" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>530</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zavertka-47177.jpg</picture>
+  <name>Завёртка Punto BK6 ARC, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка поворотная BK6.K.ARC.Q52 (BK6 ARC) BL-24 черный (47177) (PUNTO)</description>
+</offer>
+<offer id="furn-zavertka-47187" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>500</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zavertka-47187.jpg</picture>
+  <name>Завёртка Punto BK6 ARC, сатиновое золото</name>
+  <description>Фурнитура для межкомнатных дверей. Ручка поворотная BK6.K.ARC.Q52 (BK6 ARC) SSG-39 сатин.золото (47187) (PUNTO)</description>
+</offer>
+<offer id="furn-petlya-35491" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>200</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/petlya-35491.jpg</picture>
+  <name>Петля универсальная Punto IN4200W, матовый никель</name>
+  <description>Фурнитура для межкомнатных дверей. Петля универсальная без врезки IN4200W PN (200-2B 100x2,5) мат. Никель (35491/58451)</description>
+</offer>
+<offer id="furn-petlya-43133" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>200</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/petlya-43133.jpg</picture>
+  <name>Петля универсальная Punto IN4200W, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Петля универсальная без врезки IN4200W BL (200-2B 100x2,5) черный (43133/58453) (PUNTO)</description>
+</offer>
+<offer id="furn-petlya-48383" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>220</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/petlya-48383.jpg</picture>
+  <name>Петля универсальная Punto IN4200W-HD, сатиновое золото</name>
+  <description>Фурнитура для межкомнатных дверей. Петля универсальная без врезки IN4200W-HD SSG (200-2B 100x2,5) сатин.золото (48383) (PUNTO)</description>
+</offer>
+<offer id="furn-zashchelka-33595" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>365</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-33595.jpg</picture>
+  <name>Защёлка Fuaro PLAST P12, матовый никель</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная PLASTP12-45-25 SN мат.никель (33595) (FUARO)</description>
+</offer>
+<offer id="furn-zashchelka-42357" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>350</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-42357.jpg</picture>
+  <name>Защёлка Fuaro PLAST P12, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная PLASTP12-45-25 (P12-45) BL черный (42357) (FUARO)</description>
+</offer>
+<offer id="furn-zashchelka-33665" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>495</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-33665.jpg</picture>
+  <name>Защёлка магнитная Fuaro MAGN M12, матовое золото</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная MAGNM12-50-25 (M12-50-25) SG мат.золото (33665) (FUARO) Магнитная</description>
+</offer>
+<offer id="furn-zashchelka-33667" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>480</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-33667.jpg</picture>
+  <name>Защёлка магнитная Fuaro MAGNET M12, матовый никель</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная MAGNET M12-50-25 SN мат. Никель (33667) Магнитная</description>
+</offer>
+<offer id="furn-zashchelka-49245" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>410</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-49245.jpg</picture>
+  <name>Защёлка санузловая Punto PL96WC, матовый никель</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная PL96WC-50/BL SN (мат.никель) (49245) (PUNTO)</description>
+</offer>
+<offer id="furn-zashchelka-49235" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>410</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-49235.jpg</picture>
+  <name>Защёлка санузловая Punto PL96WC, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная PL96WC-50/BL BL (черный) (49235) (PUNTO)</description>
+</offer>
+<offer id="furn-zashchelka-49243" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>455</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-49243.jpg</picture>
+  <name>Защёлка санузловая Punto PL96WC, сатиновое золото</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная PL96WC-50/BL SSG (сатин.золото) punto (49243)</description>
+</offer>
+<offer id="furn-zashchelka-46519" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>1130</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-46519.jpg</picture>
+  <name>Защёлка магнитная санузловая Fuaro MAGN M96WC, сатиновое золото</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная MAGNM96WC-50 (M96WC-50) SSG сатинированное золото (46519) (FUARO) магнитная</description>
+</offer>
+<offer id="furn-zashchelka-48759" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>625</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-48759.jpg</picture>
+  <name>Защёлка магнитная санузловая Punto ML96WC, матовый никель</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная магнитная ML96WC-50/BL SN (мат.никель) блистер (48759/57283) (PUNTO) магнитная</description>
+</offer>
+<offer id="furn-zashchelka-48755" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>625</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-48755.jpg</picture>
+  <name>Защёлка магнитная санузловая Punto ML96WC, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Защелка врезная магнитная ML96WC-50/BL BL (черный) блистер (48755/57285) (PUNTO) магнитная</description>
+</offer>
+<offer id="furn-zashchelka-49223" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>580</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-49223.jpg</picture>
+  <name>Корпус замка Punto PL85 под цилиндр, матовый никель</name>
+  <description>Фурнитура для межкомнатных дверей. Корпус замка PL85-50/BL SN (мат.никель) (49223) под цилиндр</description>
+</offer>
+<offer id="furn-zashchelka-41763" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>920</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-41763.jpg</picture>
+  <name>Корпус замка Fuaro PLAST P85C с защёлкой под цилиндр, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Корпус врезного замка c защёлкой PLASTP85C-50 (P85C-50) BL Черный (41763) под цилиндр</description>
+</offer>
+<offer id="furn-zashchelka-49219" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>510</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/zashchelka-49219.jpg</picture>
+  <name>Корпус замка Punto PL85 под цилиндр, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Корпус замка PL85-50/BL BL (черный) (49219) под цилиндр</description>
+</offer>
+<offer id="furn-tsilindr-37051" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>650</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/tsilindr-37051.jpg</picture>
+  <name>Цилиндр Fuaro 100 ZM/60 ключ-вертушка, хром</name>
+  <description>Фурнитура для межкомнатных дверей. Цилиндровый механизм (100 ZM/60) 1000ZMKnob60(25+10+25) CP хром 5Key с вертушкой (37051)</description>
+</offer>
+<offer id="furn-tsilindr-45437" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>650</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/tsilindr-45437.jpg</picture>
+  <name>Цилиндр Fuaro 100 ZM/60 ключ-вертушка, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Цилиндровый механизм (100 ZM/60) 1000ZMKnob60(25+10+25) BL черный 5Key с вертушкой(45437)</description>
+</offer>
+<offer id="furn-tsilindr-d-pro502-60" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>950</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/tsilindr-d-pro502-60.jpg</picture>
+  <name>Цилиндр Fuaro D-PRO502/60, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Цилиндровый механизм D-PRO502/60 mm (25+10+25) BL черный 5 кл.</description>
+</offer>
+<offer id="furn-tsilindr-45433" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>650</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/tsilindr-45433.jpg</picture>
+  <name>Цилиндр Fuaro 100 ZA/60 ключ-ключ, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Цилиндровый Fuaro (Фуаро) механизм (100 ZA/60) 1000ZAKey60(25+10+25) BL черный 5Key (45433)</description>
+</offer>
+<offer id="furn-nakladka-47189" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>350</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/nakladka-47189.jpg</picture>
+  <name>Накладка Punto ET ARC под цилиндр, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Накладка Punto (Пунто) под цилиндр ET.K.ARC.Q52 (ET ARC) BL-24 черный (47189)</description>
+</offer>
+<offer id="furn-nakladka-43407" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>380</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/nakladka-43407.jpg</picture>
+  <name>Накладка Ajax ET JK под цилиндр, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Накладка Ajax (Аякс) под цилиндр ET.K.JK51 (ET JK) BL-24 черный (43407)</description>
+</offer>
+<offer id="furn-nakladka-41751" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>584</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/nakladka-41751.jpg</picture>
+  <name>Накладка Punto ET QL под цилиндр, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Накладка Punto (Пунто) под цилиндр ET.K.QL52 (ET QL) BL-24 черный (41751)</description>
+</offer>
+<offer id="furn-nakladka-33119" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>584</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/nakladka-33119.jpg</picture>
+  <name>Накладка Punto ET QL под цилиндр, матовый никель/хром</name>
+  <description>Фурнитура для межкомнатных дверей. Накладка Punto (Пунто) под цилиндр ET.K.QL52 (ET QL) SN/CP-3 матовый никель/хром (33119)</description>
+</offer>
+<offer id="furn-nakladka-41389" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>355</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/nakladka-41389.jpg</picture>
+  <name>Накладка Ajax ET JK под цилиндр, матовый никель/хром</name>
+  <description>Фурнитура для межкомнатных дверей. Накладка Ajax (Аякс) под цилиндр ET.K.JK51 (ET JK) SN/CP-3 матовый никель/хром (41389)</description>
+</offer>
+<offer id="furn-nakladka-et-tl-bl" available="true">
+  <url>https://www.fabrika-dveri.ru/furnitura.html</url>
+  <price>355</price>
+  <currencyId>RUB</currencyId>
+  <categoryId>2</categoryId>
+  <picture>https://www.fabrika-dveri.ru/assets/img/furnitura-web/nakladka-et-tl-bl.jpg</picture>
+  <name>Накладка Punto ET TL под цилиндр, чёрный</name>
+  <description>Фурнитура для межкомнатных дверей. Накладка под цилиндр ET TL BL-24 черный</description>
+</offer>
+  </offers>
+</shop>
+</yml_catalog>
