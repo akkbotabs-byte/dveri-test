@@ -303,11 +303,11 @@
   <price>9943</price>
   <currencyId>RUB</currencyId>
   <categoryId>1</categoryId>
-  <picture>https://www.fabrika-dveri.ru/assets/img/uno/01-uno-dub-madeyra-po-3.jpg</picture>
+  <picture>https://www.fabrika-dveri.ru/assets/img/uno/01-uno-dub-solnechnyy-po-3.jpg</picture>
   <name>Межкомнатная дверь Уно</name>
-  <description>Гладкое полотно в минималистичном стиле, плёнка ПВХ цвета Дуб Мадейра. Выпускается глухим (ПГ) и остеклённым (ПО) — с узкой вертикальной вставкой из чёрного стекла «Лакобель». Торцы облицованы чёрной кромкой ПВХ.</description>
+  <description>Гладкое полотно в минималистичном стиле, плёнка ПВХ цвета Дуб Солнечный. Выпускается глухим (ПГ) и остеклённым (ПО) — с узкой вертикальной вставкой из чёрного стекла «Лакобель». Торцы облицованы чёрной кромкой ПВХ.</description>
   <sales_notes>Доставка по Санкт-Петербургу и Ленинградской области</sales_notes>
-  <param name="Цвет">Дуб Мадейра</param>
+  <param name="Цвет">Дуб Солнечный</param>
   <param name="Покрытие">ПВХ</param>
 </offer>
 <offer id="furn-ruchka-33063" available="true">
