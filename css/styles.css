@@ -1008,3 +1008,94 @@ h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.3;
 }
 .cart-note { font-size: var(--fs-small); }
 .cart-sent { color: var(--color-accent); font-size: var(--fs-small); font-weight: var(--fw-semibold); }
+
+/* ---------- Примерочная ---------- */
+/* Фото клиента + PNG-накладка двери на холсте. Мобильный сценарий
+   главный: снял проём → подвинул пальцем → сохранил. */
+.tryon { margin: var(--space-4) 0; }
+
+.tryon-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-3);
+  border: 2px dashed var(--color-line);
+  border-radius: var(--radius-m);
+  text-align: center;
+  cursor: pointer;
+  background: var(--color-bg-soft, #fafafa);
+  transition: border-color .15s, background .15s;
+}
+.tryon-drop:hover { border-color: var(--color-accent); background: #fff; }
+.tryon-drop svg { color: var(--color-accent); }
+.tryon-drop-title { font-weight: 600; font-size: 1.05rem; }
+.tryon-drop-note { color: var(--color-ink-soft, #666); font-size: .9rem; max-width: 34em; }
+.tryon-tip { margin-top: var(--space-2); color: var(--color-ink-soft, #666); font-size: .9rem; }
+
+.tryon-stage { position: relative; }
+#tryon-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--radius-m);
+  background: #f2f2f2;
+  touch-action: none;   /* иначе страница прокручивается вместо перетаскивания */
+  cursor: grab;
+}
+#tryon-canvas:active { cursor: grabbing; }
+.tryon-hint {
+  margin: var(--space-2) auto 0;
+  max-width: 900px;
+  color: var(--color-ink-soft, #666);
+  font-size: .9rem;
+  text-align: center;
+}
+
+.tryon-controls { max-width: 900px; margin: var(--space-3) auto 0; }
+.tryon-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.tryon-row--btns { margin-top: var(--space-2); }
+.tryon-ctl { flex: 1 1 220px; display: flex; align-items: center; gap: var(--space-2); }
+.tryon-ctl > span { font-size: .9rem; color: var(--color-ink-soft, #666); min-width: 4.5em; }
+.tryon-ctl input[type="range"] { flex: 1; accent-color: var(--color-accent); }
+
+.tryon-picker { max-width: 900px; margin: var(--space-4) auto 0; }
+.tryon-picker-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3); }
+.tryon-picker-head h2 { font-size: 1.05rem; }
+.tryon-doors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+.tryon-door {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-1);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-s);
+  background: #fff;
+  text-align: center;
+}
+.tryon-door img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; }
+.tryon-door-name { font-size: .82rem; line-height: 1.2; }
+.tryon-door-price { font-size: .78rem; color: var(--color-accent); font-weight: 600; }
+.tryon-door.is-active { border-color: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
+
+.tryon-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  max-width: 900px;
+  margin: var(--space-4) auto 0;
+}
+.tryon-legal { max-width: 900px; margin: var(--space-2) auto 0; font-size: .85rem; }
+
+@media (max-width: 600px) {
+  .tryon-ctl > span { min-width: 3.6em; }
+  .tryon-actions .btn { flex: 1 1 100%; text-align: center; }
+}
