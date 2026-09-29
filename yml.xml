@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-09-28 12:00">
+<yml_catalog date="2026-09-29 12:00">
 <shop>
   <name>Магазин дверей</name>
   <company>ИП Поветкин Илья Андреевич</company>
@@ -34,7 +34,7 @@
   <param name="Цвет">Белый, Белый шёлк, Серый, Шампань</param>
   <param name="Покрытие">Ламинированное покрытие, Эмаль</param>
 </offer>
-<offer id="vesna" available="true">
+<offer id="vesna" available="false">
   <url>https://www.fabrika-dveri.ru/doors/vesna.html</url>
   <price>3619</price>
   <currencyId>RUB</currencyId>
