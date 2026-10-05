@@ -250,7 +250,7 @@
   <param name="Цвет">Белый, Капучино</param>
   <param name="Покрытие">Ламинированное покрытие</param>
 </offer>
-<offer id="safari" available="false">
+<offer id="safari" available="true">
   <url>https://www.fabrika-dveri.ru/doors/safari.html</url>
   <price>3843</price>
   <currencyId>RUB</currencyId>
